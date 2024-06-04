@@ -8,16 +8,20 @@ using System.Xml.Linq;
 
 namespace PharmacyManagementSystem.DataAccess {
     public sealed class ConfigLoader {
-        private static readonly Lazy<ConfigLoader> _instance =
+        private static readonly Lazy<ConfigLoader> instance =
             new Lazy<ConfigLoader>(() => new ConfigLoader());
 
-        public static ConfigLoader Instance => _instance.Value;
+        public static ConfigLoader Instance => instance.Value;
 
         private readonly string _configFilePath;
         private readonly XDocument _config;
 
         private ConfigLoader() {
-            _configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.xml"); // Use application base directory
+            // Constant for configuration file name
+            const string configFileName = "config.xml";
+
+            // Construct config file path using constant
+            _configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", configFileName);
             _config = LoadConfig();
         }
 
@@ -57,6 +61,55 @@ namespace PharmacyManagementSystem.DataAccess {
 
             return elements.ToDictionary(x => x.Name.LocalName, x => x.Value);
         }
+
+        public string GetSqlServerName() {
+            return GetValue("SqlServerName");
+        }
+
+        public string GetDatabaseName() {
+            return GetValue("DatabaseName");
+        }
+
+        public string GetUserId() {
+            return GetValue("UserId");
+        }
+
+        public string GetPassword() {
+            return GetValue("Password");
+        }
+
+        public string GetConnectionString() {
+            var serverName = GetSqlServerName();
+            var databaseName = GetDatabaseName();
+            var userId = GetUserId();
+            var password = GetPassword();
+
+            if (string.IsNullOrEmpty(serverName)) {
+                throw new ConfigurationException("SQL Server name is not specified in the configuration.");
+            }
+            if (string.IsNullOrEmpty(databaseName)) {
+                throw new ConfigurationException("Database name is not specified in the configuration.");
+            }
+
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder {
+                DataSource = serverName,
+                InitialCatalog = databaseName,
+                IntegratedSecurity = string.IsNullOrEmpty(userId) && string.IsNullOrEmpty(password)
+            };
+
+            if (!builder.IntegratedSecurity) {
+                if (string.IsNullOrEmpty(userId)) {
+                    throw new ConfigurationException("User ID is not specified in the configuration.");
+                }
+                if (string.IsNullOrEmpty(password)) {
+                    throw new ConfigurationException("Password is not specified in the configuration.");
+                }
+                builder.UserID = userId;
+                builder.Password = password;
+            }
+
+            return builder.ConnectionString;
+        }
     }
 
     public class ConfigurationException : Exception {
@@ -64,5 +117,4 @@ namespace PharmacyManagementSystem.DataAccess {
             : base(message, innerException) {
         }
     }
-
 }

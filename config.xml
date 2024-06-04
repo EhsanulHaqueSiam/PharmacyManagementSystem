@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8"?>
 <configuration>
-  <server>your_server_address</server>
-  <database>your_database_name</database>
-  <user>your_username</user>
-  <password>your_password</password>
+  <SqlServerName>localhost\SQLEXPRESS</SqlServerName>
+  <DatabaseName>PharmacyDB</DatabaseName>
+  <UserId>admin</UserId>
+  <Password>admin123</Password>
 </configuration>
