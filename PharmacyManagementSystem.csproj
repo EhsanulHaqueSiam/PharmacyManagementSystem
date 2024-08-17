@@ -33,8 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Guna.UI2">
-      <HintPath>C:\Users\Siam\Downloads\Guna.UI2.dll</HintPath>
+    <Reference Include="Guna.UI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=537479e8cf7071a7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Guna.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Guna exp2\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna.UI-Framework-Lib-master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -52,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adminstrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adminstrator.Designer.cs">
+      <DependentUpon>Adminstrator.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\DatabaseManager.cs" />
     <Compile Include="DataAccess\ConfigLoader.cs" />
     <Compile Include="Form1.cs">
@@ -89,6 +100,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Class\" />
     <Folder Include="Resources\Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
