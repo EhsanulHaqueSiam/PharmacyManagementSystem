@@ -62,26 +62,6 @@ namespace PharmacyManagementSystem
 
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gunaButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Cross1_btn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void exitBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -104,6 +84,11 @@ namespace PharmacyManagementSystem
             else {
                 MessageBox.Show("Wrong user Name or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void passTextField_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
