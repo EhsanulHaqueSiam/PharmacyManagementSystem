@@ -2,9 +2,9 @@
 <configuration>
   <!--<SqlServerName>localhost\SQLEXPRESS</SqlServerName>-->
   <!-- Optional -->
-  <DatabaseName>PharmacyDB</DatabaseName>
+  <DatabaseName>Pharmacy</DatabaseName>
   <!-- Optional when using LocalDB -->
-  <DatabaseFilePath>C:\Users\Siam\Documents\PracticeDB.mdf</DatabaseFilePath>
+  <DatabaseFilePath>C:\Users\NitPaul\Documents\Pharmacy.mdf</DatabaseFilePath>
   <!-- Optional -->
   <!--<UserId>admin</UserId>-->
   <!-- Optional if Integrated Security -->

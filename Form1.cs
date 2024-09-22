@@ -80,8 +80,13 @@ namespace PharmacyManagementSystem
                 Adminstrator am = new Adminstrator();
                 am.Show();
                 this.Hide();
-            }
-            else {
+            } else if (userNameTxtField.Text == "nit" && passTextField.Text == "nit")
+            { 
+                Pharmacist ph = new Pharmacist();
+                ph.Show();
+                this.Hide();
+            
+            }else {
                 MessageBox.Show("Wrong user Name or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
