@@ -66,6 +66,7 @@
             this.label1.Size = new System.Drawing.Size(119, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "Login";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // label2
             // 
@@ -113,20 +114,16 @@
             this.passTextField.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.passTextField.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.passTextField.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.passTextField.DisabledState.Parent = this.passTextField;
             this.passTextField.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.passTextField.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.passTextField.FocusedState.Parent = this.passTextField;
             this.passTextField.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passTextField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.passTextField.HoverState.Parent = this.passTextField;
             this.passTextField.Location = new System.Drawing.Point(122, 285);
             this.passTextField.Margin = new System.Windows.Forms.Padding(8, 16, 8, 16);
             this.passTextField.Name = "passTextField";
             this.passTextField.PasswordChar = '*';
             this.passTextField.PlaceholderText = "";
             this.passTextField.SelectedText = "";
-            this.passTextField.ShadowDecoration.Parent = this.passTextField;
             this.passTextField.Size = new System.Drawing.Size(318, 43);
             this.passTextField.TabIndex = 6;
             this.passTextField.TextChanged += new System.EventHandler(this.passTextField_TextChanged);
@@ -138,20 +135,16 @@
             this.userNameTxtField.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.userNameTxtField.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.userNameTxtField.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.userNameTxtField.DisabledState.Parent = this.userNameTxtField;
             this.userNameTxtField.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.userNameTxtField.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.userNameTxtField.FocusedState.Parent = this.userNameTxtField;
             this.userNameTxtField.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userNameTxtField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.userNameTxtField.HoverState.Parent = this.userNameTxtField;
             this.userNameTxtField.Location = new System.Drawing.Point(122, 150);
             this.userNameTxtField.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.userNameTxtField.Name = "userNameTxtField";
             this.userNameTxtField.PasswordChar = '\0';
             this.userNameTxtField.PlaceholderText = "";
             this.userNameTxtField.SelectedText = "";
-            this.userNameTxtField.ShadowDecoration.Parent = this.userNameTxtField;
             this.userNameTxtField.Size = new System.Drawing.Size(318, 43);
             this.userNameTxtField.TabIndex = 5;
             // 
@@ -159,19 +152,15 @@
             // 
             this.resetBtn.BorderRadius = 19;
             this.resetBtn.BorderThickness = 1;
-            this.resetBtn.CheckedState.Parent = this.resetBtn;
-            this.resetBtn.CustomImages.Parent = this.resetBtn;
             this.resetBtn.Font = new System.Drawing.Font("Mistral", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetBtn.ForeColor = System.Drawing.Color.White;
             this.resetBtn.HoverState.BorderColor = System.Drawing.Color.Black;
             this.resetBtn.HoverState.FillColor = System.Drawing.Color.White;
             this.resetBtn.HoverState.ForeColor = System.Drawing.Color.Aqua;
-            this.resetBtn.HoverState.Parent = this.resetBtn;
             this.resetBtn.Image = ((System.Drawing.Image)(resources.GetObject("resetBtn.Image")));
             this.resetBtn.ImageSize = new System.Drawing.Size(30, 30);
             this.resetBtn.Location = new System.Drawing.Point(314, 371);
             this.resetBtn.Name = "resetBtn";
-            this.resetBtn.ShadowDecoration.Parent = this.resetBtn;
             this.resetBtn.Size = new System.Drawing.Size(180, 45);
             this.resetBtn.TabIndex = 4;
             this.resetBtn.Text = "Reset";
@@ -181,19 +170,15 @@
             // 
             this.loginBtn.BorderRadius = 19;
             this.loginBtn.BorderThickness = 1;
-            this.loginBtn.CheckedState.Parent = this.loginBtn;
-            this.loginBtn.CustomImages.Parent = this.loginBtn;
             this.loginBtn.Font = new System.Drawing.Font("Mistral", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginBtn.ForeColor = System.Drawing.Color.White;
             this.loginBtn.HoverState.BorderColor = System.Drawing.Color.Black;
             this.loginBtn.HoverState.FillColor = System.Drawing.Color.White;
             this.loginBtn.HoverState.ForeColor = System.Drawing.Color.Aqua;
-            this.loginBtn.HoverState.Parent = this.loginBtn;
             this.loginBtn.Image = ((System.Drawing.Image)(resources.GetObject("loginBtn.Image")));
             this.loginBtn.ImageSize = new System.Drawing.Size(50, 50);
             this.loginBtn.Location = new System.Drawing.Point(98, 371);
             this.loginBtn.Name = "loginBtn";
-            this.loginBtn.ShadowDecoration.Parent = this.loginBtn;
             this.loginBtn.Size = new System.Drawing.Size(180, 45);
             this.loginBtn.TabIndex = 3;
             this.loginBtn.Text = "Login";
@@ -202,17 +187,13 @@
             // exitBtn
             // 
             this.exitBtn.BorderRadius = 1;
-            this.exitBtn.CheckedState.Parent = this.exitBtn;
-            this.exitBtn.CustomImages.Parent = this.exitBtn;
             this.exitBtn.FillColor = System.Drawing.Color.PaleTurquoise;
             this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.exitBtn.ForeColor = System.Drawing.Color.White;
-            this.exitBtn.HoverState.Parent = this.exitBtn;
             this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
             this.exitBtn.ImageSize = new System.Drawing.Size(30, 30);
             this.exitBtn.Location = new System.Drawing.Point(1338, 0);
             this.exitBtn.Name = "exitBtn";
-            this.exitBtn.ShadowDecoration.Parent = this.exitBtn;
             this.exitBtn.Size = new System.Drawing.Size(42, 40);
             this.exitBtn.TabIndex = 3;
             this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);

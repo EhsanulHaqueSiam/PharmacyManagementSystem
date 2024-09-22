@@ -50,9 +50,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -282,6 +282,21 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Customer";
             // 
+            // exitBtn
+            // 
+            this.exitBtn.BackColor = System.Drawing.Color.Transparent;
+            this.exitBtn.BorderRadius = 1;
+            this.exitBtn.FillColor = System.Drawing.Color.PaleTurquoise;
+            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.exitBtn.ForeColor = System.Drawing.Color.White;
+            this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
+            this.exitBtn.ImageSize = new System.Drawing.Size(30, 30);
+            this.exitBtn.Location = new System.Drawing.Point(916, 1);
+            this.exitBtn.Name = "exitBtn";
+            this.exitBtn.Size = new System.Drawing.Size(41, 39);
+            this.exitBtn.TabIndex = 5;
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -295,42 +310,19 @@
             // guna2Button1
             // 
             this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
             this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
             this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button1.ForeColor = System.Drawing.Color.Transparent;
             this.guna2Button1.HoverState.FillColor = System.Drawing.Color.White;
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
             this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
             this.guna2Button1.ImageSize = new System.Drawing.Size(35, 35);
             this.guna2Button1.Location = new System.Drawing.Point(239, 21);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.PressedColor = System.Drawing.Color.White;
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
             this.guna2Button1.Size = new System.Drawing.Size(34, 35);
             this.guna2Button1.TabIndex = 4;
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            // 
-            // exitBtn
-            // 
-            this.exitBtn.BackColor = System.Drawing.Color.Transparent;
-            this.exitBtn.BorderRadius = 1;
-            this.exitBtn.CheckedState.Parent = this.exitBtn;
-            this.exitBtn.CustomImages.Parent = this.exitBtn;
-            this.exitBtn.FillColor = System.Drawing.Color.PaleTurquoise;
-            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.exitBtn.ForeColor = System.Drawing.Color.White;
-            this.exitBtn.HoverState.Parent = this.exitBtn;
-            this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
-            this.exitBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.exitBtn.Location = new System.Drawing.Point(916, 1);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.ShadowDecoration.Parent = this.exitBtn;
-            this.exitBtn.Size = new System.Drawing.Size(41, 39);
-            this.exitBtn.TabIndex = 5;
-            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
             // UC_Dashboard
             // 
@@ -380,8 +372,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
+        private Guna.UI2.WinForms.Guna2Button exitBtn;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Guna.UI2.WinForms.Guna2Button exitBtn;
     }
 }
