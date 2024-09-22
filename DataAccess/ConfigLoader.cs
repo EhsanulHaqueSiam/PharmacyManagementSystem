@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Data.SqlClient;
 
 namespace PharmacyManagementSystem.DataAccess {
     public sealed class ConfigLoader {
@@ -70,6 +71,10 @@ namespace PharmacyManagementSystem.DataAccess {
             return GetValue("DatabaseName");
         }
 
+        public string GetDatabaseFilePath() {
+            return GetValue("DatabaseFilePath");
+        }
+
         public string GetUserId() {
             return GetValue("UserId");
         }
@@ -81,34 +86,45 @@ namespace PharmacyManagementSystem.DataAccess {
         public string GetConnectionString() {
             var serverName = GetSqlServerName();
             var databaseName = GetDatabaseName();
+            var databaseFilePath = GetDatabaseFilePath();
             var userId = GetUserId();
             var password = GetPassword();
 
-            if (string.IsNullOrEmpty(serverName)) {
-                throw new ConfigurationException("SQL Server name is not specified in the configuration.");
-            }
-            if (string.IsNullOrEmpty(databaseName)) {
-                throw new ConfigurationException("Database name is not specified in the configuration.");
-            }
+            // Check if server name is provided
+            if (!string.IsNullOrEmpty(serverName)) {
+                // Prioritize server connection
+                var builder = new SqlConnectionStringBuilder {
+                    DataSource = serverName,
+                    InitialCatalog = databaseName,
+                    IntegratedSecurity = string.IsNullOrEmpty(userId) && string.IsNullOrEmpty(password)
+                };
 
-            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder {
-                DataSource = serverName,
-                InitialCatalog = databaseName,
-                IntegratedSecurity = string.IsNullOrEmpty(userId) && string.IsNullOrEmpty(password)
-            };
-
-            if (!builder.IntegratedSecurity) {
-                if (string.IsNullOrEmpty(userId)) {
-                    throw new ConfigurationException("User ID is not specified in the configuration.");
+                if (!builder.IntegratedSecurity) {
+                    if (string.IsNullOrEmpty(userId)) {
+                        throw new ConfigurationException("User ID is not specified in the configuration.");
+                    }
+                    if (string.IsNullOrEmpty(password)) {
+                        throw new ConfigurationException("Password is not specified in the configuration.");
+                    }
+                    builder.UserID = userId;
+                    builder.Password = password;
                 }
-                if (string.IsNullOrEmpty(password)) {
-                    throw new ConfigurationException("Password is not specified in the configuration.");
-                }
-                builder.UserID = userId;
-                builder.Password = password;
+
+                return builder.ConnectionString;
+            }
+            // Fallback to LocalDB connection with AttachDbFilename
+            else if (!string.IsNullOrEmpty(databaseFilePath)) {
+                var builder = new SqlConnectionStringBuilder {
+                    DataSource = @"(LocalDB)\MSSQLLocalDB",
+                    AttachDBFilename = databaseFilePath,
+                    IntegratedSecurity = true // Assuming Integrated Security for LocalDB
+                };
+
+                return builder.ConnectionString;
             }
 
-            return builder.ConnectionString;
+            // If neither are provided, throw an exception
+            throw new ConfigurationException("Either SQL Server name or Database file path must be specified in the configuration.");
         }
     }
 

@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <configuration>
-  <SqlServerName>localhost\SQLEXPRESS</SqlServerName>
+  <!--<SqlServerName>localhost\SQLEXPRESS</SqlServerName>-->
+  <!-- Optional -->
   <DatabaseName>PharmacyDB</DatabaseName>
-  <UserId>admin</UserId>
-  <Password>admin123</Password>
+  <!-- Optional when using LocalDB -->
+  <DatabaseFilePath>C:\Users\Siam\Documents\PracticeDB.mdf</DatabaseFilePath>
+  <!-- Optional -->
+  <!--<UserId>admin</UserId>-->
+  <!-- Optional if Integrated Security -->
+  <!--<Password>admin123</Password>-->
+  <!-- Optional if Integrated Security -->
 </configuration>
