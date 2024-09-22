@@ -43,9 +43,11 @@
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.uC_ViewUser1 = new PharmacyManagementSystem.AdminstratorUC.UC_ViewUser();
+            this.uC_Profile1 = new PharmacyManagementSystem.AdminstratorUC.UC_Profile();
             this.uC_AddUser1 = new PharmacyManagementSystem.AdminstratorUC.UC_AddUser();
             this.uC_Dashboard1 = new PharmacyManagementSystem.AdminstratorUC.UC_Dashboard();
-            this.uC_Profile1 = new PharmacyManagementSystem.AdminstratorUC.UC_Profile();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.admin_pictureBox)).BeginInit();
             this.panel2.SuspendLayout();
@@ -133,6 +135,7 @@
             this.viewUser_Button.Size = new System.Drawing.Size(257, 45);
             this.viewUser_Button.TabIndex = 9;
             this.viewUser_Button.Text = "View User";
+            this.viewUser_Button.Click += new System.EventHandler(this.viewUser_Button_Click);
             // 
             // addUser_Button
             // 
@@ -189,6 +192,7 @@
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.uC_ViewUser1);
             this.panel2.Controls.Add(this.uC_Profile1);
             this.panel2.Controls.Add(this.uC_AddUser1);
             this.panel2.Controls.Add(this.uC_Dashboard1);
@@ -211,6 +215,27 @@
             // 
             this.guna2Elipse3.TargetControl = this.panel2;
             // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.TargetControl = this.panel2;
+            // 
+            // uC_ViewUser1
+            // 
+            this.uC_ViewUser1.BackColor = System.Drawing.Color.Transparent;
+            this.uC_ViewUser1.Location = new System.Drawing.Point(1, 1);
+            this.uC_ViewUser1.Name = "uC_ViewUser1";
+            this.uC_ViewUser1.Size = new System.Drawing.Size(960, 761);
+            this.uC_ViewUser1.TabIndex = 8;
+            // 
+            // uC_Profile1
+            // 
+            this.uC_Profile1.BackColor = System.Drawing.Color.Transparent;
+            this.uC_Profile1.Location = new System.Drawing.Point(1, 1);
+            this.uC_Profile1.Name = "uC_Profile1";
+            this.uC_Profile1.Size = new System.Drawing.Size(960, 761);
+            this.uC_Profile1.TabIndex = 7;
+            this.uC_Profile1.Load += new System.EventHandler(this.uC_Profile1_Load);
+            // 
             // uC_AddUser1
             // 
             this.uC_AddUser1.BackColor = System.Drawing.Color.Transparent;
@@ -227,15 +252,6 @@
             this.uC_Dashboard1.Size = new System.Drawing.Size(960, 761);
             this.uC_Dashboard1.TabIndex = 5;
             this.uC_Dashboard1.Load += new System.EventHandler(this.uC_Dashboard1_Load);
-            // 
-            // uC_Profile1
-            // 
-            this.uC_Profile1.BackColor = System.Drawing.Color.Transparent;
-            this.uC_Profile1.Location = new System.Drawing.Point(1, 1);
-            this.uC_Profile1.Name = "uC_Profile1";
-            this.uC_Profile1.Size = new System.Drawing.Size(960, 761);
-            this.uC_Profile1.TabIndex = 7;
-            this.uC_Profile1.Load += new System.EventHandler(this.uC_Profile1_Load);
             // 
             // Adminstrator
             // 
@@ -276,5 +292,7 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse3;
         private AdminstratorUC.UC_Profile uC_Profile1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse4;
+        private AdminstratorUC.UC_ViewUser uC_ViewUser1;
     }
 }

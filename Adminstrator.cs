@@ -22,6 +22,7 @@ namespace PharmacyManagementSystem
             uC_Dashboard1.Visible = false;
             uC_AddUser1.Visible = false;
             uC_Profile1.Visible = false;
+            uC_ViewUser1.Visible = false;
             dashboard_Button.PerformClick();
         }
 
@@ -86,6 +87,12 @@ namespace PharmacyManagementSystem
             uC_Profile1.Visible = true;
             uC_Profile1.BringToFront();
 
+        }
+
+        private void viewUser_Button_Click(object sender, EventArgs e)
+        {
+            uC_ViewUser1.Visible = true;
+            uC_ViewUser1.BringToFront();
         }
     }
 }
