@@ -31,18 +31,28 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PharmacistGUI));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.sell_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.validityCheck_button = new Guna.UI2.WinForms.Guna2Button();
             this.logout_Button = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.profile_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.modify_Button = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.viewUser_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.viewMedicine_Button = new Guna.UI2.WinForms.Guna2Button();
             this.dashboard_Button = new Guna.UI2.WinForms.Guna2Button();
-            this.addUser_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.addMedicine_Button = new Guna.UI2.WinForms.Guna2Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.uC_P_Dashboard1 = new PharmacyManagementSystem.PharmacistUC.UC_P_Dashboard();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse6 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.uC_P_MedicineValidityCheck1 = new PharmacyManagementSystem.PharmacistUC.UC_P_MedicineValidityCheck();
+            this.uC_P_UpdateMedicine1 = new PharmacyManagementSystem.PharmacistUC.UC_P_UpdateMedicine();
+            this.uC_P_ViewMedicines1 = new PharmacyManagementSystem.PharmacistUC.UC_P_ViewMedicines();
+            this.uC_P_AddMedicine1 = new PharmacyManagementSystem.PharmacistUC.UC_P_AddMedicine();
+            this.uC_P_Dashboard1 = new PharmacyManagementSystem.PharmacistUC.UC_P_Dashboard();
+            this.uC_P_SellMedicine1 = new PharmacyManagementSystem.PharmacistUC.UC_P_SellMedicine();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -52,58 +62,60 @@
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.guna2Button2);
-            this.panel1.Controls.Add(this.guna2Button1);
+            this.panel1.Controls.Add(this.sell_Button);
+            this.panel1.Controls.Add(this.validityCheck_button);
             this.panel1.Controls.Add(this.logout_Button);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.profile_Button);
+            this.panel1.Controls.Add(this.modify_Button);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.viewUser_Button);
+            this.panel1.Controls.Add(this.viewMedicine_Button);
             this.panel1.Controls.Add(this.dashboard_Button);
-            this.panel1.Controls.Add(this.addUser_Button);
+            this.panel1.Controls.Add(this.addMedicine_Button);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(420, 762);
             this.panel1.TabIndex = 0;
             // 
-            // guna2Button2
+            // sell_Button
             // 
-            this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.guna2Button2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(177)))), ((int)(((byte)(233)))));
-            this.guna2Button2.CheckedState.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.MediumPurple;
-            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.ImageSize = new System.Drawing.Size(40, 40);
-            this.guna2Button2.Location = new System.Drawing.Point(71, 568);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.PressedColor = System.Drawing.Color.Silver;
-            this.guna2Button2.Size = new System.Drawing.Size(257, 45);
-            this.guna2Button2.TabIndex = 18;
-            this.guna2Button2.Text = "Sell Medicine";
+            this.sell_Button.BackColor = System.Drawing.Color.Transparent;
+            this.sell_Button.BorderColor = System.Drawing.Color.Transparent;
+            this.sell_Button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.sell_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(177)))), ((int)(((byte)(233)))));
+            this.sell_Button.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.sell_Button.FillColor = System.Drawing.Color.Transparent;
+            this.sell_Button.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sell_Button.ForeColor = System.Drawing.Color.MediumPurple;
+            this.sell_Button.Image = ((System.Drawing.Image)(resources.GetObject("sell_Button.Image")));
+            this.sell_Button.ImageSize = new System.Drawing.Size(40, 40);
+            this.sell_Button.Location = new System.Drawing.Point(71, 568);
+            this.sell_Button.Name = "sell_Button";
+            this.sell_Button.PressedColor = System.Drawing.Color.Silver;
+            this.sell_Button.Size = new System.Drawing.Size(257, 45);
+            this.sell_Button.TabIndex = 18;
+            this.sell_Button.Text = "Sell Medicine";
+            this.sell_Button.Click += new System.EventHandler(this.sell_Button_Click);
             // 
-            // guna2Button1
+            // validityCheck_button
             // 
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(177)))), ((int)(((byte)(233)))));
-            this.guna2Button1.CheckedState.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.MediumPurple;
-            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
-            this.guna2Button1.ImageSize = new System.Drawing.Size(35, 35);
-            this.guna2Button1.Location = new System.Drawing.Point(22, 504);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.PressedColor = System.Drawing.Color.Silver;
-            this.guna2Button1.Size = new System.Drawing.Size(377, 45);
-            this.guna2Button1.TabIndex = 17;
-            this.guna2Button1.Text = "Madicine Validity Check";
+            this.validityCheck_button.BackColor = System.Drawing.Color.Transparent;
+            this.validityCheck_button.BorderColor = System.Drawing.Color.Transparent;
+            this.validityCheck_button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.validityCheck_button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(177)))), ((int)(((byte)(233)))));
+            this.validityCheck_button.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.validityCheck_button.FillColor = System.Drawing.Color.Transparent;
+            this.validityCheck_button.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.validityCheck_button.ForeColor = System.Drawing.Color.MediumPurple;
+            this.validityCheck_button.Image = ((System.Drawing.Image)(resources.GetObject("validityCheck_button.Image")));
+            this.validityCheck_button.ImageSize = new System.Drawing.Size(35, 35);
+            this.validityCheck_button.Location = new System.Drawing.Point(22, 504);
+            this.validityCheck_button.Name = "validityCheck_button";
+            this.validityCheck_button.PressedColor = System.Drawing.Color.Silver;
+            this.validityCheck_button.Size = new System.Drawing.Size(377, 45);
+            this.validityCheck_button.TabIndex = 17;
+            this.validityCheck_button.Text = "Madicine Validity Check";
+            this.validityCheck_button.Click += new System.EventHandler(this.validityCheck_button_Click);
             // 
             // logout_Button
             // 
@@ -137,24 +149,25 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Pharmacist";
             // 
-            // profile_Button
+            // modify_Button
             // 
-            this.profile_Button.BackColor = System.Drawing.Color.Transparent;
-            this.profile_Button.BorderColor = System.Drawing.Color.Transparent;
-            this.profile_Button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.profile_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(177)))), ((int)(((byte)(233)))));
-            this.profile_Button.CheckedState.ForeColor = System.Drawing.Color.White;
-            this.profile_Button.FillColor = System.Drawing.Color.Transparent;
-            this.profile_Button.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profile_Button.ForeColor = System.Drawing.Color.MediumPurple;
-            this.profile_Button.Image = ((System.Drawing.Image)(resources.GetObject("profile_Button.Image")));
-            this.profile_Button.ImageSize = new System.Drawing.Size(40, 40);
-            this.profile_Button.Location = new System.Drawing.Point(56, 436);
-            this.profile_Button.Name = "profile_Button";
-            this.profile_Button.PressedColor = System.Drawing.Color.Silver;
-            this.profile_Button.Size = new System.Drawing.Size(272, 45);
-            this.profile_Button.TabIndex = 15;
-            this.profile_Button.Text = "Modify Medicine";
+            this.modify_Button.BackColor = System.Drawing.Color.Transparent;
+            this.modify_Button.BorderColor = System.Drawing.Color.Transparent;
+            this.modify_Button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.modify_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(177)))), ((int)(((byte)(233)))));
+            this.modify_Button.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.modify_Button.FillColor = System.Drawing.Color.Transparent;
+            this.modify_Button.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_Button.ForeColor = System.Drawing.Color.MediumPurple;
+            this.modify_Button.Image = ((System.Drawing.Image)(resources.GetObject("modify_Button.Image")));
+            this.modify_Button.ImageSize = new System.Drawing.Size(40, 40);
+            this.modify_Button.Location = new System.Drawing.Point(56, 436);
+            this.modify_Button.Name = "modify_Button";
+            this.modify_Button.PressedColor = System.Drawing.Color.Silver;
+            this.modify_Button.Size = new System.Drawing.Size(272, 45);
+            this.modify_Button.TabIndex = 15;
+            this.modify_Button.Text = "Modify Medicine";
+            this.modify_Button.Click += new System.EventHandler(this.modify_Button_Click);
             // 
             // pictureBox1
             // 
@@ -169,24 +182,25 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // viewUser_Button
+            // viewMedicine_Button
             // 
-            this.viewUser_Button.BackColor = System.Drawing.Color.Transparent;
-            this.viewUser_Button.BorderColor = System.Drawing.Color.Transparent;
-            this.viewUser_Button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.viewUser_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(177)))), ((int)(((byte)(233)))));
-            this.viewUser_Button.CheckedState.ForeColor = System.Drawing.Color.White;
-            this.viewUser_Button.FillColor = System.Drawing.Color.Transparent;
-            this.viewUser_Button.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewUser_Button.ForeColor = System.Drawing.Color.MediumPurple;
-            this.viewUser_Button.Image = ((System.Drawing.Image)(resources.GetObject("viewUser_Button.Image")));
-            this.viewUser_Button.ImageSize = new System.Drawing.Size(40, 40);
-            this.viewUser_Button.Location = new System.Drawing.Point(71, 370);
-            this.viewUser_Button.Name = "viewUser_Button";
-            this.viewUser_Button.PressedColor = System.Drawing.Color.Silver;
-            this.viewUser_Button.Size = new System.Drawing.Size(257, 45);
-            this.viewUser_Button.TabIndex = 14;
-            this.viewUser_Button.Text = "View Medicine";
+            this.viewMedicine_Button.BackColor = System.Drawing.Color.Transparent;
+            this.viewMedicine_Button.BorderColor = System.Drawing.Color.Transparent;
+            this.viewMedicine_Button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.viewMedicine_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(177)))), ((int)(((byte)(233)))));
+            this.viewMedicine_Button.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.viewMedicine_Button.FillColor = System.Drawing.Color.Transparent;
+            this.viewMedicine_Button.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewMedicine_Button.ForeColor = System.Drawing.Color.MediumPurple;
+            this.viewMedicine_Button.Image = ((System.Drawing.Image)(resources.GetObject("viewMedicine_Button.Image")));
+            this.viewMedicine_Button.ImageSize = new System.Drawing.Size(40, 40);
+            this.viewMedicine_Button.Location = new System.Drawing.Point(71, 370);
+            this.viewMedicine_Button.Name = "viewMedicine_Button";
+            this.viewMedicine_Button.PressedColor = System.Drawing.Color.Silver;
+            this.viewMedicine_Button.Size = new System.Drawing.Size(257, 45);
+            this.viewMedicine_Button.TabIndex = 14;
+            this.viewMedicine_Button.Text = "View Medicine";
+            this.viewMedicine_Button.Click += new System.EventHandler(this.viewUser_Button_Click);
             // 
             // dashboard_Button
             // 
@@ -208,34 +222,96 @@
             this.dashboard_Button.Text = "Dashboard";
             this.dashboard_Button.Click += new System.EventHandler(this.dashboard_Button_Click);
             // 
-            // addUser_Button
+            // addMedicine_Button
             // 
-            this.addUser_Button.BackColor = System.Drawing.Color.Transparent;
-            this.addUser_Button.BorderColor = System.Drawing.Color.Transparent;
-            this.addUser_Button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.addUser_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(177)))), ((int)(((byte)(233)))));
-            this.addUser_Button.CheckedState.ForeColor = System.Drawing.Color.White;
-            this.addUser_Button.FillColor = System.Drawing.Color.Transparent;
-            this.addUser_Button.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addUser_Button.ForeColor = System.Drawing.Color.MediumPurple;
-            this.addUser_Button.Image = ((System.Drawing.Image)(resources.GetObject("addUser_Button.Image")));
-            this.addUser_Button.ImageSize = new System.Drawing.Size(35, 35);
-            this.addUser_Button.Location = new System.Drawing.Point(71, 299);
-            this.addUser_Button.Name = "addUser_Button";
-            this.addUser_Button.PressedColor = System.Drawing.Color.Silver;
-            this.addUser_Button.Size = new System.Drawing.Size(257, 45);
-            this.addUser_Button.TabIndex = 13;
-            this.addUser_Button.Text = "Add Medicine";
+            this.addMedicine_Button.BackColor = System.Drawing.Color.Transparent;
+            this.addMedicine_Button.BorderColor = System.Drawing.Color.Transparent;
+            this.addMedicine_Button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.addMedicine_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(177)))), ((int)(((byte)(233)))));
+            this.addMedicine_Button.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.addMedicine_Button.FillColor = System.Drawing.Color.Transparent;
+            this.addMedicine_Button.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addMedicine_Button.ForeColor = System.Drawing.Color.MediumPurple;
+            this.addMedicine_Button.Image = ((System.Drawing.Image)(resources.GetObject("addMedicine_Button.Image")));
+            this.addMedicine_Button.ImageSize = new System.Drawing.Size(35, 35);
+            this.addMedicine_Button.Location = new System.Drawing.Point(71, 299);
+            this.addMedicine_Button.Name = "addMedicine_Button";
+            this.addMedicine_Button.PressedColor = System.Drawing.Color.Silver;
+            this.addMedicine_Button.Size = new System.Drawing.Size(257, 45);
+            this.addMedicine_Button.TabIndex = 13;
+            this.addMedicine_Button.Text = "Add Medicine";
+            this.addMedicine_Button.Click += new System.EventHandler(this.addUser_Button_Click);
             // 
             // panel2
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.uC_P_SellMedicine1);
+            this.panel2.Controls.Add(this.uC_P_MedicineValidityCheck1);
+            this.panel2.Controls.Add(this.uC_P_UpdateMedicine1);
+            this.panel2.Controls.Add(this.uC_P_ViewMedicines1);
+            this.panel2.Controls.Add(this.uC_P_AddMedicine1);
             this.panel2.Controls.Add(this.uC_P_Dashboard1);
             this.panel2.Location = new System.Drawing.Point(420, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(960, 761);
             this.panel2.TabIndex = 1;
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.TargetControl = this.panel2;
+            // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.TargetControl = this.panel2;
+            // 
+            // guna2Elipse3
+            // 
+            this.guna2Elipse3.TargetControl = this.panel2;
+            // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.TargetControl = this.panel2;
+            // 
+            // guna2Elipse5
+            // 
+            this.guna2Elipse5.TargetControl = this.panel2;
+            // 
+            // guna2Elipse6
+            // 
+            this.guna2Elipse6.TargetControl = this.panel2;
+            // 
+            // uC_P_MedicineValidityCheck1
+            // 
+            this.uC_P_MedicineValidityCheck1.BackColor = System.Drawing.Color.Transparent;
+            this.uC_P_MedicineValidityCheck1.Location = new System.Drawing.Point(1, 1);
+            this.uC_P_MedicineValidityCheck1.Name = "uC_P_MedicineValidityCheck1";
+            this.uC_P_MedicineValidityCheck1.Size = new System.Drawing.Size(960, 761);
+            this.uC_P_MedicineValidityCheck1.TabIndex = 4;
+            // 
+            // uC_P_UpdateMedicine1
+            // 
+            this.uC_P_UpdateMedicine1.BackColor = System.Drawing.Color.Transparent;
+            this.uC_P_UpdateMedicine1.Location = new System.Drawing.Point(1, 1);
+            this.uC_P_UpdateMedicine1.Name = "uC_P_UpdateMedicine1";
+            this.uC_P_UpdateMedicine1.Size = new System.Drawing.Size(960, 761);
+            this.uC_P_UpdateMedicine1.TabIndex = 3;
+            // 
+            // uC_P_ViewMedicines1
+            // 
+            this.uC_P_ViewMedicines1.BackColor = System.Drawing.Color.Transparent;
+            this.uC_P_ViewMedicines1.Location = new System.Drawing.Point(1, 1);
+            this.uC_P_ViewMedicines1.Name = "uC_P_ViewMedicines1";
+            this.uC_P_ViewMedicines1.Size = new System.Drawing.Size(960, 761);
+            this.uC_P_ViewMedicines1.TabIndex = 2;
+            // 
+            // uC_P_AddMedicine1
+            // 
+            this.uC_P_AddMedicine1.BackColor = System.Drawing.Color.Transparent;
+            this.uC_P_AddMedicine1.Location = new System.Drawing.Point(1, 1);
+            this.uC_P_AddMedicine1.Name = "uC_P_AddMedicine1";
+            this.uC_P_AddMedicine1.Size = new System.Drawing.Size(960, 761);
+            this.uC_P_AddMedicine1.TabIndex = 1;
             // 
             // uC_P_Dashboard1
             // 
@@ -245,9 +321,13 @@
             this.uC_P_Dashboard1.Size = new System.Drawing.Size(960, 761);
             this.uC_P_Dashboard1.TabIndex = 0;
             // 
-            // guna2Elipse1
+            // uC_P_SellMedicine1
             // 
-            this.guna2Elipse1.TargetControl = this.panel2;
+            this.uC_P_SellMedicine1.BackColor = System.Drawing.Color.Transparent;
+            this.uC_P_SellMedicine1.Location = new System.Drawing.Point(1, 1);
+            this.uC_P_SellMedicine1.Name = "uC_P_SellMedicine1";
+            this.uC_P_SellMedicine1.Size = new System.Drawing.Size(960, 761);
+            this.uC_P_SellMedicine1.TabIndex = 5;
             // 
             // PharmacistGUI
             // 
@@ -275,14 +355,24 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button sell_Button;
+        private Guna.UI2.WinForms.Guna2Button validityCheck_button;
         private Guna.UI2.WinForms.Guna2Button logout_Button;
-        private Guna.UI2.WinForms.Guna2Button profile_Button;
-        private Guna.UI2.WinForms.Guna2Button viewUser_Button;
+        private Guna.UI2.WinForms.Guna2Button modify_Button;
+        private Guna.UI2.WinForms.Guna2Button viewMedicine_Button;
         private Guna.UI2.WinForms.Guna2Button dashboard_Button;
-        private Guna.UI2.WinForms.Guna2Button addUser_Button;
+        private Guna.UI2.WinForms.Guna2Button addMedicine_Button;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private PharmacistUC.UC_P_Dashboard uC_P_Dashboard1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
+        private PharmacistUC.UC_P_AddMedicine uC_P_AddMedicine1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse3;
+        private PharmacistUC.UC_P_ViewMedicines uC_P_ViewMedicines1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse4;
+        private PharmacistUC.UC_P_UpdateMedicine uC_P_UpdateMedicine1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse5;
+        private PharmacistUC.UC_P_MedicineValidityCheck uC_P_MedicineValidityCheck1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse6;
+        private PharmacistUC.UC_P_SellMedicine uC_P_SellMedicine1;
     }
 }
