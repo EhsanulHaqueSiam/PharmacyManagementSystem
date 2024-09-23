@@ -8,20 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PharmacyManagementSystem
+namespace PharmacyManagementSystem.PharmacistUC
 {
-    public partial class Pharmacist : Form
+    public partial class UC_P_Dashboard : UserControl
     {
-        public Pharmacist()
+        public UC_P_Dashboard()
         {
             InitializeComponent();
-        }
-
-        private void logout_Button_Click(object sender, EventArgs e)
-        {
-            Form1 fm = new Form1();
-            fm.Show();
-            this.Hide();
         }
     }
 }
