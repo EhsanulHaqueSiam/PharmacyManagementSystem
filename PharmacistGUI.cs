@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PharmacyManagementSystem
 {
-    public partial class Pharmacist : Form
+    public partial class PharmacistGUI : Form
     {
-        public Pharmacist()
+        public PharmacistGUI()
         {
             InitializeComponent();
         }
@@ -28,6 +28,12 @@ namespace PharmacyManagementSystem
         {
             uC_P_Dashboard1.Visible = true;
             uC_P_Dashboard1.BringToFront();
+        }
+
+        private void Pharmacist_Load(object sender, EventArgs e)
+        {
+            uC_P_Dashboard1.Visible = false;
+            dashboard_Button.PerformClick();
         }
     }
 }

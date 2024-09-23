@@ -121,12 +121,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-
-    <Compile Include="Pharmacist.cs">
+    <Compile Include="PharmacistGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pharmacist.Designer.cs">
-      <DependentUpon>Pharmacist.cs</DependentUpon>
+    <Compile Include="PharmacistGUI.Designer.cs">
+      <DependentUpon>PharmacistGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="PharmacistUC\UC_P_Dashboard.cs">
       <SubType>UserControl</SubType>
@@ -134,7 +133,7 @@
     <Compile Include="PharmacistUC\UC_P_Dashboard.Designer.cs">
       <DependentUpon>UC_P_Dashboard.cs</DependentUpon>
     </Compile>
-        <Compile Include="Model\Admin.cs" />
+    <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\AdminPharmacist.cs" />
     <Compile Include="Model\Coupon.cs" />
     <Compile Include="Model\Customer.cs" />
@@ -144,7 +143,6 @@
     <Compile Include="Model\Pharmacist.cs" />
     <Compile Include="Model\PharmacistCustomer.cs" />
     <Compile Include="Model\Transactions.cs" />
-
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Adminstrator.resx">
@@ -165,14 +163,12 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-
-    <EmbeddedResource Include="Pharmacist.resx">
-      <DependentUpon>Pharmacist.cs</DependentUpon>
+    <EmbeddedResource Include="PharmacistGUI.resx">
+      <DependentUpon>PharmacistGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PharmacistUC\UC_P_Dashboard.resx">
       <DependentUpon>UC_P_Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
