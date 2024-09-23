@@ -82,8 +82,8 @@ namespace PharmacyManagementSystem
                 this.Hide();
             } else if (userNameTxtField.Text == "nit" && passTextField.Text == "nit")
             { 
-                Pharmacist ph = new Pharmacist();
-                ph.Show();
+                //Pharmacist ph = new Pharmacist();
+                //ph.Show();
                 this.Hide();
             
             }else {
