@@ -1,4 +1,8 @@
-﻿using System;
+﻿using PharmacyManagementSystem.Controllers;
+using PharmacyManagementSystem.DataAccess;
+using PharmacyManagementSystem.DataAccess.DAO;
+using PharmacyManagementSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +33,34 @@ namespace PharmacyManagementSystem.PharmacistUC
 
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            IMedicineDao medicineDao = new MedicineDaoImpl();
+            MedicineController medicineController = new MedicineController(medicineDao);
+
+            Medicine med = new Medicine {
+
+                M_ID = Int32.Parse(medID_txtBox.Text),
+                M_ChemicalName = medChem_txtBox.Text,
+                M_Date = DateTime.Parse(medManufact_dateBox.Text),
+                Expiry_Date = DateTime.Parse(medExpire_dateBox.Text),
+                M_Name = medName_txtBox.Text,
+                M_PricePerUnit = Decimal.Parse(medPrice_txtBox.Text),
+                M_Quantity = Int32.Parse(medQuantity_txtBox.Text)
+            };
+
+            bool confirmMed = medicineController.InsertMedicine(med);
+
+            if (confirmMed)
+            {
+                MessageBox.Show("Succesfull");
+            }
+            else {
+                MessageBox.Show("Faild");
+            }
 
         }
     }
