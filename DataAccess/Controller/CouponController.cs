@@ -1,6 +1,7 @@
-﻿using PharmacyManagementSystem.DataAccess.DAO;
-using PharmacyManagementSystem.Model;
+﻿using PharmacyManagementSystem.Model;
+using PharmacyManagementSystem.DataAccess;
 using System.Collections.Generic;
+using PharmacyManagementSystem.DataAccess.DAO;
 
 namespace PharmacyManagementSystem.Controllers {
     public class CouponController {
@@ -10,24 +11,32 @@ namespace PharmacyManagementSystem.Controllers {
             _couponDao = couponDao;
         }
 
-        public void InsertCoupon(Coupon coupon) {
-            _couponDao.Insert(coupon);
-        }
-
         public Coupon GetCouponById(int id) {
-            return _couponDao.GetById(id);
+            return _couponDao.GetCouponById(id);
         }
 
-        public List<Coupon> GetAllCoupons() {
-            return _couponDao.GetAll();
+        public bool InsertCoupon(Coupon coupon) {
+            return _couponDao.InsertCoupon(coupon);
         }
 
-        public void UpdateCoupon(Coupon coupon) {
-            _couponDao.Update(coupon);
+        public bool UpdateCoupon(Coupon coupon) {
+            return _couponDao.UpdateCoupon(coupon);
         }
 
-        public void DeleteCoupon(int id) {
-            _couponDao.Delete(id);
+        public bool DeleteCoupon(int id) {
+            return _couponDao.DeleteCoupon(id);
+        }
+
+        public IEnumerable<Coupon> GetAllCoupons() {
+            return _couponDao.GetAllCoupons();
+        }
+
+        public IEnumerable<Coupon> GetUnexpiredCoupons() {
+            return _couponDao.GetUnexpiredCoupons();
+        }
+
+        public bool SoftDeleteCoupon(int id) {
+            return _couponDao.SoftDeleteCoupon(id);
         }
     }
 }

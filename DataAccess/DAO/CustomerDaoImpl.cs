@@ -1,42 +1,18 @@
 ﻿using PharmacyManagementSystem.DataAccess.Constants;
-using PharmacyManagementSystem.Model;
 using PharmacyManagementSystem.DataAccess.DAO;
-using System;
+using PharmacyManagementSystem.Model;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace PharmacyManagementSystem.DataAccess {
     public class CustomerDaoImpl : ICustomerDao {
-        public void Insert(Customer customer) {
-            SqlDatabaseManager.Instance.Execute(connection => {
-                using (var cmd = new SqlCommand(CustomerQueries.InsertCustomer, connection)) {
-                    cmd.Parameters.AddWithValue("@UserName", customer.C_UserName);
-                    cmd.Parameters.AddWithValue("@Name", customer.C_Name);
-                    cmd.Parameters.AddWithValue("@Address", customer.C_Address);
-                    cmd.Parameters.AddWithValue("@Number", customer.C_Number);
-                    cmd.Parameters.AddWithValue("@Pass", customer.C_Pass);
-                    cmd.Parameters.AddWithValue("@Mail", customer.C_Mail);
-
-                    cmd.ExecuteNonQuery();
-                }
-            });
-        }
-
-        public Customer GetById(int id) {
+        public Customer GetCustomerById(int id) {
             return SqlDatabaseManager.Instance.Execute(connection => {
-                using (var cmd = new SqlCommand(CustomerQueries.GetCustomerById, connection)) {
+                using (var cmd = new SqlCommand(CustomerQueries.GET_CUSTOMER_BY_ID, connection)) {
                     cmd.Parameters.AddWithValue("@Id", id);
                     using (var reader = cmd.ExecuteReader()) {
                         if (reader.Read()) {
-                            return new Customer {
-                                C_ID = (int)reader["C_ID"],
-                                C_UserName = reader["C_UserName"].ToString(),
-                                C_Name = reader["C_Name"].ToString(),
-                                C_Address = reader["C_Address"].ToString(),
-                                C_Number = reader["C_Number"].ToString(),
-                                C_Pass = reader["C_Pass"].ToString(),
-                                C_Mail = reader["C_Mail"].ToString()
-                            };
+                            return MapToCustomer(reader);
                         }
                         return null;
                     }
@@ -44,21 +20,42 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
-        public List<Customer> GetAll() {
+        public Customer GetCustomerByUsername(string username) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CustomerQueries.GET_CUSTOMER_BY_USERNAME, connection)) {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    using (var reader = cmd.ExecuteReader()) {
+                        if (reader.Read()) {
+                            return MapToCustomer(reader);
+                        }
+                        return null;
+                    }
+                }
+            });
+        }
+
+        public Customer GetCustomerByEmail(string email) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CustomerQueries.GET_CUSTOMER_BY_EMAIL, connection)) {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    using (var reader = cmd.ExecuteReader()) {
+                        if (reader.Read()) {
+                            return MapToCustomer(reader);
+                        }
+                        return null;
+                    }
+                }
+            });
+        }
+
+        public IEnumerable<Customer> SearchCustomersByPartialUsername(string partialUsername) {
             return SqlDatabaseManager.Instance.Execute(connection => {
                 var customers = new List<Customer>();
-                using (var cmd = new SqlCommand(CustomerQueries.GetAllCustomers, connection)) {
+                using (var cmd = new SqlCommand(CustomerQueries.SEARCH_CUSTOMERS_BY_PARTIAL_USERNAME, connection)) {
+                    cmd.Parameters.AddWithValue("@partialUsername", "%" + partialUsername + "%");
                     using (var reader = cmd.ExecuteReader()) {
                         while (reader.Read()) {
-                            customers.Add(new Customer {
-                                C_ID = (int)reader["C_ID"],
-                                C_UserName = reader["C_UserName"].ToString(),
-                                C_Name = reader["C_Name"].ToString(),
-                                C_Address = reader["C_Address"].ToString(),
-                                C_Number = reader["C_Number"].ToString(),
-                                C_Pass = reader["C_Pass"].ToString(),
-                                C_Mail = reader["C_Mail"].ToString()
-                            });
+                            customers.Add(MapToCustomer(reader));
                         }
                     }
                 }
@@ -66,29 +63,93 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
-        public void Update(Customer customer) {
-            SqlDatabaseManager.Instance.Execute(connection => {
-                using (var cmd = new SqlCommand(CustomerQueries.UpdateCustomer, connection)) {
-                    cmd.Parameters.AddWithValue("@Id", customer.C_ID);
-                    cmd.Parameters.AddWithValue("@UserName", customer.C_UserName);
-                    cmd.Parameters.AddWithValue("@Name", customer.C_Name);
-                    cmd.Parameters.AddWithValue("@Address", customer.C_Address);
-                    cmd.Parameters.AddWithValue("@Number", customer.C_Number);
-                    cmd.Parameters.AddWithValue("@Pass", customer.C_Pass);
-                    cmd.Parameters.AddWithValue("@Mail", customer.C_Mail);
+        public IEnumerable<Customer> SearchCustomersByPartialPhone(string partialPhone) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                var customers = new List<Customer>();
+                using (var cmd = new SqlCommand(CustomerQueries.SEARCH_CUSTOMERS_BY_PARTIAL_PHONE, connection)) {
+                    cmd.Parameters.AddWithValue("@partialPhone", "%" + partialPhone + "%");
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            customers.Add(MapToCustomer(reader));
+                        }
+                    }
+                }
+                return customers;
+            });
+        }
 
-                    cmd.ExecuteNonQuery();
+        public bool InsertCustomer(Customer customer) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CustomerQueries.INSERT_CUSTOMER, connection)) {
+                    AddCustomerParameters(cmd, customer);
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             });
         }
 
-        public void Delete(int id) {
-            SqlDatabaseManager.Instance.Execute(connection => {
-                using (var cmd = new SqlCommand(CustomerQueries.DeleteCustomer, connection)) {
-                    cmd.Parameters.AddWithValue("@Id", id);
-                    cmd.ExecuteNonQuery();
+        public bool UpdateCustomer(Customer customer) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CustomerQueries.UPDATE_CUSTOMER, connection)) {
+                    cmd.Parameters.AddWithValue("@Id", customer.C_ID);
+                    AddCustomerParameters(cmd, customer);
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             });
+        }
+
+        public bool DeleteCustomer(int id) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CustomerQueries.DELETE_CUSTOMER, connection)) {
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            });
+        }
+
+        public bool SoftDeleteCustomer(int id) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CustomerQueries.SOFT_DELETE_CUSTOMER, connection)) {
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            });
+        }
+
+        public IEnumerable<Customer> GetAllCustomers() {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                var customers = new List<Customer>();
+                using (var cmd = new SqlCommand(CustomerQueries.GET_ALL_CUSTOMERS, connection)) {
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            customers.Add(MapToCustomer(reader));
+                        }
+                    }
+                }
+                return customers;
+            });
+        }
+
+        // Helper method to map SqlDataReader to Customer model
+        private Customer MapToCustomer(SqlDataReader reader) {
+            return new Customer {
+                C_ID = (int)reader["C_ID"],
+                C_UserName = reader["C_UserName"].ToString(),
+                C_Name = reader["C_Name"].ToString(),
+                C_Address = reader["C_Address"].ToString(),
+                C_Number = reader["C_Number"].ToString(),
+                C_Pass = reader["C_Pass"].ToString(),
+                C_Mail = reader["C_Mail"].ToString()
+            };
+        }
+
+        // Helper method to add parameters to the SqlCommand
+        private void AddCustomerParameters(SqlCommand cmd, Customer customer) {
+            cmd.Parameters.AddWithValue("@UserName", customer.C_UserName);
+            cmd.Parameters.AddWithValue("@Name", customer.C_Name);
+            cmd.Parameters.AddWithValue("@Address", customer.C_Address);
+            cmd.Parameters.AddWithValue("@Number", customer.C_Number);
+            cmd.Parameters.AddWithValue("@Pass", customer.C_Pass);
+            cmd.Parameters.AddWithValue("@Mail", customer.C_Mail);
         }
     }
 }

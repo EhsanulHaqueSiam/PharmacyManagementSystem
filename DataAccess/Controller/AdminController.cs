@@ -1,5 +1,4 @@
-﻿using PharmacyManagementSystem.DataAccess;
-using PharmacyManagementSystem.DataAccess.DAO;
+﻿using PharmacyManagementSystem.DataAccess.DAO;
 using PharmacyManagementSystem.Model;
 using System.Collections.Generic;
 
@@ -19,8 +18,20 @@ namespace PharmacyManagementSystem.Controllers {
             return _adminDao.GetAdminByUsername(username);
         }
 
-        public bool AddAdmin(Admin admin) {
-            return _adminDao.AddAdmin(admin);
+        public Admin GetAdminByEmail(string email) {
+            return _adminDao.GetAdminByEmail(email);
+        }
+
+        public IEnumerable<Admin> SearchAdminsByPartialUsername(string partialUsername) {
+            return _adminDao.SearchAdminsByPartialUsername(partialUsername);
+        }
+
+        public IEnumerable<Admin> SearchAdminsByPartialPhone(string partialPhone) {
+            return _adminDao.SearchAdminsByPartialPhone(partialPhone);
+        }
+
+        public bool InsertAdmin(Admin admin) {
+            return _adminDao.InsertAdmin(admin);
         }
 
         public bool UpdateAdmin(Admin admin) {
@@ -29,6 +40,10 @@ namespace PharmacyManagementSystem.Controllers {
 
         public bool DeleteAdmin(int id) {
             return _adminDao.DeleteAdmin(id);
+        }
+
+        public bool SoftDeleteAdmin(int id) {
+            return _adminDao.SoftDeleteAdmin(id);
         }
 
         public IEnumerable<Admin> GetAllAdmins() {

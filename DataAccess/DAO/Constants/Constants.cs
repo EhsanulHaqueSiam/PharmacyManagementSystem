@@ -1,60 +1,75 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PharmacyManagementSystem.DataAccess.Constants {
     public static class AdminSqlQueries {
-        public const string GET_ADMIN_BY_ID = "SELECT * FROM Admin WHERE A_ID = @adminId";
-        public const string GET_ADMIN_BY_USERNAME = "SELECT * FROM Admin WHERE A_UserName COLLATE Latin1_General_BIN = @username";
-        public const string INSERT_ADMIN = "INSERT INTO Admin (A_UserName, A_Name, A_Dob, A_Number, A_Pass, A_Mail) " +
-                                           "VALUES (@userName, @name, @dob, @number, @pass, @mail)";
-        public const string UPDATE_ADMIN = "UPDATE Admin SET A_UserName = @userName, A_Name = @name, A_Dob = @dob, " +
-                                           "A_Number = @number, A_Pass = @pass, A_Mail = @mail WHERE A_ID = @adminId";
+        public const string GET_ADMIN_BY_ID = "SELECT * FROM Admin WHERE A_ID = @adminId AND IsDeleted = 0";
+        public const string GET_ADMIN_BY_USERNAME = "SELECT * FROM Admin WHERE A_UserName COLLATE Latin1_General_BIN = @username AND IsDeleted = 0";
+        public const string GET_ADMIN_BY_EMAIL = "SELECT * FROM Admin WHERE A_Mail = @email AND IsDeleted = 0";
+        public const string SEARCH_ADMINS_BY_PARTIAL_USERNAME = "SELECT * FROM Admin WHERE A_UserName LIKE @partialUsername AND IsDeleted = 0";
+        public const string SEARCH_ADMINS_BY_PARTIAL_PHONE = "SELECT * FROM Admin WHERE A_Number LIKE @partialPhone AND IsDeleted = 0";
+        public const string INSERT_ADMIN = "INSERT INTO Admin (A_UserName, A_Name, A_Dob, A_Number, A_Pass, A_Mail) VALUES (@userName, @name, @dob, @number, @pass, @mail)";
+        public const string UPDATE_ADMIN = "UPDATE Admin SET A_UserName = @userName, A_Name = @name, A_Dob = @dob, A_Number = @number, A_Pass = @pass, A_Mail = @mail WHERE A_ID = @adminId";
         public const string DELETE_ADMIN = "DELETE FROM Admin WHERE A_ID = @adminId";
-        public const string GET_ALL_ADMINS = "SELECT * FROM Admin";
+        public const string SOFT_DELETE_ADMIN = "UPDATE Admin SET IsDeleted = 1 WHERE A_ID = @adminId";
+        public const string GET_ALL_ADMINS = "SELECT * FROM Admin WHERE IsDeleted = 0";
     }
 
     public static class PharmacistQueries {
-        public const string InsertPharmacist = "INSERT INTO Pharmacist (P_UserName, P_Name, P_Dob, P_Number, P_Pass, P_Mail) VALUES (@UserName, @Name, @Dob, @Number, @Pass, @Mail)";
-        public const string GetPharmacistById = "SELECT * FROM Pharmacist WHERE P_ID = @Id";
-        public const string GetAllPharmacists = "SELECT * FROM Pharmacist";
-        public const string UpdatePharmacist = "UPDATE Pharmacist SET P_UserName = @UserName, P_Name = @Name, P_Dob = @Dob, P_Number = @Number, P_Pass = @Pass, P_Mail = @Mail WHERE P_ID = @Id";
-        public const string DeletePharmacist = "DELETE FROM Pharmacist WHERE P_ID = @Id";
-        public const string GetPharmacistByUsername = "SELECT * FROM Pharmacist WHERE P_UserName COLLATE Latin1_General_BIN = @username";
+        public const string GET_PHARMACIST_BY_ID = "SELECT * FROM Pharmacist WHERE P_ID = @Id AND IsDeleted = 0";
+        public const string GET_PHARMACIST_BY_USERNAME = "SELECT * FROM Pharmacist WHERE P_UserName COLLATE Latin1_General_BIN = @username AND IsDeleted = 0";
+        public const string GET_PHARMACIST_BY_EMAIL = "SELECT * FROM Pharmacist WHERE P_Mail = @email AND IsDeleted = 0";
+        public const string SEARCH_PHARMACISTS_BY_PARTIAL_USERNAME = "SELECT * FROM Pharmacist WHERE P_UserName LIKE @partialUsername AND IsDeleted = 0";
+        public const string SEARCH_PHARMACISTS_BY_PARTIAL_PHONE = "SELECT * FROM Pharmacist WHERE P_Number LIKE @partialPhone AND IsDeleted = 0";
+        public const string INSERT_PHARMACIST = "INSERT INTO Pharmacist (P_UserName, P_Name, P_Dob, P_Number, P_Pass, P_Mail) VALUES (@UserName, @Name, @Dob, @Number, @Pass, @Mail)";
+        public const string UPDATE_PHARMACIST = "UPDATE Pharmacist SET P_UserName = @UserName, P_Name = @Name, P_Dob = @Dob, P_Number = @Number, P_Pass = @Pass, P_Mail = @Mail WHERE P_ID = @Id";
+        public const string DELETE_PHARMACIST = "DELETE FROM Pharmacist WHERE P_ID = @Id";
+        public const string SOFT_DELETE_PHARMACIST = "UPDATE Pharmacist SET IsDeleted = 1 WHERE P_ID = @Id";
+        public const string GET_ALL_PHARMACISTS = "SELECT * FROM Pharmacist WHERE IsDeleted = 0";
     }
 
     public static class CustomerQueries {
-        public const string InsertCustomer = "INSERT INTO Customer (C_UserName, C_Name, C_Address, C_Number, C_Pass, C_Mail) VALUES (@UserName, @Name, @Address, @Number, @Pass, @Mail)";
-        public const string GetCustomerById = "SELECT * FROM Customer WHERE C_ID = @Id";
-        public const string GetAllCustomers = "SELECT * FROM Customer";
-        public const string UpdateCustomer = "UPDATE Customer SET C_UserName = @UserName, C_Name = @Name, C_Address = @Address, C_Number = @Number, C_Pass = @Pass, C_Mail = @Mail WHERE C_ID = @Id";
-        public const string DeleteCustomer = "DELETE FROM Customer WHERE C_ID = @Id";
-        public const string GetCustomerByUsername = "SELECT * FROM Customer WHERE C_UserName COLLATE Latin1_General_BIN = @username";
+        public const string GET_CUSTOMER_BY_ID = "SELECT * FROM Customer WHERE C_ID = @Id AND IsDeleted = 0";
+        public const string GET_CUSTOMER_BY_USERNAME = "SELECT * FROM Customer WHERE C_UserName COLLATE Latin1_General_BIN = @username AND IsDeleted = 0";
+        public const string GET_CUSTOMER_BY_EMAIL = "SELECT * FROM Customer WHERE C_Mail = @email AND IsDeleted = 0";
+        public const string SEARCH_CUSTOMERS_BY_PARTIAL_USERNAME = "SELECT * FROM Customer WHERE C_UserName LIKE @partialUsername AND IsDeleted = 0";
+        public const string SEARCH_CUSTOMERS_BY_PARTIAL_PHONE = "SELECT * FROM Customer WHERE C_Number LIKE @partialPhone AND IsDeleted = 0";
+        public const string INSERT_CUSTOMER = "INSERT INTO Customer (C_UserName, C_Name, C_Address, C_Number, C_Pass, C_Mail) VALUES (@UserName, @Name, @Address, @Number, @Pass, @Mail)";
+        public const string UPDATE_CUSTOMER = "UPDATE Customer SET C_UserName = @UserName, C_Name = @Name, C_Address = @Address, C_Number = @Number, C_Pass = @Pass, C_Mail = @Mail WHERE C_ID = @Id";
+        public const string DELETE_CUSTOMER = "DELETE FROM Customer WHERE C_ID = @Id";
+        public const string SOFT_DELETE_CUSTOMER = "UPDATE Customer SET IsDeleted = 1 WHERE C_ID = @Id";
+        public const string GET_ALL_CUSTOMERS = "SELECT * FROM Customer WHERE IsDeleted = 0";
+        public const string GET_FREQUENT_CUSTOMERS = "SELECT C_ID, COUNT(*) AS PurchaseCount FROM Transactions GROUP BY C_ID ORDER BY PurchaseCount DESC";
     }
 
     public static class MedicineQueries {
-        public const string InsertMedicine = "INSERT INTO Medicine (M_Name, M_ChemicalName, M_Quantity, M_PricePerUnit, M_Date, Expiry_Date) VALUES (@Name, @ChemicalName, @Quantity, @PricePerUnit, @Date, @ExpiryDate)";
-        public const string GetMedicineById = "SELECT * FROM Medicine WHERE M_ID = @Id";
-        public const string GetAllMedicines = "SELECT * FROM Medicine";
-        public const string UpdateMedicine = "UPDATE Medicine SET M_Name = @Name, M_ChemicalName = @ChemicalName, M_Quantity = @Quantity, M_PricePerUnit = @PricePerUnit, M_Date = @Date, Expiry_Date = @ExpiryDate WHERE M_ID = @Id";
-        public const string DeleteMedicine = "DELETE FROM Medicine WHERE M_ID = @Id";
+        public const string GET_MEDICINE_BY_ID = "SELECT * FROM Medicine WHERE M_ID = @Id AND IsDeleted = 0";
+        public const string GET_MEDICINE_BY_NAME = "SELECT * FROM Medicine WHERE M_Name LIKE @Name AND IsDeleted = 0";
+        public const string INSERT_MEDICINE = "INSERT INTO Medicine (M_Name, M_ChemicalName, M_Quantity, M_PricePerUnit, M_Date, Expiry_Date) VALUES (@Name, @ChemicalName, @Quantity, @PricePerUnit, @Date, @ExpiryDate)";
+        public const string UPDATE_MEDICINE = "UPDATE Medicine SET M_Name = @Name, M_ChemicalName = @ChemicalName, M_Quantity = @Quantity, M_PricePerUnit = @PricePerUnit, M_Date = @Date, Expiry_Date = @ExpiryDate WHERE M_ID = @Id";
+        public const string DELETE_MEDICINE = "DELETE FROM Medicine WHERE M_ID = @Id";
+        public const string SOFT_DELETE_MEDICINE = "UPDATE Medicine SET IsDeleted = 1 WHERE M_ID = @Id";
+        public const string GET_ALL_MEDICINES = "SELECT * FROM Medicine WHERE IsDeleted = 0";
+        public const string GET_EXPIRED_MEDICINES = "SELECT * FROM Medicine WHERE Expiry_Date < GETDATE() AND IsDeleted = 0";
+        public const string GET_MEDICINES_BY_DATE_RANGE = "SELECT * FROM Medicine WHERE M_Date BETWEEN @startDate AND @endDate AND IsDeleted = 0";
+        public const string GET_MOST_PURCHASED_MEDICINES = "SELECT M_ID, SUM(Quantity) AS TotalQuantity FROM CustomerMedicine GROUP BY M_ID ORDER BY TotalQuantity DESC";
     }
 
     public static class CouponQueries {
-        public const string InsertCoupon = "INSERT INTO Coupon (C_Code, C_DiscountPercent, C_IsSingleUse, C_ExpiryDate) VALUES (@Code, @DiscountPercent, @IsSingleUse, @ExpiryDate)";
-        public const string GetCouponById = "SELECT * FROM Coupon WHERE C_ID = @Id";
-        public const string GetAllCoupons = "SELECT * FROM Coupon";
-        public const string UpdateCoupon = "UPDATE Coupon SET C_Code = @Code, C_DiscountPercent = @DiscountPercent, C_IsSingleUse = @IsSingleUse, C_ExpiryDate = @ExpiryDate WHERE C_ID = @Id";
-        public const string DeleteCoupon = "DELETE FROM Coupon WHERE C_ID = @Id";
+        public const string GET_COUPON_BY_ID = "SELECT * FROM Coupon WHERE C_ID = @Id AND IsDeleted = 0";
+        public const string INSERT_COUPON = "INSERT INTO Coupon (C_Code, C_DiscountPercent, C_IsSingleUse, C_ExpiryDate) VALUES (@Code, @DiscountPercent, @IsSingleUse, @ExpiryDate)";
+        public const string UPDATE_COUPON = "UPDATE Coupon SET C_Code = @Code, C_DiscountPercent = @DiscountPercent, C_IsSingleUse = @IsSingleUse, C_ExpiryDate = @ExpiryDate WHERE C_ID = @Id";
+        public const string DELETE_COUPON = "DELETE FROM Coupon WHERE C_ID = @Id";
+        public const string SOFT_DELETE_COUPON = "UPDATE Coupon SET IsDeleted = 1 WHERE C_ID = @Id";
+        public const string GET_ALL_COUPONS = "SELECT * FROM Coupon WHERE IsDeleted = 0";
+        public const string GET_UNEXPIRED_COUPONS = "SELECT * FROM Coupon WHERE C_ExpiryDate >= GETDATE() AND IsDeleted = 0";
     }
 
     public static class TransactionQueries {
-        public const string InsertTransaction = "INSERT INTO Transactions (T_Date, T_TotalAmount, T_PaymentType, C_ID) VALUES (@Date, @TotalAmount, @PaymentType, @CustomerId)";
-        public const string GetTransactionById = "SELECT * FROM Transactions WHERE T_ID = @Id";
-        public const string GetAllTransactions = "SELECT * FROM Transactions";
-        public const string UpdateTransaction = "UPDATE Transactions SET T_Date = @Date, T_TotalAmount = @TotalAmount, T_PaymentType = @PaymentType, C_ID = @CustomerId WHERE T_ID = @Id";
-        public const string DeleteTransaction = "DELETE FROM Transactions WHERE T_ID = @Id";
+        public const string GET_TRANSACTION_BY_ID = "SELECT * FROM Transactions WHERE T_ID = @Id";
+        public const string INSERT_TRANSACTION = "INSERT INTO Transactions (T_Date, T_TotalAmount, T_PaymentType, C_ID) VALUES (@Date, @TotalAmount, @PaymentType, @CustomerId)";
+        public const string UPDATE_TRANSACTION = "UPDATE Transactions SET T_Date = @Date, T_TotalAmount = @TotalAmount, T_PaymentType = @PaymentType, C_ID = @CustomerId WHERE T_ID = @Id";
+        public const string DELETE_TRANSACTION = "DELETE FROM Transactions WHERE T_ID = @Id";
+        public const string GET_ALL_TRANSACTIONS = "SELECT * FROM Transactions";
+        public const string GET_TRANSACTIONS_BY_DATE_RANGE = "SELECT * FROM Transactions WHERE T_Date BETWEEN @startDate AND @endDate";
     }
 }

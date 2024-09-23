@@ -1,5 +1,5 @@
-﻿using PharmacyManagementSystem.DataAccess.DAO;
-using PharmacyManagementSystem.Model;
+﻿using PharmacyManagementSystem.Model;
+using PharmacyManagementSystem.DataAccess.DAO;
 using System.Collections.Generic;
 
 namespace PharmacyManagementSystem.Controllers {
@@ -10,24 +10,44 @@ namespace PharmacyManagementSystem.Controllers {
             _customerDao = customerDao;
         }
 
-        public void InsertCustomer(Customer customer) {
-            _customerDao.Insert(customer);
-        }
-
         public Customer GetCustomerById(int id) {
-            return _customerDao.GetById(id);
+            return _customerDao.GetCustomerById(id);
         }
 
-        public List<Customer> GetAllCustomers() {
-            return _customerDao.GetAll();
+        public Customer GetCustomerByUsername(string username) {
+            return _customerDao.GetCustomerByUsername(username);
         }
 
-        public void UpdateCustomer(Customer customer) {
-            _customerDao.Update(customer);
+        public Customer GetCustomerByEmail(string email) {
+            return _customerDao.GetCustomerByEmail(email);
         }
 
-        public void DeleteCustomer(int id) {
-            _customerDao.Delete(id);
+        public IEnumerable<Customer> SearchCustomersByPartialUsername(string partialUsername) {
+            return _customerDao.SearchCustomersByPartialUsername(partialUsername);
+        }
+
+        public IEnumerable<Customer> SearchCustomersByPartialPhone(string partialPhone) {
+            return _customerDao.SearchCustomersByPartialPhone(partialPhone);
+        }
+
+        public bool InsertCustomer(Customer customer) {
+            return _customerDao.InsertCustomer(customer);
+        }
+
+        public bool UpdateCustomer(Customer customer) {
+            return _customerDao.UpdateCustomer(customer);
+        }
+
+        public bool DeleteCustomer(int id) {
+            return _customerDao.DeleteCustomer(id);
+        }
+
+        public bool SoftDeleteCustomer(int id) {
+            return _customerDao.SoftDeleteCustomer(id);
+        }
+
+        public IEnumerable<Customer> GetAllCustomers() {
+            return _customerDao.GetAllCustomers();
         }
     }
 }

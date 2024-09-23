@@ -1,5 +1,5 @@
-﻿using PharmacyManagementSystem.DataAccess.DAO;
-using PharmacyManagementSystem.Model;
+﻿using PharmacyManagementSystem.Model;
+using PharmacyManagementSystem.DataAccess.DAO;
 using System.Collections.Generic;
 
 namespace PharmacyManagementSystem.Controllers {
@@ -10,24 +10,44 @@ namespace PharmacyManagementSystem.Controllers {
             _pharmacistDao = pharmacistDao;
         }
 
-        public void InsertPharmacist(Pharmacist pharmacist) {
-            _pharmacistDao.Insert(pharmacist);
-        }
-
         public Pharmacist GetPharmacistById(int id) {
-            return _pharmacistDao.GetById(id);
+            return _pharmacistDao.GetPharmacistById(id);
         }
 
-        public List<Pharmacist> GetAllPharmacists() {
-            return _pharmacistDao.GetAll();
+        public Pharmacist GetPharmacistByUsername(string username) {
+            return _pharmacistDao.GetPharmacistByUsername(username);
         }
 
-        public void UpdatePharmacist(Pharmacist pharmacist) {
-            _pharmacistDao.Update(pharmacist);
+        public Pharmacist GetPharmacistByEmail(string email) {
+            return _pharmacistDao.GetPharmacistByEmail(email);
         }
 
-        public void DeletePharmacist(int id) {
-            _pharmacistDao.Delete(id);
+        public IEnumerable<Pharmacist> SearchPharmacistsByPartialUsername(string partialUsername) {
+            return _pharmacistDao.SearchPharmacistsByPartialUsername(partialUsername);
+        }
+
+        public IEnumerable<Pharmacist> SearchPharmacistsByPartialPhone(string partialPhone) {
+            return _pharmacistDao.SearchPharmacistsByPartialPhone(partialPhone);
+        }
+
+        public bool InsertPharmacist(Pharmacist pharmacist) {
+            return _pharmacistDao.InsertPharmacist(pharmacist);
+        }
+
+        public bool UpdatePharmacist(Pharmacist pharmacist) {
+            return _pharmacistDao.UpdatePharmacist(pharmacist);
+        }
+
+        public bool DeletePharmacist(int id) {
+            return _pharmacistDao.DeletePharmacist(id);
+        }
+
+        public bool SoftDeletePharmacist(int id) {
+            return _pharmacistDao.SoftDeletePharmacist(id);
+        }
+
+        public IEnumerable<Pharmacist> GetAllPharmacists() {
+            return _pharmacistDao.GetAllPharmacists();
         }
     }
 }

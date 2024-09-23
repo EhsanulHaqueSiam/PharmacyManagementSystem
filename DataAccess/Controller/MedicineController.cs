@@ -1,5 +1,5 @@
-﻿using PharmacyManagementSystem.DataAccess.DAO;
-using PharmacyManagementSystem.Model;
+﻿using PharmacyManagementSystem.Model;
+using PharmacyManagementSystem.DataAccess.DAO;
 using System.Collections.Generic;
 
 namespace PharmacyManagementSystem.Controllers {
@@ -10,24 +10,44 @@ namespace PharmacyManagementSystem.Controllers {
             _medicineDao = medicineDao;
         }
 
-        public void InsertMedicine(Medicine medicine) {
-            _medicineDao.Insert(medicine);
-        }
-
         public Medicine GetMedicineById(int id) {
-            return _medicineDao.GetById(id);
+            return _medicineDao.GetMedicineById(id);
         }
 
-        public List<Medicine> GetAllMedicines() {
-            return _medicineDao.GetAll();
+        public IEnumerable<Medicine> GetMedicineByName(string name) {
+            return _medicineDao.GetMedicineByName(name);
         }
 
-        public void UpdateMedicine(Medicine medicine) {
-            _medicineDao.Update(medicine);
+        public bool InsertMedicine(Medicine medicine) {
+            return _medicineDao.InsertMedicine(medicine);
         }
 
-        public void DeleteMedicine(int id) {
-            _medicineDao.Delete(id);
+        public bool UpdateMedicine(Medicine medicine) {
+            return _medicineDao.UpdateMedicine(medicine);
+        }
+
+        public bool DeleteMedicine(int id) {
+            return _medicineDao.DeleteMedicine(id);
+        }
+
+        public IEnumerable<Medicine> GetAllMedicines() {
+            return _medicineDao.GetAllMedicines();
+        }
+
+        public IEnumerable<Medicine> GetExpiredMedicines() {
+            return _medicineDao.GetExpiredMedicines();
+        }
+
+        public IEnumerable<Medicine> GetMedicinesByDateRange(string startDate, string endDate) {
+            return _medicineDao.GetMedicinesByDateRange(startDate, endDate);
+        }
+
+        public IEnumerable<Medicine> GetMostPurchasedMedicines() {
+            return _medicineDao.GetMostPurchasedMedicines();
+        }
+
+        public bool SoftDeleteMedicine(int id) {
+            return _medicineDao.SoftDeleteMedicine(id);
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿using PharmacyManagementSystem.DataAccess.DAO;
-using PharmacyManagementSystem.Model;
+﻿using PharmacyManagementSystem.Model;
+using PharmacyManagementSystem.DataAccess;
 using System.Collections.Generic;
+using PharmacyManagementSystem.DataAccess.DAO;
 
 namespace PharmacyManagementSystem.Controllers {
     public class TransactionController {
@@ -10,24 +11,28 @@ namespace PharmacyManagementSystem.Controllers {
             _transactionDao = transactionDao;
         }
 
-        public void InsertTransaction(Transactions transaction) {
-            _transactionDao.Insert(transaction);
-        }
-
         public Transactions GetTransactionById(int id) {
-            return _transactionDao.GetById(id);
+            return _transactionDao.GetTransactionById(id);
         }
 
-        public List<Transactions> GetAllTransactions() {
-            return _transactionDao.GetAll();
+        public bool InsertTransaction(Transactions transaction) {
+            return _transactionDao.InsertTransaction(transaction);
         }
 
-        public void UpdateTransaction(Transactions transaction) {
-            _transactionDao.Update(transaction);
+        public bool UpdateTransaction(Transactions transaction) {
+            return _transactionDao.UpdateTransaction(transaction);
         }
 
-        public void DeleteTransaction(int id) {
-            _transactionDao.Delete(id);
+        public bool DeleteTransaction(int id) {
+            return _transactionDao.DeleteTransaction(id);
+        }
+
+        public IEnumerable<Transactions> GetAllTransactions() {
+            return _transactionDao.GetAllTransactions();
+        }
+
+        public IEnumerable<Transactions> GetTransactionsByDateRange(string startDate, string endDate) {
+            return _transactionDao.GetTransactionsByDateRange(startDate, endDate);
         }
     }
 }

@@ -1,54 +1,75 @@
 ﻿using PharmacyManagementSystem.Model;
 using System.Collections.Generic;
 
-
 namespace PharmacyManagementSystem.DataAccess.DAO {
     public interface IAdminDao {
         Admin GetAdminById(int adminId);
         Admin GetAdminByUsername(string username);
-        bool AddAdmin(Admin admin);
+        Admin GetAdminByEmail(string email);
+        IEnumerable<Admin> SearchAdminsByPartialUsername(string partialUsername);
+        IEnumerable<Admin> SearchAdminsByPartialPhone(string partialPhone);
+        bool InsertAdmin(Admin admin);
         bool UpdateAdmin(Admin admin);
         bool DeleteAdmin(int adminId);
         IEnumerable<Admin> GetAllAdmins();
+        bool SoftDeleteAdmin(int adminId);
     }
 
     public interface IPharmacistDao {
-        void Insert(Pharmacist pharmacist);
-        Pharmacist GetById(int id);
-        List<Pharmacist> GetAll();
-        void Update(Pharmacist pharmacist);
-        void Delete(int id);
+        Pharmacist GetPharmacistById(int id);
+        Pharmacist GetPharmacistByUsername(string username);
+        Pharmacist GetPharmacistByEmail(string email);
+        IEnumerable<Pharmacist> SearchPharmacistsByPartialUsername(string partialUsername);
+        IEnumerable<Pharmacist> SearchPharmacistsByPartialPhone(string partialPhone);
+        bool InsertPharmacist(Pharmacist pharmacist);
+        bool UpdatePharmacist(Pharmacist pharmacist);
+        bool DeletePharmacist(int id);
+        IEnumerable<Pharmacist> GetAllPharmacists();
+        bool SoftDeletePharmacist(int id);
     }
 
     public interface ICustomerDao {
-        void Insert(Customer customer);
-        Customer GetById(int id);
-        List<Customer> GetAll();
-        void Update(Customer customer);
-        void Delete(int id);
+        Customer GetCustomerById(int id);
+        Customer GetCustomerByUsername(string username);
+        Customer GetCustomerByEmail(string email);
+        IEnumerable<Customer> SearchCustomersByPartialUsername(string partialUsername);
+        IEnumerable<Customer> SearchCustomersByPartialPhone(string partialPhone);
+        bool InsertCustomer(Customer customer);
+        bool UpdateCustomer(Customer customer);
+        bool DeleteCustomer(int id);
+        IEnumerable<Customer> GetAllCustomers();
+        bool SoftDeleteCustomer(int id);
     }
 
     public interface IMedicineDao {
-        void Insert(Medicine medicine);
-        Medicine GetById(int id);
-        List<Medicine> GetAll();
-        void Update(Medicine medicine);
-        void Delete(int id);
+        Medicine GetMedicineById(int id);
+        IEnumerable<Medicine> GetMedicineByName(string name);
+        bool InsertMedicine(Medicine medicine);
+        bool UpdateMedicine(Medicine medicine);
+        bool DeleteMedicine(int id);
+        IEnumerable<Medicine> GetAllMedicines();
+        IEnumerable<Medicine> GetExpiredMedicines();
+        IEnumerable<Medicine> GetMedicinesByDateRange(string startDate, string endDate);
+        IEnumerable<Medicine> GetMostPurchasedMedicines();
+        bool SoftDeleteMedicine(int id);
     }
 
     public interface ICouponDao {
-        void Insert(Coupon coupon);
-        Coupon GetById(int id);
-        List<Coupon> GetAll();
-        void Update(Coupon coupon);
-        void Delete(int id);
+        Coupon GetCouponById(int id);
+        bool InsertCoupon(Coupon coupon);
+        bool UpdateCoupon(Coupon coupon);
+        bool DeleteCoupon(int id);
+        IEnumerable<Coupon> GetAllCoupons();
+        IEnumerable<Coupon> GetUnexpiredCoupons();
+        bool SoftDeleteCoupon(int id);
     }
 
     public interface ITransactionDao {
-        void Insert(Transactions transaction);
-        Transactions GetById(int id);
-        List<Transactions> GetAll();
-        void Update(Transactions transaction);
-        void Delete(int id);
+        Transactions GetTransactionById(int id);
+        bool InsertTransaction(Transactions transaction);
+        bool UpdateTransaction(Transactions transaction);
+        bool DeleteTransaction(int id);
+        IEnumerable<Transactions> GetAllTransactions();
+        IEnumerable<Transactions> GetTransactionsByDateRange(string startDate, string endDate);
     }
 }

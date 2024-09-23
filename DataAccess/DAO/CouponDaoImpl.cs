@@ -7,32 +7,13 @@ using System.Data.SqlClient;
 
 namespace PharmacyManagementSystem.DataAccess {
     public class CouponDaoImpl : ICouponDao {
-        public void Insert(Coupon coupon) {
-            SqlDatabaseManager.Instance.Execute(connection => {
-                using (var cmd = new SqlCommand(CouponQueries.InsertCoupon, connection)) {
-                    cmd.Parameters.AddWithValue("@Code", coupon.C_Code);
-                    cmd.Parameters.AddWithValue("@DiscountPercent", coupon.C_DiscountPercent);
-                    cmd.Parameters.AddWithValue("@IsSingleUse", coupon.C_IsSingleUse);
-                    cmd.Parameters.AddWithValue("@ExpiryDate", coupon.C_ExpiryDate);
-
-                    cmd.ExecuteNonQuery();
-                }
-            });
-        }
-
-        public Coupon GetById(int id) {
+        public Coupon GetCouponById(int id) {
             return SqlDatabaseManager.Instance.Execute(connection => {
-                using (var cmd = new SqlCommand(CouponQueries.GetCouponById, connection)) {
+                using (var cmd = new SqlCommand(CouponQueries.GET_COUPON_BY_ID, connection)) {
                     cmd.Parameters.AddWithValue("@Id", id);
                     using (var reader = cmd.ExecuteReader()) {
                         if (reader.Read()) {
-                            return new Coupon {
-                                C_ID = (int)reader["C_ID"],
-                                C_Code = reader["C_Code"].ToString(),
-                                C_DiscountPercent = (decimal)reader["C_DiscountPercent"],
-                                C_IsSingleUse = (bool)reader["C_IsSingleUse"],
-                                C_ExpiryDate = (DateTime)reader["C_ExpiryDate"]
-                            };
+                            return MapToCoupon(reader);
                         }
                         return null;
                     }
@@ -40,19 +21,50 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
-        public List<Coupon> GetAll() {
+        public bool InsertCoupon(Coupon coupon) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CouponQueries.INSERT_COUPON, connection)) {
+                    AddCouponParameters(cmd, coupon);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            });
+        }
+
+        public bool UpdateCoupon(Coupon coupon) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CouponQueries.UPDATE_COUPON, connection)) {
+                    cmd.Parameters.AddWithValue("@Id", coupon.C_ID);
+                    AddCouponParameters(cmd, coupon);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            });
+        }
+
+        public bool DeleteCoupon(int id) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CouponQueries.DELETE_COUPON, connection)) {
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            });
+        }
+
+        public bool SoftDeleteCoupon(int id) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CouponQueries.SOFT_DELETE_COUPON, connection)) {
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            });
+        }
+
+        public IEnumerable<Coupon> GetAllCoupons() {
             return SqlDatabaseManager.Instance.Execute(connection => {
                 var coupons = new List<Coupon>();
-                using (var cmd = new SqlCommand(CouponQueries.GetAllCoupons, connection)) {
+                using (var cmd = new SqlCommand(CouponQueries.GET_ALL_COUPONS, connection)) {
                     using (var reader = cmd.ExecuteReader()) {
                         while (reader.Read()) {
-                            coupons.Add(new Coupon {
-                                C_ID = (int)reader["C_ID"],
-                                C_Code = reader["C_Code"].ToString(),
-                                C_DiscountPercent = (decimal)reader["C_DiscountPercent"],
-                                C_IsSingleUse = (bool)reader["C_IsSingleUse"],
-                                C_ExpiryDate = (DateTime)reader["C_ExpiryDate"]
-                            });
+                            coupons.Add(MapToCoupon(reader));
                         }
                     }
                 }
@@ -60,27 +72,37 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
-        public void Update(Coupon coupon) {
-            SqlDatabaseManager.Instance.Execute(connection => {
-                using (var cmd = new SqlCommand(CouponQueries.UpdateCoupon, connection)) {
-                    cmd.Parameters.AddWithValue("@Id", coupon.C_ID);
-                    cmd.Parameters.AddWithValue("@Code", coupon.C_Code);
-                    cmd.Parameters.AddWithValue("@DiscountPercent", coupon.C_DiscountPercent);
-                    cmd.Parameters.AddWithValue("@IsSingleUse", coupon.C_IsSingleUse);
-                    cmd.Parameters.AddWithValue("@ExpiryDate", coupon.C_ExpiryDate);
-
-                    cmd.ExecuteNonQuery();
+        public IEnumerable<Coupon> GetUnexpiredCoupons() {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                var coupons = new List<Coupon>();
+                using (var cmd = new SqlCommand(CouponQueries.GET_UNEXPIRED_COUPONS, connection)) {
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            coupons.Add(MapToCoupon(reader));
+                        }
+                    }
                 }
+                return coupons;
             });
         }
 
-        public void Delete(int id) {
-            SqlDatabaseManager.Instance.Execute(connection => {
-                using (var cmd = new SqlCommand(CouponQueries.DeleteCoupon, connection)) {
-                    cmd.Parameters.AddWithValue("@Id", id);
-                    cmd.ExecuteNonQuery();
-                }
-            });
+        // Helper method to map SqlDataReader to Coupon model
+        private Coupon MapToCoupon(SqlDataReader reader) {
+            return new Coupon {
+                C_ID = (int)reader["C_ID"],
+                C_Code = reader["C_Code"].ToString(),
+                C_DiscountPercent = (decimal)reader["C_DiscountPercent"],
+                C_IsSingleUse = (bool)reader["C_IsSingleUse"],
+                C_ExpiryDate = (DateTime)reader["C_ExpiryDate"]
+            };
+        }
+
+        // Helper method to add parameters to SqlCommand
+        private void AddCouponParameters(SqlCommand cmd, Coupon coupon) {
+            cmd.Parameters.AddWithValue("@Code", coupon.C_Code);
+            cmd.Parameters.AddWithValue("@DiscountPercent", coupon.C_DiscountPercent);
+            cmd.Parameters.AddWithValue("@IsSingleUse", coupon.C_IsSingleUse);
+            cmd.Parameters.AddWithValue("@ExpiryDate", coupon.C_ExpiryDate);
         }
     }
 }
