@@ -23,5 +23,11 @@ namespace PharmacyManagementSystem
             fm.Show();
             this.Hide();
         }
+
+        private void dashboard_Button_Click(object sender, EventArgs e)
+        {
+            uC_P_Dashboard1.Visible = true;
+            uC_P_Dashboard1.BringToFront();
+        }
     }
 }
