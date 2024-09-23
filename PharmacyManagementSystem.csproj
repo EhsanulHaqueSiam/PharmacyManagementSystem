@@ -98,6 +98,10 @@
     <Compile Include="AdminstratorUC\UC_ViewUser.Designer.cs">
       <DependentUpon>UC_ViewUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\DAO\Constants\Constants.cs" />
+    <Compile Include="DataAccess\Controller\AdminController.cs" />
+    <Compile Include="DataAccess\DAO\AdminDaoImpl.cs" />
+    <Compile Include="DataAccess\DAO\Dao.cs" />
     <Compile Include="DataAccess\DatabaseManager.cs" />
     <Compile Include="DataAccess\ConfigLoader.cs" />
     <Compile Include="Form1.cs">
@@ -106,6 +110,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Admin.cs" />
+    <Compile Include="Model\AdminPharmacist.cs" />
+    <Compile Include="Model\Coupon.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\CustomerCoupon.cs" />
+    <Compile Include="Model\CustomerMedicine.cs" />
+    <Compile Include="Model\Medicine.cs" />
+    <Compile Include="Model\Pharmacist.cs" />
+    <Compile Include="Model\PharmacistCustomer.cs" />
+    <Compile Include="Model\Transactions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Adminstrator.resx">
