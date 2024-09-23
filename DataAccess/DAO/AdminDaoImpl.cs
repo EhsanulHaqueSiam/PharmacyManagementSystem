@@ -1,5 +1,6 @@
-﻿using PharmacyManagementSystem.DataAccess.DAO.Query;
+﻿using PharmacyManagementSystem.DataAccess.Constants;
 using PharmacyManagementSystem.Model;
+using PharmacyManagementSystem.DataAccess.DAO;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;

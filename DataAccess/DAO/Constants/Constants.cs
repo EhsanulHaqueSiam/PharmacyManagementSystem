@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 namespace PharmacyManagementSystem.DataAccess.Constants {
     public static class AdminSqlQueries {
         public const string GET_ADMIN_BY_ID = "SELECT * FROM Admin WHERE A_ID = @adminId";
-        public const string GET_ADMIN_BY_USERNAME = "SELECT * FROM Admin WHERE A_UserName = @username";
+        public const string GET_ADMIN_BY_USERNAME = "SELECT * FROM Admin WHERE A_UserName COLLATE Latin1_General_BIN = @username";
         public const string INSERT_ADMIN = "INSERT INTO Admin (A_UserName, A_Name, A_Dob, A_Number, A_Pass, A_Mail) " +
                                            "VALUES (@userName, @name, @dob, @number, @pass, @mail)";
         public const string UPDATE_ADMIN = "UPDATE Admin SET A_UserName = @userName, A_Name = @name, A_Dob = @dob, " +
                                            "A_Number = @number, A_Pass = @pass, A_Mail = @mail WHERE A_ID = @adminId";
         public const string DELETE_ADMIN = "DELETE FROM Admin WHERE A_ID = @adminId";
         public const string GET_ALL_ADMINS = "SELECT * FROM Admin";
-
     }
 
     public static class PharmacistQueries {
@@ -23,6 +22,7 @@ namespace PharmacyManagementSystem.DataAccess.Constants {
         public const string GetAllPharmacists = "SELECT * FROM Pharmacist";
         public const string UpdatePharmacist = "UPDATE Pharmacist SET P_UserName = @UserName, P_Name = @Name, P_Dob = @Dob, P_Number = @Number, P_Pass = @Pass, P_Mail = @Mail WHERE P_ID = @Id";
         public const string DeletePharmacist = "DELETE FROM Pharmacist WHERE P_ID = @Id";
+        public const string GetPharmacistByUsername = "SELECT * FROM Pharmacist WHERE P_UserName COLLATE Latin1_General_BIN = @username";
     }
 
     public static class CustomerQueries {
@@ -31,6 +31,7 @@ namespace PharmacyManagementSystem.DataAccess.Constants {
         public const string GetAllCustomers = "SELECT * FROM Customer";
         public const string UpdateCustomer = "UPDATE Customer SET C_UserName = @UserName, C_Name = @Name, C_Address = @Address, C_Number = @Number, C_Pass = @Pass, C_Mail = @Mail WHERE C_ID = @Id";
         public const string DeleteCustomer = "DELETE FROM Customer WHERE C_ID = @Id";
+        public const string GetCustomerByUsername = "SELECT * FROM Customer WHERE C_UserName COLLATE Latin1_General_BIN = @username";
     }
 
     public static class MedicineQueries {

@@ -48,10 +48,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Guna.UI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=537479e8cf7071a7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Guna.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.4, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>packages\Guna.UI2.WinForms.2.0.4.4\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
@@ -103,6 +99,20 @@
     <Compile Include="AdminstratorUC\UC_ViewUser.Designer.cs">
       <DependentUpon>UC_ViewUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\Controller\CouponController.cs" />
+    <Compile Include="DataAccess\Controller\CustomerController.cs" />
+    <Compile Include="DataAccess\Controller\MedicineController.cs" />
+    <Compile Include="DataAccess\Controller\PharmacistController.cs" />
+    <Compile Include="DataAccess\Controller\TransactionController.cs" />
+    <Compile Include="DataAccess\DAO\Constants\Constants.cs" />
+    <Compile Include="DataAccess\Controller\AdminController.cs" />
+    <Compile Include="DataAccess\DAO\AdminDaoImpl.cs" />
+    <Compile Include="DataAccess\DAO\CouponDaoImpl.cs" />
+    <Compile Include="DataAccess\DAO\CustomerDaoImpl.cs" />
+    <Compile Include="DataAccess\DAO\Dao.cs" />
+    <Compile Include="DataAccess\DAO\MedicineDaoImpl.cs" />
+    <Compile Include="DataAccess\DAO\PharmacistDaoImpl.cs" />
+    <Compile Include="DataAccess\DAO\TransactionDaoImpl.cs" />
     <Compile Include="DataAccess\DatabaseManager.cs" />
     <Compile Include="DataAccess\ConfigLoader.cs" />
     <Compile Include="Form1.cs">
@@ -111,6 +121,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+
     <Compile Include="Pharmacist.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +134,17 @@
     <Compile Include="PharmacistUC\UC_P_Dashboard.Designer.cs">
       <DependentUpon>UC_P_Dashboard.cs</DependentUpon>
     </Compile>
+        <Compile Include="Model\Admin.cs" />
+    <Compile Include="Model\AdminPharmacist.cs" />
+    <Compile Include="Model\Coupon.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\CustomerCoupon.cs" />
+    <Compile Include="Model\CustomerMedicine.cs" />
+    <Compile Include="Model\Medicine.cs" />
+    <Compile Include="Model\Pharmacist.cs" />
+    <Compile Include="Model\PharmacistCustomer.cs" />
+    <Compile Include="Model\Transactions.cs" />
+
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Adminstrator.resx">
@@ -143,12 +165,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="Pharmacist.resx">
       <DependentUpon>Pharmacist.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PharmacistUC\UC_P_Dashboard.resx">
       <DependentUpon>UC_P_Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
