@@ -101,8 +101,8 @@ CREATE INDEX idx_Pharmacist_UserName ON Pharmacist (P_UserName);
 CREATE INDEX idx_Medicine_Name ON Medicine (M_Name);
 
 -- Add IsDeleted Flag to Existing Tables
-ALTER TABLE Admin ADD IsDeleted BIT DEFAULT 0;
-ALTER TABLE Pharmacist ADD IsDeleted BIT DEFAULT 0;
-ALTER TABLE Customer ADD IsDeleted BIT DEFAULT 0;
-ALTER TABLE Medicine ADD IsDeleted BIT DEFAULT 0;
-ALTER TABLE Coupon ADD IsDeleted BIT DEFAULT 0;
+-- ALTER TABLE Admin ADD IsDeleted BIT DEFAULT 0;
+-- ALTER TABLE Pharmacist ADD IsDeleted BIT DEFAULT 0;
+-- ALTER TABLE Customer ADD IsDeleted BIT DEFAULT 0;
+-- ALTER TABLE Medicine ADD IsDeleted BIT DEFAULT 0;
+-- ALTER TABLE Coupon ADD IsDeleted BIT DEFAULT 0;
