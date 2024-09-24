@@ -25,6 +25,7 @@ namespace PharmacyManagementSystem.PharmacistUC
 
         private void UC_P_ViewMedicines_Load(object sender, EventArgs e)
         {
+            /*
 
             IMedicineDao medicineDao = new MedicineDaoImpl();
             MedicineController medicineController = new MedicineController(medicineDao);
@@ -32,7 +33,7 @@ namespace PharmacyManagementSystem.PharmacistUC
             IEnumerable<Medicine> allMedicines = medicineController.GetAllMedicines();
             viewMedicine_gunaGrid.AutoGenerateColumns = true;
             viewMedicine_gunaGrid.DataSource = allMedicines.ToList();
-
+            */
 
         }
 
@@ -80,6 +81,11 @@ namespace PharmacyManagementSystem.PharmacistUC
             }catch(Exception ex){ 
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

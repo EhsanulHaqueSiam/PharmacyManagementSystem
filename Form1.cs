@@ -87,8 +87,17 @@ namespace PharmacyManagementSystem
                 PharmacistGUI ph = new PharmacistGUI();
                 ph.Show();
                 this.Hide();
-            
-            }else {
+
+            }
+            else if (userNameTxtField.Text == "kit" && passTextField.Text == "kit")
+            {
+                CustomerGUI c1 = new CustomerGUI();
+                c1.Show();
+                this.Hide();
+
+            }
+            else
+            {
                 MessageBox.Show("Wrong user Name or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

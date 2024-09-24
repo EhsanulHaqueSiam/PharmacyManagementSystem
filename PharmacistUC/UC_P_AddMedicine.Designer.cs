@@ -28,6 +28,7 @@ namespace PharmacyManagementSystem.PharmacistUC
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_P_AddMedicine));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,6 +47,7 @@ namespace PharmacyManagementSystem.PharmacistUC
             this.medChem_txtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.medQuantity_txtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.medPrice_txtBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -325,6 +327,10 @@ namespace PharmacyManagementSystem.PharmacistUC
             this.medPrice_txtBox.Size = new System.Drawing.Size(346, 38);
             this.medPrice_txtBox.TabIndex = 24;
             // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.TargetControl = this;
+            // 
             // UC_P_AddMedicine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -373,5 +379,6 @@ namespace PharmacyManagementSystem.PharmacistUC
         private Guna.UI2.WinForms.Guna2TextBox medQuantity_txtBox;
         private Guna.UI2.WinForms.Guna2TextBox medChem_txtBox;
         private Guna.UI2.WinForms.Guna2TextBox medName_txtBox;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }

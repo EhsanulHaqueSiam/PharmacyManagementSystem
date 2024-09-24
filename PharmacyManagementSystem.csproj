@@ -13,7 +13,6 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Siam\Desktop\WebSite\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -49,7 +48,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
+
+    <ManifestCertificateThumbprint>39DBDC2C763D7BF8B6679EFBA3C17C90C68BBAFE</ManifestCertificateThumbprint>
+
     <ManifestCertificateThumbprint>9BBDE32B03BD57E83A23E3DD1DBF9DF40D859555</ManifestCertificateThumbprint>
+
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>PharmacyManagementSystem_TemporaryKey.pfx</ManifestKeyFile>
@@ -168,6 +171,18 @@
     <Compile Include="CustomerSignInUC\UC_C_PhnNum.Designer.cs">
       <DependentUpon>UC_C_PhnNum.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomerUC\UC_C_BuyMedicine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomerUC\UC_C_BuyMedicine.Designer.cs">
+      <DependentUpon>UC_C_BuyMedicine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerUC\UC_C_Profile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomerUC\UC_C_Profile.Designer.cs">
+      <DependentUpon>UC_C_Profile.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\Controller\CouponController.cs" />
     <Compile Include="DataAccess\Controller\CustomerController.cs" />
     <Compile Include="DataAccess\Controller\MedicineController.cs" />
@@ -279,6 +294,12 @@
     <EmbeddedResource Include="CustomerSignInUC\UC_C_PhnNum.resx">
       <DependentUpon>UC_C_PhnNum.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomerUC\UC_C_BuyMedicine.resx">
+      <DependentUpon>UC_C_BuyMedicine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerUC\UC_C_Profile.resx">
+      <DependentUpon>UC_C_Profile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,6 +337,10 @@
     <EmbeddedResource Include="SignInGui.resx">
       <DependentUpon>SignInGui.cs</DependentUpon>
     </EmbeddedResource>
+
+    <None Include="packages.config" />
+    <None Include="PharmacyManagementSystem_TemporaryKey.pfx" />
+
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

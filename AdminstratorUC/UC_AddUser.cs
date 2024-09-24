@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PharmacyManagementSystem.Controllers;
+using PharmacyManagementSystem.DataAccess;
+using PharmacyManagementSystem.DataAccess.DAO;
+using PharmacyManagementSystem.Model;
+using System;
 using System.Windows.Forms;
 
 namespace PharmacyManagementSystem.AdminstratorUC
@@ -24,6 +21,112 @@ namespace PharmacyManagementSystem.AdminstratorUC
 
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addUser_btn_Click(object sender, EventArgs e)
+        {
+            string role = userRole_Combobox.Text;
+
+            if (role == "Administrator")
+            {
+
+                IAdminDao adminDao = new AdminDaoImpl();
+                AdminController adminController = new AdminController(adminDao);
+                Admin ad = new Admin
+                {
+
+                    A_Name = name_Textfield.Text,
+                    A_Mail = mail_txtBox.Text,
+                    A_Number = mblNo_txtBox.Text,
+                    A_Pass = pass_txtBox.Text,
+                    A_UserName = userName_txtBox.Text,
+                    A_Dob = DateTime.Parse(dob_Datebox.Text),
+
+                };
+
+
+                bool confirmMed = adminController.InsertAdmin(ad);
+
+                if (confirmMed)
+                {
+                    MessageBox.Show("Succesfull");
+                }
+                else
+                {
+                    MessageBox.Show("Faild");
+                }
+
+            }
+            else if (role == "Pharmacist")
+            {
+                IPharmacistDao pharmacistDao = new PharmacistDaoImpl();
+                PharmacistController pharmacistController = new PharmacistController(pharmacistDao);
+                Pharmacist ph = new Pharmacist
+                {
+
+                    P_Name = name_Textfield.Text,
+                    P_Mail = mail_txtBox.Text,
+                    P_Number = mblNo_txtBox.Text,
+                    P_Pass = pass_txtBox.Text,
+                    P_UserName = userName_txtBox.Text,
+                    P_Dob = DateTime.Parse(dob_Datebox.Text),
+
+                };
+
+
+                bool confirmMed = pharmacistController.InsertPharmacist(ph);
+
+                if (confirmMed)
+                {
+                    MessageBox.Show("Succesfull");
+                }
+                else
+                {
+                    MessageBox.Show("Faild");
+                }
+
+
+
+            }
+            else if (role == "Customer")
+            {
+                ICustomerDao customerDao = new CustomerDaoImpl();
+                CustomerController adminController = new CustomerController(customerDao);
+                Customer cust = new Customer
+                {
+
+                    C_Name = name_Textfield.Text,
+                    C_Mail = mail_txtBox.Text,
+                    C_Number = mblNo_txtBox.Text,
+                    C_Pass = pass_txtBox.Text,
+                    C_UserName = userName_txtBox.Text,
+
+                };
+
+
+                //bool confirmMed = adminController.InsertAdmin(ad);
+
+                if (true)
+                {
+                    MessageBox.Show("Succesfull");
+                }
+                else
+                {
+                    MessageBox.Show("Faild");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Wrong User");
+            }
+
 
         }
     }
