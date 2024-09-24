@@ -21,5 +21,32 @@ namespace PharmacyManagementSystem
         {
 
         }
+
+        private void CustomerGUI_Load(object sender, EventArgs e)
+        {
+            uC_C_Profile1.Visible = false;
+            uC_C_BuyMedicine1.Visible = false;
+            Cprofile_Button.PerformClick();
+
+        }
+
+        private void Cprofile_Button_Click(object sender, EventArgs e)
+        {
+            uC_C_Profile1.Visible = true;
+            uC_C_Profile1.BringToFront();
+        }
+
+        private void logout_Button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 f1 = new Form1();
+            f1.Show();
+        }
+
+        private void viewUser_Button_Click(object sender, EventArgs e)
+        {
+            uC_C_BuyMedicine1.Visible = true;
+            uC_C_BuyMedicine1.BringToFront();
+        }
     }
 }
