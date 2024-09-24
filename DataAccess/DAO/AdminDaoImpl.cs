@@ -130,6 +130,30 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
+        public int CountAdmins() {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(AdminSqlQueries.COUNT_ADMINS, connection)) {
+                    return (int)cmd.ExecuteScalar();  // Returns the count of admins.
+                }
+            });
+        }
+
+        public bool ValidateAdminLogin(string usernameOrEmail, string password) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(AdminSqlQueries.VALIDATE_ADMIN_LOGIN, connection)) {
+                    // Check both username and email for login.
+                    cmd.Parameters.AddWithValue("@UserName", usernameOrEmail);
+                    cmd.Parameters.AddWithValue("@Email", usernameOrEmail);
+                    cmd.Parameters.AddWithValue("@Password", password);
+
+                    using (var reader = cmd.ExecuteReader()) {
+                        // If the query returns a result, login is successful
+                        return reader.HasRows;
+                    }
+                }
+            });
+        }
+
         // Helper method to map SqlDataReader to Admin model
         private Admin MapToAdmin(SqlDataReader reader) {
             return new Admin {

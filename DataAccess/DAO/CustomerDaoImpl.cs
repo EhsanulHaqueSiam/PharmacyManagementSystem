@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 
 namespace PharmacyManagementSystem.DataAccess {
     public class CustomerDaoImpl : ICustomerDao {
+
         public Customer GetCustomerById(int id) {
             return SqlDatabaseManager.Instance.Execute(connection => {
                 using (var cmd = new SqlCommand(CustomerQueries.GET_CUSTOMER_BY_ID, connection)) {
@@ -38,7 +39,7 @@ namespace PharmacyManagementSystem.DataAccess {
         public Customer GetCustomerByEmail(string email) {
             return SqlDatabaseManager.Instance.Execute(connection => {
                 using (var cmd = new SqlCommand(CustomerQueries.GET_CUSTOMER_BY_EMAIL, connection)) {
-                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@Email", email);
                     using (var reader = cmd.ExecuteReader()) {
                         if (reader.Read()) {
                             return MapToCustomer(reader);
@@ -130,6 +131,25 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
+        public int CountCustomers() {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CustomerQueries.COUNT_CUSTOMERS, connection)) {
+                    return (int)cmd.ExecuteScalar();
+                }
+            });
+        }
+
+        public bool ValidateCustomerLogin(string usernameOrEmail, string password) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(CustomerQueries.VALIDATE_CUSTOMER_LOGIN, connection)) {
+                    cmd.Parameters.AddWithValue("@usernameOrEmail", usernameOrEmail);
+                    cmd.Parameters.AddWithValue("@password", password);
+                    var result = cmd.ExecuteScalar();
+                    return result != null;
+                }
+            });
+        }
+
         // Helper method to map SqlDataReader to Customer model
         private Customer MapToCustomer(SqlDataReader reader) {
             return new Customer {
@@ -152,6 +172,5 @@ namespace PharmacyManagementSystem.DataAccess {
             cmd.Parameters.AddWithValue("@Mail", customer.C_Mail);
             cmd.Parameters.AddWithValue("@Dob", customer.C_Dob);
         }
-
     }
 }

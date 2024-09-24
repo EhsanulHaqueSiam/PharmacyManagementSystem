@@ -49,5 +49,12 @@ namespace PharmacyManagementSystem.Controllers {
         public IEnumerable<Admin> GetAllAdmins() {
             return _adminDao.GetAllAdmins();
         }
+
+        public int CountAdmins() {  // New method to count admins
+            return _adminDao.CountAdmins();
+        }
+        public bool Login(string usernameOrEmail, string password) {
+            return _adminDao.ValidateAdminLogin(usernameOrEmail, password);
+        }
     }
 }

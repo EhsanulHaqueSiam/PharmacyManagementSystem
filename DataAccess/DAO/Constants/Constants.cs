@@ -12,6 +12,12 @@ namespace PharmacyManagementSystem.DataAccess.Constants {
         public const string DELETE_ADMIN = "DELETE FROM Admin WHERE A_ID = @adminId";
         public const string SOFT_DELETE_ADMIN = "UPDATE Admin SET IsDeleted = 1 WHERE A_ID = @adminId";
         public const string GET_ALL_ADMINS = "SELECT * FROM Admin WHERE IsDeleted = 0";
+        public const string COUNT_ADMINS = "SELECT COUNT(*) FROM Admin WHERE IsDeleted = 0";
+        public const string VALIDATE_ADMIN_LOGIN = "SELECT A_ID FROM Admin " +
+                                           "WHERE (A_UserName COLLATE Latin1_General_BIN = @UserName OR A_Mail = @Email) " +
+                                           "AND A_Pass = @Password " +
+                                           "AND IsDeleted = 0";
+
     }
 
     public static class PharmacistQueries {
@@ -25,6 +31,12 @@ namespace PharmacyManagementSystem.DataAccess.Constants {
         public const string DELETE_PHARMACIST = "DELETE FROM Pharmacist WHERE P_ID = @Id";
         public const string SOFT_DELETE_PHARMACIST = "UPDATE Pharmacist SET IsDeleted = 1 WHERE P_ID = @Id";
         public const string GET_ALL_PHARMACISTS = "SELECT * FROM Pharmacist WHERE IsDeleted = 0";
+        public const string COUNT_PHARMACISTS = "SELECT COUNT(*) FROM Pharmacist WHERE IsDeleted = 0";
+        public const string VALIDATE_PHARMACIST_LOGIN = "SELECT P_ID FROM Pharmacist " +
+                                                "WHERE (P_UserName COLLATE Latin1_General_BIN = @UserName OR P_Mail = @Email) " +
+                                                "AND P_Pass = @Password " +
+                                                "AND IsDeleted = 0";
+
     }
 
     public static class CustomerQueries {
@@ -42,8 +54,13 @@ namespace PharmacyManagementSystem.DataAccess.Constants {
         public const string GET_ALL_CUSTOMERS = "SELECT * FROM Customer WHERE IsDeleted = 0";
         public const string GET_FREQUENT_CUSTOMERS = "SELECT C_ID, COUNT(*) AS PurchaseCount " +
                                                      "FROM Transactions GROUP BY C_ID ORDER BY PurchaseCount DESC";
-    }
+        public const string COUNT_CUSTOMERS = "SELECT COUNT(*) FROM Customer WHERE IsDeleted = 0";
+        public const string VALIDATE_CUSTOMER_LOGIN = "SELECT C_ID FROM Customer " +
+                                              "WHERE (C_UserName COLLATE Latin1_General_BIN = @UserName OR C_Mail = @Email) " +
+                                              "AND C_Pass = @Password " +
+                                              "AND IsDeleted = 0";
 
+    }
 
     public static class MedicineQueries {
         public const string GET_MEDICINE_BY_ID = "SELECT * FROM Medicine WHERE M_ID = @Id AND IsDeleted = 0";

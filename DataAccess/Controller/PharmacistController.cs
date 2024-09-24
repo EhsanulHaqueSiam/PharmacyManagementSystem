@@ -49,5 +49,13 @@ namespace PharmacyManagementSystem.Controllers {
         public IEnumerable<Pharmacist> GetAllPharmacists() {
             return _pharmacistDao.GetAllPharmacists();
         }
+
+        public int CountPharmacists() {  // New method to count pharmacists
+            return _pharmacistDao.CountPharmacists();
+        }
+
+        public bool Login(string usernameOrEmail, string password) {
+            return _pharmacistDao.ValidatePharmacistLogin(usernameOrEmail, password);
+        }
     }
 }

@@ -130,6 +130,31 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
+        public int CountPharmacists() {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(PharmacistQueries.COUNT_PHARMACISTS, connection)) {
+                    return (int)cmd.ExecuteScalar();  // Returns the count of pharmacists.
+                }
+            });
+        }
+
+        public bool ValidatePharmacistLogin(string usernameOrEmail, string password) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(PharmacistQueries.VALIDATE_PHARMACIST_LOGIN, connection)) {
+                    // Check both username and email for login
+                    cmd.Parameters.AddWithValue("@UserName", usernameOrEmail);
+                    cmd.Parameters.AddWithValue("@Email", usernameOrEmail);
+                    cmd.Parameters.AddWithValue("@Password", password);
+
+                    using (var reader = cmd.ExecuteReader()) {
+                        // If the query returns a result, login is successful
+                        return reader.HasRows;
+                    }
+                }
+            });
+        }
+
+
         // Helper method to map SqlDataReader to Pharmacist model
         private Pharmacist MapToPharmacist(SqlDataReader reader) {
             return new Pharmacist {
