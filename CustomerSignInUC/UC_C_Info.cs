@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PharmacyManagementSystem.OTP;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -65,6 +66,40 @@ namespace PharmacyManagementSystem.CustomerSignInUC
         {
             // Access the parent form
             SignInGui parentForm = this.FindForm() as SignInGui;
+            OTPService.LoadConfiguration();
+
+            string recipientEmail = ;
+
+            // Generate OTP
+            string otp = OTPService.GenerateOTP();
+            Console.WriteLine(otp);
+
+            // Send OTP email
+            try
+            {
+                OTPService.SendOTPEmail(recipientEmail, otp);
+                Console.WriteLine("OTP sent successfully to your email.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to send OTP: {ex.Message}");
+            }
+
+            // Ask user to input OTP to verify
+            Console.WriteLine("Enter the OTP you received:");
+            string enteredOtp = Console.ReadLine();
+
+            // Validate the OTP
+            bool isValid = OTPService.ValidateOTP(enteredOtp);
+
+            if (isValid)
+            {
+                Console.WriteLine("OTP validated successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid or expired OTP.");
+            }
 
             if (parentForm != null)
             {

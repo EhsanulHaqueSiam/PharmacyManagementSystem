@@ -16,5 +16,33 @@ namespace PharmacyManagementSystem.PharmacistUC
         {
             InitializeComponent();
         }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clearAll() {
+            medId_txtBox.ResetText();
+            addQ_txtBox.Clear();
+            chemName_txtBox.Clear();
+            avlQ_txtBox.Clear();
+            expireDate_txt.ResetText();
+            manufactDate_txtbox.ResetText();
+            medName_txtBox.ResetText();
+            if (ppU_txtBox.Text != "0")
+            {
+                ppU_txtBox.ResetText();
+            }
+            else {
+                ppU_txtBox.ResetText();
+            }
+            
+        }
+
+        private void reset_btn_Click(object sender, EventArgs e)
+        {
+            clearAll();
+        }
     }
 }

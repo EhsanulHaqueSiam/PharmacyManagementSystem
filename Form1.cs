@@ -1,4 +1,7 @@
-﻿using PharmacyManagementSystem.CustomerSignInUC;
+﻿using PharmacyManagementSystem.Controllers;
+using PharmacyManagementSystem.CustomerSignInUC;
+using PharmacyManagementSystem.DataAccess.DAO;
+using PharmacyManagementSystem.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,8 +14,11 @@ using System.Windows.Forms;
 
 namespace PharmacyManagementSystem
 {
+
+    
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -77,22 +83,38 @@ namespace PharmacyManagementSystem
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            if (userNameTxtField.Text == "Siam" && passTextField.Text == "siam")
+            Program.userName = userNameTxtField.Text;
+
+            IAdminDao adminDao = new AdminDaoImpl();
+            AdminController adminController = new AdminController(adminDao);
+
+            IPharmacistDao pharmacistDao = new PharmacistDaoImpl();
+            PharmacistController pharmacistController = new PharmacistController(pharmacistDao);
+
+            ICustomerDao customerDao = new CustomerDaoImpl();
+            CustomerController customerController = new CustomerController(customerDao);
+
+            
+
+            if (adminController.Login(userNameTxtField.Text, passTextField.Text))
             {
                 Adminstrator am = new Adminstrator();
                 am.Show();
+                Program.adminLog = true;
                 this.Hide();
-            } else if (userNameTxtField.Text == "nit" && passTextField.Text == "nit")
+            } else if (pharmacistController.Login(userNameTxtField.Text, passTextField.Text))
             { 
                 PharmacistGUI ph = new PharmacistGUI();
                 ph.Show();
+                Program.pharmLog = true;
                 this.Hide();
 
             }
-            else if (userNameTxtField.Text == "kit" && passTextField.Text == "kit")
+            else if (customerController.Login(userNameTxtField.Text, passTextField.Text))
             {
                 CustomerGUI c1 = new CustomerGUI();
                 c1.Show();
+                Program.custLog = true;
                 this.Hide();
 
             }
@@ -115,6 +137,13 @@ namespace PharmacyManagementSystem
         private void forgetPass_btn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void signUp_btn_Click(object sender, EventArgs e)
+        {
+            SignInGui s1 = new SignInGui();
+            s1.Show();
+            this.Hide();
         }
     }
 }
