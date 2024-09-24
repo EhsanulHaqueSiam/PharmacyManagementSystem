@@ -100,5 +100,10 @@ namespace PharmacyManagementSystem
         {
 
         }
+
+        private void forgetPass_btn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
