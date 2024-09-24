@@ -10,4 +10,12 @@
   <!-- Optional if Integrated Security -->
   <!--<Password>admin123</Password>-->
   <!-- Optional if Integrated Security -->
+  
+  <!-- SMTP Configuration for Gmail -->
+  <SMTP>
+    <Email>your-email@gmail.com</Email>
+    <AppPassword>your-app-password</AppPassword>
+    <SmtpServer>smtp.gmail.com</SmtpServer>
+    <Port>587</Port>
+  </SMTP>
 </configuration>

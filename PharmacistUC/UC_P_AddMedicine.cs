@@ -1,4 +1,4 @@
-﻿using PharmacyManagementSystem.Controllers;
+using PharmacyManagementSystem.Controllers;
 using PharmacyManagementSystem.DataAccess;
 using PharmacyManagementSystem.DataAccess.DAO;
 using PharmacyManagementSystem.Model;

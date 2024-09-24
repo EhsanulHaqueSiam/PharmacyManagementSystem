@@ -1,4 +1,4 @@
-﻿namespace PharmacyManagementSystem.PharmacistUC
+namespace PharmacyManagementSystem.PharmacistUC
 {
     partial class UC_P_AddMedicine
     {
