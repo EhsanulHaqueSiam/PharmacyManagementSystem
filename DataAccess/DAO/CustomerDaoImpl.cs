@@ -150,6 +150,8 @@ namespace PharmacyManagementSystem.DataAccess {
             cmd.Parameters.AddWithValue("@Number", customer.C_Number);
             cmd.Parameters.AddWithValue("@Pass", customer.C_Pass);
             cmd.Parameters.AddWithValue("@Mail", customer.C_Mail);
+            cmd.Parameters.AddWithValue("@Dob", customer.C_Dob); // Add this line to include the Dob parameter
         }
+
     }
 }
