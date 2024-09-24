@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Data.SqlClient;
 
@@ -125,6 +124,23 @@ namespace PharmacyManagementSystem.DataAccess {
 
             // If neither are provided, throw an exception
             throw new ConfigurationException("Either SQL Server name or Database file path must be specified in the configuration.");
+        }
+
+        // New methods for SMTP Configuration
+        public string GetSmtpEmail() {
+            return GetValue("SMTP/Email");
+        }
+
+        public string GetSmtpPassword() {
+            return GetValue("SMTP/AppPassword");
+        }
+
+        public string GetSmtpServer() {
+            return GetValue("SMTP/SmtpServer");
+        }
+
+        public int GetSmtpPort() {
+            return GetValue<int>("SMTP/Port");
         }
     }
 
