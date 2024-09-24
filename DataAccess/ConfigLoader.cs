@@ -36,9 +36,21 @@ namespace PharmacyManagementSystem.DataAccess {
         }
 
         public string GetValue(string key) {
-            XElement element = _config.Element("configuration")?.Element(key);
-            return element?.Value;
+            // Split the key by "/" to navigate through nested elements
+            var keys = key.Split('/');
+            XElement element = _config.Root;
+
+            // Traverse through the XML tree to find the desired value
+            foreach (var k in keys) {
+                element = element.Element(k);
+                if (element == null) {
+                    return null; // Return null if any part of the path is invalid
+                }
+            }
+
+            return element.Value;
         }
+
 
         public TValue GetValue<TValue>(string key) {
             string value = GetValue(key);

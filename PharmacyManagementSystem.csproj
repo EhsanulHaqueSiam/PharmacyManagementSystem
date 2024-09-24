@@ -380,7 +380,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="config.xml" />
-    <Content Include="otp_template.html" />
+    <Content Include="OTP\otp_template.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
