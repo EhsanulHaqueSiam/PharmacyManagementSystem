@@ -13,7 +13,6 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\NitPaul\Documents\New folder\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -49,7 +48,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
+
     <ManifestCertificateThumbprint>39DBDC2C763D7BF8B6679EFBA3C17C90C68BBAFE</ManifestCertificateThumbprint>
+
+    <ManifestCertificateThumbprint>9BBDE32B03BD57E83A23E3DD1DBF9DF40D859555</ManifestCertificateThumbprint>
+
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>PharmacyManagementSystem_TemporaryKey.pfx</ManifestKeyFile>
@@ -334,8 +337,10 @@
     <EmbeddedResource Include="SignInGui.resx">
       <DependentUpon>SignInGui.cs</DependentUpon>
     </EmbeddedResource>
+
     <None Include="packages.config" />
     <None Include="PharmacyManagementSystem_TemporaryKey.pfx" />
+
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -456,7 +461,9 @@
     <None Include="Resources\Images\Pictures\yes.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="config.xml" />
+    <Content Include="config.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="OTP\otp_template.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

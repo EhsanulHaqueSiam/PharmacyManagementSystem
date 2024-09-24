@@ -29,16 +29,16 @@ namespace PharmacyManagementSystem.DataAccess.DAO {
     }
 
     public interface ICustomerDao {
-        Customer GetCustomerById(int id);
-        Customer GetCustomerByUsername(string username);
-        Customer GetCustomerByEmail(string email);
-        IEnumerable<Customer> SearchCustomersByPartialUsername(string partialUsername);
-        IEnumerable<Customer> SearchCustomersByPartialPhone(string partialPhone);
-        bool InsertCustomer(Customer customer);
-        bool UpdateCustomer(Customer customer);
-        bool DeleteCustomer(int id);
-        IEnumerable<Customer> GetAllCustomers();
-        bool SoftDeleteCustomer(int id);
+        Customer GetCustomerById(int id);  // Get a customer by their ID
+        Customer GetCustomerByUsername(string username);  // Get a customer by their username
+        Customer GetCustomerByEmail(string email);  // Get a customer by their email
+        IEnumerable<Customer> SearchCustomersByPartialUsername(string partialUsername);  // Search by username pattern
+        IEnumerable<Customer> SearchCustomersByPartialPhone(string partialPhone);  // Search by phone number pattern
+        bool InsertCustomer(Customer customer);  // Insert a new customer
+        bool UpdateCustomer(Customer customer);  // Update an existing customer
+        bool DeleteCustomer(int id);  // Hard delete (permanent)
+        IEnumerable<Customer> GetAllCustomers();  // Get all customers
+        bool SoftDeleteCustomer(int id);  // Soft delete (sets IsDeleted flag)
     }
 
     public interface IMedicineDao {
