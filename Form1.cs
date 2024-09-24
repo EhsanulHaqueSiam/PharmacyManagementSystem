@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PharmacyManagementSystem.CustomerSignInUC;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -69,8 +70,9 @@ namespace PharmacyManagementSystem
 
         private void resetBtn_Click(object sender, EventArgs e)
         {
-            userNameTxtField.Clear();
-            passTextField.Clear();
+            SignInGui s1 = new SignInGui();
+            s1.Show();
+            this.Hide();
         }
 
         private void loginBtn_Click(object sender, EventArgs e)

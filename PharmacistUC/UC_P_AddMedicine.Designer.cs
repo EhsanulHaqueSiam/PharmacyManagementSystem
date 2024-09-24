@@ -28,7 +28,6 @@ namespace PharmacyManagementSystem.PharmacistUC
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_P_AddMedicine));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,7 +42,6 @@ namespace PharmacyManagementSystem.PharmacistUC
             this.medAdd_btn = new Guna.UI2.WinForms.Guna2Button();
             this.medReset_btn = new Guna.UI2.WinForms.Guna2Button();
             this.medExpire_dateBox = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.medName_txtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.medChem_txtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.medQuantity_txtBox = new Guna.UI2.WinForms.Guna2TextBox();
@@ -230,10 +228,6 @@ namespace PharmacyManagementSystem.PharmacistUC
             this.medExpire_dateBox.TabIndex = 20;
             this.medExpire_dateBox.Value = new System.DateTime(2024, 9, 23, 20, 46, 46, 573);
             // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.TargetControl = this;
-            // 
             // medName_txtBox
             // 
             this.medName_txtBox.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -375,7 +369,6 @@ namespace PharmacyManagementSystem.PharmacistUC
         private Guna.UI2.WinForms.Guna2Button medAdd_btn;
         private Guna.UI2.WinForms.Guna2Button medReset_btn;
         private Guna.UI2.WinForms.Guna2DateTimePicker medExpire_dateBox;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2TextBox medPrice_txtBox;
         private Guna.UI2.WinForms.Guna2TextBox medQuantity_txtBox;
         private Guna.UI2.WinForms.Guna2TextBox medChem_txtBox;
