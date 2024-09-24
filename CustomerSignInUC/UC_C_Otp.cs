@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PharmacyManagementSystem.OTP;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +25,18 @@ namespace PharmacyManagementSystem.CustomerSignInUC
 
         private void otpConfirm_btn_Click(object sender, EventArgs e)
         {
+            string enteredOtp = otp_txt.Text;
+            // Validate the OTP
+            bool isValid = OTPService.ValidateOTP(enteredOtp);
 
+            if (isValid)
+            {
+                Console.WriteLine("OTP validated successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid or expired OTP.");
+            }
         }
 
         private void otpBack_btn_Click(object sender, EventArgs e)

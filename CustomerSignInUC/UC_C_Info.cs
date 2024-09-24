@@ -68,7 +68,7 @@ namespace PharmacyManagementSystem.CustomerSignInUC
             SignInGui parentForm = this.FindForm() as SignInGui;
             OTPService.LoadConfiguration();
 
-            string recipientEmail = ;
+            string recipientEmail = mail_txt.Text;
 
             // Generate OTP
             string otp = OTPService.GenerateOTP();
@@ -85,21 +85,6 @@ namespace PharmacyManagementSystem.CustomerSignInUC
                 Console.WriteLine($"Failed to send OTP: {ex.Message}");
             }
 
-            // Ask user to input OTP to verify
-            Console.WriteLine("Enter the OTP you received:");
-            string enteredOtp = Console.ReadLine();
-
-            // Validate the OTP
-            bool isValid = OTPService.ValidateOTP(enteredOtp);
-
-            if (isValid)
-            {
-                Console.WriteLine("OTP validated successfully.");
-            }
-            else
-            {
-                Console.WriteLine("Invalid or expired OTP.");
-            }
 
             if (parentForm != null)
             {
