@@ -19,7 +19,7 @@ public sealed class ConfigLoader {
             return;
         }
 
-        _configFilePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", configFileName));
+        _configFilePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, configFileName));
 
         Console.WriteLine("Config file path: " + _configFilePath);
 

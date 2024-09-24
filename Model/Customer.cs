@@ -13,10 +13,13 @@ namespace PharmacyManagementSystem.Model {
         public string C_Number { get; set; }
         public string C_Pass { get; set; }
         public string C_Mail { get; set; }
+        public DateTime C_Dob { get; set; } // Added Date of Birth for consistency with the DB schema
 
+        // Parameterless constructor
         public Customer() { }
 
-        public Customer(int c_ID, string c_UserName, string c_Name, string c_Address, string c_Number, string c_Pass, string c_Mail) {
+        // Parameterized constructor
+        public Customer(int c_ID, string c_UserName, string c_Name, string c_Address, string c_Number, string c_Pass, string c_Mail, DateTime c_Dob) {
             C_ID = c_ID;
             C_UserName = c_UserName;
             C_Name = c_Name;
@@ -24,6 +27,7 @@ namespace PharmacyManagementSystem.Model {
             C_Number = c_Number;
             C_Pass = c_Pass;
             C_Mail = c_Mail;
+            C_Dob = c_Dob; // Date of Birth included
         }
     }
 

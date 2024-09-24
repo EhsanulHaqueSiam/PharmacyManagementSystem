@@ -29,17 +29,21 @@ namespace PharmacyManagementSystem.DataAccess.Constants {
 
     public static class CustomerQueries {
         public const string GET_CUSTOMER_BY_ID = "SELECT * FROM Customer WHERE C_ID = @Id AND IsDeleted = 0";
-        public const string GET_CUSTOMER_BY_USERNAME = "SELECT * FROM Customer WHERE C_UserName COLLATE Latin1_General_BIN = @username AND IsDeleted = 0";
-        public const string GET_CUSTOMER_BY_EMAIL = "SELECT * FROM Customer WHERE C_Mail = @email AND IsDeleted = 0";
-        public const string SEARCH_CUSTOMERS_BY_PARTIAL_USERNAME = "SELECT * FROM Customer WHERE C_UserName LIKE @partialUsername AND IsDeleted = 0";
-        public const string SEARCH_CUSTOMERS_BY_PARTIAL_PHONE = "SELECT * FROM Customer WHERE C_Number LIKE @partialPhone AND IsDeleted = 0";
-        public const string INSERT_CUSTOMER = "INSERT INTO Customer (C_UserName, C_Name, C_Address, C_Number, C_Pass, C_Mail) VALUES (@UserName, @Name, @Address, @Number, @Pass, @Mail)";
-        public const string UPDATE_CUSTOMER = "UPDATE Customer SET C_UserName = @UserName, C_Name = @Name, C_Address = @Address, C_Number = @Number, C_Pass = @Pass, C_Mail = @Mail WHERE C_ID = @Id";
+        public const string GET_CUSTOMER_BY_USERNAME = "SELECT * FROM Customer WHERE C_UserName COLLATE Latin1_General_BIN = @UserName AND IsDeleted = 0";
+        public const string GET_CUSTOMER_BY_EMAIL = "SELECT * FROM Customer WHERE C_Mail = @Email AND IsDeleted = 0";
+        public const string SEARCH_CUSTOMERS_BY_PARTIAL_USERNAME = "SELECT * FROM Customer WHERE C_UserName LIKE @PartialUsername AND IsDeleted = 0";
+        public const string SEARCH_CUSTOMERS_BY_PARTIAL_PHONE = "SELECT * FROM Customer WHERE C_Number LIKE @PartialPhone AND IsDeleted = 0";
+        public const string INSERT_CUSTOMER = "INSERT INTO Customer (C_UserName, C_Name, C_Address, C_Number, C_Pass, C_Mail, C_Dob) " +
+                                              "VALUES (@UserName, @Name, @Address, @Number, @Pass, @Mail, @Dob)";
+        public const string UPDATE_CUSTOMER = "UPDATE Customer SET C_UserName = @UserName, C_Name = @Name, C_Address = @Address, C_Number = @Number, " +
+                                              "C_Pass = @Pass, C_Mail = @Mail, C_Dob = @Dob WHERE C_ID = @Id";
         public const string DELETE_CUSTOMER = "DELETE FROM Customer WHERE C_ID = @Id";
         public const string SOFT_DELETE_CUSTOMER = "UPDATE Customer SET IsDeleted = 1 WHERE C_ID = @Id";
         public const string GET_ALL_CUSTOMERS = "SELECT * FROM Customer WHERE IsDeleted = 0";
-        public const string GET_FREQUENT_CUSTOMERS = "SELECT C_ID, COUNT(*) AS PurchaseCount FROM Transactions GROUP BY C_ID ORDER BY PurchaseCount DESC";
+        public const string GET_FREQUENT_CUSTOMERS = "SELECT C_ID, COUNT(*) AS PurchaseCount " +
+                                                     "FROM Transactions GROUP BY C_ID ORDER BY PurchaseCount DESC";
     }
+
 
     public static class MedicineQueries {
         public const string GET_MEDICINE_BY_ID = "SELECT * FROM Medicine WHERE M_ID = @Id AND IsDeleted = 0";
