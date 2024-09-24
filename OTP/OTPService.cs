@@ -1,10 +1,8 @@
-﻿
-using MailKit.Net.Smtp;
+﻿using MailKit.Net.Smtp;
 using MimeKit;
 using PharmacyManagementSystem.DataAccess;
 using System;
 using System.IO;
-using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -53,21 +51,62 @@ namespace PharmacyManagementSystem.OTP {
             }
         }
 
-        // Load HTML template and replace OTP placeholder
+        // Convert an image file to Base64 string, supporting JPEG and PNG
+        private static string ConvertImageToBase64(string imagePath) {
+            try {
+                byte[] imageBytes = File.ReadAllBytes(imagePath);
+                string extension = Path.GetExtension(imagePath).ToLower();
+                string base64String = Convert.ToBase64String(imageBytes);
+
+                // Determine MIME type based on file extension
+                string mimeType;
+                switch (extension) {
+                    case ".png":
+                        mimeType = "data:image/png;base64,";
+                        break;
+                    case ".jpg":
+                    case ".jpeg":
+                        mimeType = "data:image/jpeg;base64,";
+                        break;
+                    default:
+                        throw new ApplicationException("Unsupported image format");
+                }
+
+                return $"{mimeType}{base64String}";
+            } catch (Exception ex) {
+                Logger.LogError(ex);
+                throw new ApplicationException("Error converting image to base64.");
+            }
+        }
+
+
+        // Load HTML template, replace OTP and image placeholders
         public static string LoadHtmlTemplate(string otp) {
             try {
-                string htmlTemplate = File.ReadAllText("otp_template.html");
-                return htmlTemplate.Replace("{{OTP}}", otp); // Replace the placeholder {{OTP}} with the actual OTP
+                // Get the base directory of the application and combine it with the relative path
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                string filePath = Path.Combine(basePath, "OTP", "otp_template.html");
+
+                string htmlTemplate = File.ReadAllText(filePath);
+                htmlTemplate = htmlTemplate.Replace("{{OTP}}", otp); // Replace the OTP placeholder
+
+                // Format current date and time
+                string currentDateTime = DateTime.Now.ToString("MMMM dd, yyyy - hh:mm tt");
+                htmlTemplate = htmlTemplate.Replace("{{DateTime}}", currentDateTime); // Replace DateTime placeholder
+
+                return htmlTemplate;
+
             } catch (Exception ex) {
                 Logger.LogError(ex);
                 throw new ApplicationException("Error loading HTML template.");
             }
         }
 
+
         // Send email using Gmail SMTP with HTML content synchronously
         public static void SendOTPEmail(string toEmail, string otp) {
             var emailMessage = new MimeMessage();
-            emailMessage.From.Add(new MailboxAddress("Your Company", smtpEmail));
+            emailMessage.From.Add(new MailboxAddress("AIUB Pharmacy", smtpEmail));
             emailMessage.To.Add(new MailboxAddress("", toEmail));
             emailMessage.Subject = "Your OTP Code";
 
@@ -76,9 +115,9 @@ namespace PharmacyManagementSystem.OTP {
                 Text = emailBody
             };
 
-            using (var client = new MailKit.Net.Smtp.SmtpClient()) {
+            using (var client = new SmtpClient()) {
                 try {
-                    client.Connect(smtpServer, smtpPort, false);
+                    client.Connect(smtpServer, smtpPort, MailKit.Security.SecureSocketOptions.StartTls);
                     client.Authenticate(smtpEmail, smtpPassword);
                     client.Send(emailMessage);
                     Logger.Log($"OTP email sent to {toEmail}");
@@ -106,5 +145,4 @@ namespace PharmacyManagementSystem.OTP {
             return false; // OTP does not match
         }
     }
-
 }
