@@ -28,7 +28,6 @@ CREATE TABLE Customer (
     C_UserName VARCHAR(100) UNIQUE NOT NULL,
     C_Name VARCHAR(100) NOT NULL,
     C_Dob DATE, -- Added date of birth for the customer
-    C_Address VARCHAR(255),
     C_Number VARCHAR(15) CHECK (LEN(C_Number) BETWEEN 10 AND 15), -- Phone number validation
     C_Pass VARCHAR(50) NOT NULL,
     C_Mail VARCHAR(100) UNIQUE NOT NULL,
@@ -106,3 +105,4 @@ CREATE INDEX idx_Medicine_Name ON Medicine (M_Name);
 -- ALTER TABLE Customer ADD IsDeleted BIT DEFAULT 0;
 -- ALTER TABLE Medicine ADD IsDeleted BIT DEFAULT 0;
 -- ALTER TABLE Coupon ADD IsDeleted BIT DEFAULT 0;
+-- ALTER TABLE Customer DROP COLUMN C_Address;

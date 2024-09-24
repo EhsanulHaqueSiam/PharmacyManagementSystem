@@ -1,6 +1,7 @@
 ﻿using PharmacyManagementSystem.DataAccess.Constants;
 using PharmacyManagementSystem.DataAccess.DAO;
 using PharmacyManagementSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -135,10 +136,10 @@ namespace PharmacyManagementSystem.DataAccess {
                 C_ID = (int)reader["C_ID"],
                 C_UserName = reader["C_UserName"].ToString(),
                 C_Name = reader["C_Name"].ToString(),
-                C_Address = reader["C_Address"].ToString(),
                 C_Number = reader["C_Number"].ToString(),
                 C_Pass = reader["C_Pass"].ToString(),
-                C_Mail = reader["C_Mail"].ToString()
+                C_Mail = reader["C_Mail"].ToString(),
+                C_Dob = (DateTime)reader["C_Dob"]
             };
         }
 
@@ -146,11 +147,10 @@ namespace PharmacyManagementSystem.DataAccess {
         private void AddCustomerParameters(SqlCommand cmd, Customer customer) {
             cmd.Parameters.AddWithValue("@UserName", customer.C_UserName);
             cmd.Parameters.AddWithValue("@Name", customer.C_Name);
-            cmd.Parameters.AddWithValue("@Address", customer.C_Address);
             cmd.Parameters.AddWithValue("@Number", customer.C_Number);
             cmd.Parameters.AddWithValue("@Pass", customer.C_Pass);
             cmd.Parameters.AddWithValue("@Mail", customer.C_Mail);
-            cmd.Parameters.AddWithValue("@Dob", customer.C_Dob); // Add this line to include the Dob parameter
+            cmd.Parameters.AddWithValue("@Dob", customer.C_Dob);
         }
 
     }

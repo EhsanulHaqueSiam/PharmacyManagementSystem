@@ -33,10 +33,10 @@ namespace PharmacyManagementSystem.DataAccess.Constants {
         public const string GET_CUSTOMER_BY_EMAIL = "SELECT * FROM Customer WHERE C_Mail = @Email AND IsDeleted = 0";
         public const string SEARCH_CUSTOMERS_BY_PARTIAL_USERNAME = "SELECT * FROM Customer WHERE C_UserName LIKE @PartialUsername AND IsDeleted = 0";
         public const string SEARCH_CUSTOMERS_BY_PARTIAL_PHONE = "SELECT * FROM Customer WHERE C_Number LIKE @PartialPhone AND IsDeleted = 0";
-        public const string INSERT_CUSTOMER = "INSERT INTO Customer (C_UserName, C_Name, C_Address, C_Number, C_Pass, C_Mail, C_Dob) " +
-                                              "VALUES (@UserName, @Name, @Address, @Number, @Pass, @Mail, @Dob)";
-        public const string UPDATE_CUSTOMER = "UPDATE Customer SET C_UserName = @UserName, C_Name = @Name, C_Address = @Address, C_Number = @Number, " +
-                                              "C_Pass = @Pass, C_Mail = @Mail, C_Dob = @Dob WHERE C_ID = @Id";
+        public const string INSERT_CUSTOMER = "INSERT INTO Customer (C_UserName, C_Name, C_Number, C_Pass, C_Mail, C_Dob) " +
+                                      "VALUES (@UserName, @Name, @Number, @Pass, @Mail, @Dob)";
+        public const string UPDATE_CUSTOMER = "UPDATE Customer SET C_UserName = @UserName, C_Name = @Name, C_Number = @Number, " +
+                                      "C_Pass = @Pass, C_Mail = @Mail, C_Dob = @Dob WHERE C_ID = @Id";
         public const string DELETE_CUSTOMER = "DELETE FROM Customer WHERE C_ID = @Id";
         public const string SOFT_DELETE_CUSTOMER = "UPDATE Customer SET IsDeleted = 1 WHERE C_ID = @Id";
         public const string GET_ALL_CUSTOMERS = "SELECT * FROM Customer WHERE IsDeleted = 0";
