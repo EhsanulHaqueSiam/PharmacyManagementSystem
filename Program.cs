@@ -6,6 +6,11 @@ using System.Windows.Forms;
 
 namespace PharmacyManagementSystem {
     internal static class Program {
+        public static string userName;
+        public static bool adminLog = false;
+        public static bool pharmLog = false;
+        public static bool custLog = false;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

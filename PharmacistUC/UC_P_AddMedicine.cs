@@ -42,8 +42,6 @@ namespace PharmacyManagementSystem.PharmacistUC
             MedicineController medicineController = new MedicineController(medicineDao);
 
             Medicine med = new Medicine {
-
-                M_ID = Int32.Parse(medID_txtBox.Text),
                 M_ChemicalName = medChem_txtBox.Text,
                 M_Date = DateTime.Parse(medManufact_dateBox.Text),
                 Expiry_Date = DateTime.Parse(medExpire_dateBox.Text),

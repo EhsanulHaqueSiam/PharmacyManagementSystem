@@ -36,6 +36,8 @@ namespace PharmacyManagementSystem.CustomerSignInUC
             // Access the parent form
             SignInGui parentForm = this.FindForm() as SignInGui;
 
+
+
             if (parentForm != null)
             {
                 // Call the method to switch user controls

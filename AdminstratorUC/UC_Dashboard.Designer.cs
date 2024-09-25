@@ -33,20 +33,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.admin_lbl = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.pham_lbl = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.cust_lbl = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -76,7 +76,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.admin_lbl);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label5);
@@ -86,17 +86,18 @@
             this.panel1.Size = new System.Drawing.Size(310, 596);
             this.panel1.TabIndex = 1;
             // 
-            // label12
+            // admin_lbl
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.AliceBlue;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label12.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(109, 501);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 39);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "56";
+            this.admin_lbl.AutoSize = true;
+            this.admin_lbl.BackColor = System.Drawing.Color.AliceBlue;
+            this.admin_lbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.admin_lbl.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.admin_lbl.Location = new System.Drawing.Point(109, 501);
+            this.admin_lbl.Name = "admin_lbl";
+            this.admin_lbl.Size = new System.Drawing.Size(35, 39);
+            this.admin_lbl.TabIndex = 4;
+            this.admin_lbl.Text = "0";
+            this.admin_lbl.Click += new System.EventHandler(this.label12_Click);
             // 
             // label9
             // 
@@ -145,7 +146,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.pham_lbl);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label3);
@@ -166,17 +167,18 @@
             this.label15.Text = "Pharmacist has the second highest\r\nrole\r\n\r\nPharmacist can add medicine and\r\nView " +
     "medicine.\r\n\r\nThey can do all medicine Mangement\r\n\r\nThey can sell medicine\r\n";
             // 
-            // label13
+            // pham_lbl
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.AliceBlue;
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label13.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(129, 501);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 39);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "56";
+            this.pham_lbl.AutoSize = true;
+            this.pham_lbl.BackColor = System.Drawing.Color.AliceBlue;
+            this.pham_lbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pham_lbl.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pham_lbl.Location = new System.Drawing.Point(129, 501);
+            this.pham_lbl.Name = "pham_lbl";
+            this.pham_lbl.Size = new System.Drawing.Size(35, 39);
+            this.pham_lbl.TabIndex = 5;
+            this.pham_lbl.Text = "0";
+            this.pham_lbl.Click += new System.EventHandler(this.label13_Click);
             // 
             // label10
             // 
@@ -216,7 +218,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.CornflowerBlue;
             this.panel3.Controls.Add(this.label16);
-            this.panel3.Controls.Add(this.label14);
+            this.panel3.Controls.Add(this.cust_lbl);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label4);
@@ -237,17 +239,17 @@
             this.label16.Text = "Customer has the lowest role\r\n\r\nThey can add User\r\n\r\nThey can view User\r\n\r\nThey c" +
     "an do profile management";
             // 
-            // label14
+            // cust_lbl
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.AliceBlue;
-            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label14.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(140, 501);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(51, 39);
-            this.label14.TabIndex = 6;
-            this.label14.Text = "56";
+            this.cust_lbl.AutoSize = true;
+            this.cust_lbl.BackColor = System.Drawing.Color.AliceBlue;
+            this.cust_lbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.cust_lbl.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cust_lbl.Location = new System.Drawing.Point(140, 501);
+            this.cust_lbl.Name = "cust_lbl";
+            this.cust_lbl.Size = new System.Drawing.Size(35, 39);
+            this.cust_lbl.TabIndex = 6;
+            this.cust_lbl.Text = "0";
             // 
             // label11
             // 
@@ -338,6 +340,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UC_Dashboard";
             this.Size = new System.Drawing.Size(960, 761);
+            this.Load += new System.EventHandler(this.UC_Dashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -365,12 +368,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label cust_lbl;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label pham_lbl;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label admin_lbl;
         private System.Windows.Forms.Label label9;
         private Guna.UI2.WinForms.Guna2Button exitBtn;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;

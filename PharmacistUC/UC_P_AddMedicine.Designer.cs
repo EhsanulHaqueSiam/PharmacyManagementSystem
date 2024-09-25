@@ -31,14 +31,12 @@ namespace PharmacyManagementSystem.PharmacistUC
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_P_AddMedicine));
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.medID_txtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.medManufact_dateBox = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.medAdd_btn = new Guna.UI2.WinForms.Guna2Button();
             this.medReset_btn = new Guna.UI2.WinForms.Guna2Button();
@@ -60,21 +58,11 @@ namespace PharmacyManagementSystem.PharmacistUC
             this.label1.TabIndex = 2;
             this.label1.Text = "Add Medicine";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(56, 90);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 21);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Medicine ID";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(56, 211);
+            this.label3.Location = new System.Drawing.Point(42, 90);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(154, 21);
             this.label3.TabIndex = 4;
@@ -84,7 +72,7 @@ namespace PharmacyManagementSystem.PharmacistUC
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(56, 331);
+            this.label4.Location = new System.Drawing.Point(42, 210);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(246, 21);
             this.label4.TabIndex = 5;
@@ -94,7 +82,7 @@ namespace PharmacyManagementSystem.PharmacistUC
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(56, 459);
+            this.label5.Location = new System.Drawing.Point(42, 338);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(199, 21);
             this.label5.TabIndex = 6;
@@ -130,31 +118,6 @@ namespace PharmacyManagementSystem.PharmacistUC
             this.label8.TabIndex = 9;
             this.label8.Text = "Price per unit";
             // 
-            // medID_txtBox
-            // 
-            this.medID_txtBox.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.medID_txtBox.BorderColor = System.Drawing.Color.Black;
-            this.medID_txtBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.medID_txtBox.DefaultText = "";
-            this.medID_txtBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.medID_txtBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.medID_txtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.medID_txtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.medID_txtBox.FillColor = System.Drawing.Color.LightSlateGray;
-            this.medID_txtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.medID_txtBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.medID_txtBox.ForeColor = System.Drawing.Color.White;
-            this.medID_txtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.medID_txtBox.Location = new System.Drawing.Point(83, 115);
-            this.medID_txtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.medID_txtBox.Name = "medID_txtBox";
-            this.medID_txtBox.PasswordChar = '\0';
-            this.medID_txtBox.PlaceholderText = "";
-            this.medID_txtBox.SelectedText = "";
-            this.medID_txtBox.Size = new System.Drawing.Size(346, 38);
-            this.medID_txtBox.TabIndex = 10;
-            this.medID_txtBox.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
-            // 
             // medManufact_dateBox
             // 
             this.medManufact_dateBox.Checked = true;
@@ -162,7 +125,7 @@ namespace PharmacyManagementSystem.PharmacistUC
             this.medManufact_dateBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.medManufact_dateBox.ForeColor = System.Drawing.Color.White;
             this.medManufact_dateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.medManufact_dateBox.Location = new System.Drawing.Point(83, 483);
+            this.medManufact_dateBox.Location = new System.Drawing.Point(69, 362);
             this.medManufact_dateBox.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.medManufact_dateBox.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.medManufact_dateBox.Name = "medManufact_dateBox";
@@ -245,7 +208,7 @@ namespace PharmacyManagementSystem.PharmacistUC
             this.medName_txtBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.medName_txtBox.ForeColor = System.Drawing.Color.White;
             this.medName_txtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.medName_txtBox.Location = new System.Drawing.Point(83, 236);
+            this.medName_txtBox.Location = new System.Drawing.Point(69, 115);
             this.medName_txtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.medName_txtBox.Name = "medName_txtBox";
             this.medName_txtBox.PasswordChar = '\0';
@@ -270,7 +233,7 @@ namespace PharmacyManagementSystem.PharmacistUC
             this.medChem_txtBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.medChem_txtBox.ForeColor = System.Drawing.Color.White;
             this.medChem_txtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.medChem_txtBox.Location = new System.Drawing.Point(83, 356);
+            this.medChem_txtBox.Location = new System.Drawing.Point(69, 235);
             this.medChem_txtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.medChem_txtBox.Name = "medChem_txtBox";
             this.medChem_txtBox.PasswordChar = '\0';
@@ -343,14 +306,12 @@ namespace PharmacyManagementSystem.PharmacistUC
             this.Controls.Add(this.medReset_btn);
             this.Controls.Add(this.medAdd_btn);
             this.Controls.Add(this.medManufact_dateBox);
-            this.Controls.Add(this.medID_txtBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UC_P_AddMedicine";
             this.Size = new System.Drawing.Size(960, 761);
@@ -363,14 +324,12 @@ namespace PharmacyManagementSystem.PharmacistUC
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private Guna.UI2.WinForms.Guna2TextBox medID_txtBox;
         private Guna.UI2.WinForms.Guna2DateTimePicker medManufact_dateBox;
         private Guna.UI2.WinForms.Guna2Button medAdd_btn;
         private Guna.UI2.WinForms.Guna2Button medReset_btn;

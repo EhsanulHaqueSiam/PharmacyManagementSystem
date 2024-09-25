@@ -97,7 +97,7 @@ namespace PharmacyManagementSystem.AdminstratorUC
             else if (role == "Customer")
             {
                 ICustomerDao customerDao = new CustomerDaoImpl();
-                CustomerController adminController = new CustomerController(customerDao);
+                CustomerController customerController = new CustomerController(customerDao);
                 Customer cust = new Customer
                 {
 
@@ -106,11 +106,12 @@ namespace PharmacyManagementSystem.AdminstratorUC
                     C_Number = mblNo_txtBox.Text,
                     C_Pass = pass_txtBox.Text,
                     C_UserName = userName_txtBox.Text,
+                    C_Dob = DateTime.Parse(dob_Datebox.Text),
 
                 };
 
 
-                //bool confirmMed = adminController.InsertAdmin(ad);
+                bool confirmMed = customerController.InsertCustomer(cust);
 
                 if (true)
                 {
