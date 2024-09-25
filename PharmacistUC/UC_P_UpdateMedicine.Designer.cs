@@ -196,6 +196,7 @@
             this.update_btn.Size = new System.Drawing.Size(152, 45);
             this.update_btn.TabIndex = 34;
             this.update_btn.Text = "Update";
+            this.update_btn.Click += new System.EventHandler(this.update_btn_Click);
             // 
             // manufactDate_txtbox
             // 

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using PharmacyManagementSystem.Controllers;
+using PharmacyManagementSystem.DataAccess.DAO;
+using PharmacyManagementSystem.DataAccess;
+using PharmacyManagementSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,6 +47,41 @@ namespace PharmacyManagementSystem.PharmacistUC
         private void reset_btn_Click(object sender, EventArgs e)
         {
             clearAll();
+        }
+
+        private void update_btn_Click(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(medId_txtBox.Text);
+
+            IMedicineDao medicineDao = new MedicineDaoImpl();
+            MedicineController medicineController = new MedicineController(medicineDao);
+
+            Medicine med = medicineController.GetMedicineById(id);
+            med.M_ID = id;
+            med.M_ChemicalName = chemName_txtBox.Text;
+            med.M_Name = medName_txtBox.Text;
+            med.Expiry_Date = DateTime.Parse(expireDate_txt.Text);
+            med.M_Date = DateTime.Parse(manufactDate_txtbox.Text);
+            med.M_PricePerUnit = Decimal.Parse(ppU_txtBox.Text);
+            if (ppU_txtBox.Text != "0")
+            {
+                med.M_Quantity += Int32.Parse(addQ_txtBox.Text);
+            }
+            else
+            {
+                ppU_txtBox.ResetText();
+            }
+
+            bool confirmMed = medicineController.UpdateMedicine(med);
+
+            if (confirmMed)
+            {
+                MessageBox.Show("Succesfull");
+            }
+            else
+            {
+                MessageBox.Show("Faild");
+            }
         }
     }
 }
