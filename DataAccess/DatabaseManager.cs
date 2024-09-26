@@ -14,16 +14,27 @@ namespace PharmacyManagementSystem.DataAccess {
         private readonly SemaphoreSlim _semaphore;
 
         private SqlDatabaseManager() {
-            // Initialize connection pool
-            _poolSize = 10; // Set pool size
-            _connectionPool = new ConcurrentQueue<SqlConnection>();
-            _semaphore = new SemaphoreSlim(_poolSize, _poolSize);
+            if (ConfigLoader.Instance.IsInDesignMode()) {
+                // Skip connection creation in design mode
+                return;
+            }
 
-            // Pre-populate the connection pool
-            for (int i = 0; i < _poolSize; i++) {
-                _connectionPool.Enqueue(CreateConnection());
+            try {
+                _poolSize = 10; // Set pool size
+                _connectionPool = new ConcurrentQueue<SqlConnection>();
+                _semaphore = new SemaphoreSlim(_poolSize, _poolSize);
+
+                // Pre-populate the connection pool
+                for (int i = 0; i < _poolSize; i++) {
+                    _connectionPool.Enqueue(CreateConnection());
+                }
+            } catch (Exception ex) {
+                // Log exception details for further debugging
+                Console.WriteLine($"Error initializing SqlDatabaseManager: {ex.Message}");
+                throw new InvalidOperationException("Failed to initialize the SQL Database Manager.", ex);
             }
         }
+
 
         public static SqlDatabaseManager Instance => instance.Value;
 
@@ -32,10 +43,15 @@ namespace PharmacyManagementSystem.DataAccess {
         /// </summary>
         /// <returns>A new SqlConnection object.</returns>
         private SqlConnection CreateConnection() {
-            var connectionString = ConfigLoader.Instance.GetConnectionString();
-            var connection = new SqlConnection(connectionString);
-            connection.Open();
-            return connection;
+            try {
+                var connectionString = ConfigLoader.Instance.GetConnectionString();
+                var connection = new SqlConnection(connectionString);
+                connection.Open();
+                return connection;
+            } catch (Exception ex) {
+                // Log exception here, throw an appropriate custom exception, or handle it as needed.
+                throw new InvalidOperationException("Failed to create SQL connection.", ex);
+            }
         }
 
         /// <summary>
@@ -43,10 +59,22 @@ namespace PharmacyManagementSystem.DataAccess {
         /// </summary>
         /// <returns>An open SqlConnection from the pool.</returns>
         public SqlConnection GetConnection() {
+            if (ConfigLoader.Instance.IsInDesignMode()) {
+                // Return null or mock connection in design mode
+                return null;
+            }
             _semaphore.Wait();
+
             if (_connectionPool.TryDequeue(out SqlConnection connection)) {
-                if (connection.State == ConnectionState.Closed) {
-                    connection.Open();
+                if (connection.State != ConnectionState.Open) {
+                    // Try to open the connection if it's not open
+                    try {
+                        connection.Open();
+                    } catch {
+                        // Dispose the faulty connection and create a new one
+                        connection.Dispose();
+                        connection = CreateConnection();
+                    }
                 }
                 return connection;
             } else {
@@ -64,12 +92,13 @@ namespace PharmacyManagementSystem.DataAccess {
             }
 
             if (connection.State == ConnectionState.Open) {
-                _connectionPool.Enqueue(connection);
-                _semaphore.Release();
+                _connectionPool.Enqueue(connection); // Only enqueue if it's valid
             } else {
+                // Dispose closed or invalid connections and replace with a fresh one
                 connection.Dispose();
                 _connectionPool.Enqueue(CreateConnection());
             }
+            _semaphore.Release();
         }
 
         /// <summary>
@@ -80,6 +109,9 @@ namespace PharmacyManagementSystem.DataAccess {
             var connection = GetConnection();
             try {
                 action(connection);
+            } catch (Exception ex) {
+                // Log or handle exception here
+                throw new Exception("An error occurred during database operation.", ex);
             } finally {
                 ReleaseConnection(connection);
             }
@@ -95,6 +127,9 @@ namespace PharmacyManagementSystem.DataAccess {
             var connection = GetConnection();
             try {
                 return func(connection);
+            } catch (Exception ex) {
+                // Log or handle exception here
+                throw new Exception("An error occurred during database operation.", ex);
             } finally {
                 ReleaseConnection(connection);
             }
