@@ -26,7 +26,8 @@ namespace PharmacyManagementSystem.PharmacistUC
 
         }
 
-        private void clearAll() {
+        private void clearAll()
+        {
             medId_txtBox.ResetText();
             addQ_txtBox.Clear();
             chemName_txtBox.Clear();
@@ -38,10 +39,11 @@ namespace PharmacyManagementSystem.PharmacistUC
             {
                 ppU_txtBox.ResetText();
             }
-            else {
+            else
+            {
                 ppU_txtBox.ResetText();
             }
-            
+
         }
 
         private void reset_btn_Click(object sender, EventArgs e)
@@ -109,11 +111,13 @@ namespace PharmacyManagementSystem.PharmacistUC
                     addQ_txtBox.Text = "0";
 
                 }
-                else {
+                else
+                {
                     MessageBox.Show("Mediine Not Found");
                 }
             }
-            else {
+            else
+            {
                 MessageBox.Show("Please enter the medicine id!");
             }
         }
@@ -121,5 +125,6 @@ namespace PharmacyManagementSystem.PharmacistUC
         private void UC_P_UpdateMedicine_Load(object sender, EventArgs e)
         {
 
+        }
     }
 }

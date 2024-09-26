@@ -58,9 +58,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cooper Black", 19.8F);
-            this.label1.Location = new System.Drawing.Point(19, 20);
+            this.label1.Location = new System.Drawing.Point(17, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(358, 46);
+            this.label1.Size = new System.Drawing.Size(294, 38);
             this.label1.TabIndex = 23;
             this.label1.Text = "Update Medicine";
             // 
@@ -79,13 +79,13 @@
             this.ppU_txtBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ppU_txtBox.ForeColor = System.Drawing.Color.White;
             this.ppU_txtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.ppU_txtBox.Location = new System.Drawing.Point(647, 499);
-            this.ppU_txtBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ppU_txtBox.Location = new System.Drawing.Point(575, 399);
+            this.ppU_txtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ppU_txtBox.Name = "ppU_txtBox";
             this.ppU_txtBox.PasswordChar = '\0';
             this.ppU_txtBox.PlaceholderText = "";
             this.ppU_txtBox.SelectedText = "";
-            this.ppU_txtBox.Size = new System.Drawing.Size(389, 48);
+            this.ppU_txtBox.Size = new System.Drawing.Size(346, 38);
             this.ppU_txtBox.TabIndex = 40;
             // 
             // avlQ_txtBox
@@ -103,13 +103,13 @@
             this.avlQ_txtBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avlQ_txtBox.ForeColor = System.Drawing.Color.White;
             this.avlQ_txtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.avlQ_txtBox.Location = new System.Drawing.Point(647, 304);
-            this.avlQ_txtBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.avlQ_txtBox.Location = new System.Drawing.Point(575, 243);
+            this.avlQ_txtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.avlQ_txtBox.Name = "avlQ_txtBox";
             this.avlQ_txtBox.PasswordChar = '\0';
             this.avlQ_txtBox.PlaceholderText = "";
             this.avlQ_txtBox.SelectedText = "";
-            this.avlQ_txtBox.Size = new System.Drawing.Size(389, 48);
+            this.avlQ_txtBox.Size = new System.Drawing.Size(346, 38);
             this.avlQ_txtBox.TabIndex = 39;
             // 
             // chemName_txtBox
@@ -127,13 +127,13 @@
             this.chemName_txtBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chemName_txtBox.ForeColor = System.Drawing.Color.White;
             this.chemName_txtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chemName_txtBox.Location = new System.Drawing.Point(73, 454);
-            this.chemName_txtBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.chemName_txtBox.Location = new System.Drawing.Point(65, 363);
+            this.chemName_txtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chemName_txtBox.Name = "chemName_txtBox";
             this.chemName_txtBox.PasswordChar = '\0';
             this.chemName_txtBox.PlaceholderText = "";
             this.chemName_txtBox.SelectedText = "";
-            this.chemName_txtBox.Size = new System.Drawing.Size(389, 48);
+            this.chemName_txtBox.Size = new System.Drawing.Size(346, 38);
             this.chemName_txtBox.TabIndex = 38;
             // 
             // medName_txtBox
@@ -151,13 +151,13 @@
             this.medName_txtBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.medName_txtBox.ForeColor = System.Drawing.Color.White;
             this.medName_txtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.medName_txtBox.Location = new System.Drawing.Point(73, 304);
-            this.medName_txtBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.medName_txtBox.Location = new System.Drawing.Point(65, 243);
+            this.medName_txtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.medName_txtBox.Name = "medName_txtBox";
             this.medName_txtBox.PasswordChar = '\0';
             this.medName_txtBox.PlaceholderText = "";
             this.medName_txtBox.SelectedText = "";
-            this.medName_txtBox.Size = new System.Drawing.Size(389, 48);
+            this.medName_txtBox.Size = new System.Drawing.Size(346, 38);
             this.medName_txtBox.TabIndex = 37;
             // 
             // expireDate_txt
@@ -167,12 +167,11 @@
             this.expireDate_txt.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.expireDate_txt.ForeColor = System.Drawing.Color.White;
             this.expireDate_txt.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.expireDate_txt.Location = new System.Drawing.Point(647, 152);
-            this.expireDate_txt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.expireDate_txt.Location = new System.Drawing.Point(575, 122);
             this.expireDate_txt.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.expireDate_txt.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.expireDate_txt.Name = "expireDate_txt";
-            this.expireDate_txt.Size = new System.Drawing.Size(389, 45);
+            this.expireDate_txt.Size = new System.Drawing.Size(346, 36);
             this.expireDate_txt.TabIndex = 36;
             this.expireDate_txt.Value = new System.DateTime(2024, 9, 23, 20, 46, 46, 573);
             // 
@@ -191,11 +190,10 @@
             this.update_btn.HoverState.Font = new System.Drawing.Font("Gill Sans MT", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.update_btn.Image = ((System.Drawing.Image)(resources.GetObject("update_btn.Image")));
             this.update_btn.ImageSize = new System.Drawing.Size(30, 30);
-            this.update_btn.Location = new System.Drawing.Point(634, 604);
-            this.update_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.update_btn.Location = new System.Drawing.Point(564, 483);
             this.update_btn.Name = "update_btn";
             this.update_btn.PressedColor = System.Drawing.Color.MidnightBlue;
-            this.update_btn.Size = new System.Drawing.Size(171, 56);
+            this.update_btn.Size = new System.Drawing.Size(152, 45);
             this.update_btn.TabIndex = 34;
             this.update_btn.Text = "Update";
             this.update_btn.Click += new System.EventHandler(this.update_btn_Click);
@@ -207,12 +205,11 @@
             this.manufactDate_txtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.manufactDate_txtbox.ForeColor = System.Drawing.Color.White;
             this.manufactDate_txtbox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.manufactDate_txtbox.Location = new System.Drawing.Point(73, 612);
-            this.manufactDate_txtbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.manufactDate_txtbox.Location = new System.Drawing.Point(65, 490);
             this.manufactDate_txtbox.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.manufactDate_txtbox.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.manufactDate_txtbox.Name = "manufactDate_txtbox";
-            this.manufactDate_txtbox.Size = new System.Drawing.Size(389, 45);
+            this.manufactDate_txtbox.Size = new System.Drawing.Size(346, 36);
             this.manufactDate_txtbox.TabIndex = 33;
             this.manufactDate_txtbox.Value = new System.DateTime(2024, 9, 23, 20, 46, 46, 573);
             // 
@@ -231,22 +228,22 @@
             this.medId_txtBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.medId_txtBox.ForeColor = System.Drawing.Color.White;
             this.medId_txtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.medId_txtBox.Location = new System.Drawing.Point(73, 152);
-            this.medId_txtBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.medId_txtBox.Location = new System.Drawing.Point(65, 122);
+            this.medId_txtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.medId_txtBox.Name = "medId_txtBox";
             this.medId_txtBox.PasswordChar = '\0';
             this.medId_txtBox.PlaceholderText = "";
             this.medId_txtBox.SelectedText = "";
-            this.medId_txtBox.Size = new System.Drawing.Size(389, 48);
+            this.medId_txtBox.Size = new System.Drawing.Size(346, 38);
             this.medId_txtBox.TabIndex = 32;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(620, 454);
+            this.label8.Location = new System.Drawing.Point(551, 363);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(168, 27);
+            this.label8.Size = new System.Drawing.Size(138, 21);
             this.label8.TabIndex = 31;
             this.label8.Text = "Price per unit";
             // 
@@ -254,9 +251,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(620, 272);
+            this.label7.Location = new System.Drawing.Point(551, 218);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(223, 27);
+            this.label7.Size = new System.Drawing.Size(183, 21);
             this.label7.TabIndex = 30;
             this.label7.Text = "Available Quantity";
             // 
@@ -264,9 +261,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(620, 121);
+            this.label6.Location = new System.Drawing.Point(551, 97);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(146, 27);
+            this.label6.Size = new System.Drawing.Size(119, 21);
             this.label6.TabIndex = 29;
             this.label6.Text = "Expire Date";
             // 
@@ -274,9 +271,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(43, 582);
+            this.label5.Location = new System.Drawing.Point(38, 466);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(242, 27);
+            this.label5.Size = new System.Drawing.Size(199, 21);
             this.label5.TabIndex = 28;
             this.label5.Text = "Manufacturing Date";
             // 
@@ -284,9 +281,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(43, 422);
+            this.label4.Location = new System.Drawing.Point(38, 338);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(303, 27);
+            this.label4.Size = new System.Drawing.Size(246, 21);
             this.label4.TabIndex = 27;
             this.label4.Text = "Medicine Chemical Name";
             // 
@@ -294,9 +291,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(43, 272);
+            this.label3.Location = new System.Drawing.Point(38, 218);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(190, 27);
+            this.label3.Size = new System.Drawing.Size(154, 21);
             this.label3.TabIndex = 26;
             this.label3.Text = "Medicine Name";
             // 
@@ -304,20 +301,18 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 121);
+            this.label2.Location = new System.Drawing.Point(38, 97);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 27);
+            this.label2.Size = new System.Drawing.Size(123, 21);
             this.label2.TabIndex = 25;
             this.label2.Text = "Medicine ID";
             // 
-
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel1.Location = new System.Drawing.Point(550, 90);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(489, 72);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(6, 654);
+            this.panel1.Size = new System.Drawing.Size(5, 523);
             this.panel1.TabIndex = 42;
             // 
             // addQ_txtBox
@@ -336,22 +331,22 @@
             this.addQ_txtBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addQ_txtBox.ForeColor = System.Drawing.Color.Black;
             this.addQ_txtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.addQ_txtBox.Location = new System.Drawing.Point(891, 388);
-            this.addQ_txtBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.addQ_txtBox.Location = new System.Drawing.Point(792, 310);
+            this.addQ_txtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addQ_txtBox.Name = "addQ_txtBox";
             this.addQ_txtBox.PasswordChar = '\0';
             this.addQ_txtBox.PlaceholderText = "";
             this.addQ_txtBox.SelectedText = "";
-            this.addQ_txtBox.Size = new System.Drawing.Size(145, 48);
+            this.addQ_txtBox.Size = new System.Drawing.Size(129, 38);
             this.addQ_txtBox.TabIndex = 43;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(727, 399);
+            this.label9.Location = new System.Drawing.Point(646, 319);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(162, 27);
+            this.label9.Size = new System.Drawing.Size(135, 21);
             this.label9.TabIndex = 44;
             this.label9.Text = "Add Quantity";
             // 
@@ -374,11 +369,10 @@
             this.reset_btn.HoverState.Font = new System.Drawing.Font("Gill Sans MT", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reset_btn.Image = ((System.Drawing.Image)(resources.GetObject("reset_btn.Image")));
             this.reset_btn.ImageSize = new System.Drawing.Size(30, 30);
-            this.reset_btn.Location = new System.Drawing.Point(865, 601);
-            this.reset_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.reset_btn.Location = new System.Drawing.Point(769, 481);
             this.reset_btn.Name = "reset_btn";
             this.reset_btn.PressedColor = System.Drawing.Color.MidnightBlue;
-            this.reset_btn.Size = new System.Drawing.Size(171, 56);
+            this.reset_btn.Size = new System.Drawing.Size(152, 45);
             this.reset_btn.TabIndex = 46;
             this.reset_btn.Text = "Reset";
             this.reset_btn.Click += new System.EventHandler(this.reset_btn_Click);
@@ -397,17 +391,18 @@
             this.search_btn.HoverState.FillColor = System.Drawing.Color.Indigo;
             this.search_btn.HoverState.Font = new System.Drawing.Font("Gill Sans MT", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search_btn.Image = ((System.Drawing.Image)(resources.GetObject("search_btn.Image")));
-            this.search_btn.Location = new System.Drawing.Point(294, 167);
+            this.search_btn.Location = new System.Drawing.Point(307, 166);
+            this.search_btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.search_btn.Name = "search_btn";
             this.search_btn.PressedColor = System.Drawing.Color.MidnightBlue;
-            this.search_btn.Size = new System.Drawing.Size(117, 37);
+            this.search_btn.Size = new System.Drawing.Size(104, 30);
             this.search_btn.TabIndex = 48;
             this.search_btn.Text = "Search";
             this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
             // 
             // UC_P_UpdateMedicine
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.search_btn);
             this.Controls.Add(this.reset_btn);
@@ -430,10 +425,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UC_P_UpdateMedicine";
             this.Size = new System.Drawing.Size(960, 761);
-
             this.Load += new System.EventHandler(this.UC_P_UpdateMedicine_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
