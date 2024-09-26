@@ -82,6 +82,45 @@ namespace PharmacyManagementSystem.PharmacistUC
             {
                 MessageBox.Show("Faild");
             }
+            search_btn.PerformClick();
+        }
+
+        private void search_btn_Click(object sender, EventArgs e)
+        {
+            if (medId_txtBox.Text != "")
+            {
+                int id = Int32.Parse(medId_txtBox.Text);
+
+                IMedicineDao medicineDao = new MedicineDaoImpl();
+                MedicineController medicineController = new MedicineController(medicineDao);
+
+                Medicine med = medicineController.GetMedicineById(id);
+
+                if (med != null)
+                {
+
+                    chemName_txtBox.Text = med.M_ChemicalName;
+                    medName_txtBox.Text = med.M_Name;
+                    expireDate_txt.Text = med.Expiry_Date.ToString();
+                    manufactDate_txtbox.Text = med.M_Date.ToString();
+                    ppU_txtBox.Text = med.M_PricePerUnit.ToString();
+                    avlQ_txtBox.Text = med.M_Quantity.ToString();
+                    ppU_txtBox.Text = med.M_PricePerUnit.ToString();
+                    addQ_txtBox.Text = "0";
+
+                }
+                else {
+                    MessageBox.Show("Mediine Not Found");
+                }
+            }
+            else {
+                MessageBox.Show("Please enter the medicine id!");
+            }
+        }
+
+        private void UC_P_UpdateMedicine_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

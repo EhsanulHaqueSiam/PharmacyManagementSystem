@@ -41,18 +41,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse6 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.uC_P_ViewMedicines1 = new PharmacyManagementSystem.PharmacistUC.UC_P_ViewMedicines();
             this.uC_P_SellMedicine1 = new PharmacyManagementSystem.PharmacistUC.UC_P_SellMedicine();
             this.uC_P_MedicineValidityCheck1 = new PharmacyManagementSystem.PharmacistUC.UC_P_MedicineValidityCheck();
             this.uC_P_UpdateMedicine1 = new PharmacyManagementSystem.PharmacistUC.UC_P_UpdateMedicine();
             this.uC_P_AddMedicine1 = new PharmacyManagementSystem.PharmacistUC.UC_P_AddMedicine();
             this.uC_P_Dashboard1 = new PharmacyManagementSystem.PharmacistUC.UC_P_Dashboard();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse6 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -217,7 +217,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(85, 182);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(236, 38);
+            this.label1.Size = new System.Drawing.Size(227, 36);
             this.label1.TabIndex = 1;
             this.label1.Text = "Pharmacist";
             // 
@@ -246,30 +246,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(960, 761);
             this.panel2.TabIndex = 1;
-            // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.TargetControl = this.panel2;
-            // 
-            // guna2Elipse2
-            // 
-            this.guna2Elipse2.TargetControl = this.panel2;
-            // 
-            // guna2Elipse3
-            // 
-            this.guna2Elipse3.TargetControl = this.panel2;
-            // 
-            // guna2Elipse4
-            // 
-            this.guna2Elipse4.TargetControl = this.panel2;
-            // 
-            // guna2Elipse5
-            // 
-            this.guna2Elipse5.TargetControl = this.panel2;
-            // 
-            // guna2Elipse6
-            // 
-            this.guna2Elipse6.TargetControl = this.panel2;
             // 
             // uC_P_ViewMedicines1
             // 
@@ -318,6 +294,30 @@
             this.uC_P_Dashboard1.Name = "uC_P_Dashboard1";
             this.uC_P_Dashboard1.Size = new System.Drawing.Size(960, 761);
             this.uC_P_Dashboard1.TabIndex = 0;
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.TargetControl = this.panel2;
+            // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.TargetControl = this.panel2;
+            // 
+            // guna2Elipse3
+            // 
+            this.guna2Elipse3.TargetControl = this.panel2;
+            // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.TargetControl = this.panel2;
+            // 
+            // guna2Elipse5
+            // 
+            this.guna2Elipse5.TargetControl = this.panel2;
+            // 
+            // guna2Elipse6
+            // 
+            this.guna2Elipse6.TargetControl = this.panel2;
             // 
             // PharmacistGUI
             // 

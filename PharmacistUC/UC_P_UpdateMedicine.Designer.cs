@@ -46,12 +46,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.addQ_txtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.reset_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.search_btn = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // label1
@@ -307,27 +307,6 @@
             this.label2.TabIndex = 25;
             this.label2.Text = "Medicine ID";
             // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BorderRadius = 20;
-            this.guna2Button1.BorderThickness = 1;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.DarkSlateBlue;
-            this.guna2Button1.Font = new System.Drawing.Font("Gill Sans MT", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.Indigo;
-            this.guna2Button1.HoverState.Font = new System.Drawing.Font("Gill Sans MT", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
-            this.guna2Button1.Location = new System.Drawing.Point(327, 172);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.PressedColor = System.Drawing.Color.MidnightBlue;
-            this.guna2Button1.Size = new System.Drawing.Size(117, 37);
-            this.guna2Button1.TabIndex = 41;
-            this.guna2Button1.Text = "Search";
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkSlateGray;
@@ -398,15 +377,37 @@
             this.reset_btn.Text = "Reset";
             this.reset_btn.Click += new System.EventHandler(this.reset_btn_Click);
             // 
+            // search_btn
+            // 
+            this.search_btn.BorderRadius = 20;
+            this.search_btn.BorderThickness = 1;
+            this.search_btn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.search_btn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.search_btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.search_btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.search_btn.FillColor = System.Drawing.Color.DarkSlateBlue;
+            this.search_btn.Font = new System.Drawing.Font("Gill Sans MT", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search_btn.ForeColor = System.Drawing.Color.White;
+            this.search_btn.HoverState.FillColor = System.Drawing.Color.Indigo;
+            this.search_btn.HoverState.Font = new System.Drawing.Font("Gill Sans MT", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search_btn.Image = ((System.Drawing.Image)(resources.GetObject("search_btn.Image")));
+            this.search_btn.Location = new System.Drawing.Point(294, 167);
+            this.search_btn.Name = "search_btn";
+            this.search_btn.PressedColor = System.Drawing.Color.MidnightBlue;
+            this.search_btn.Size = new System.Drawing.Size(117, 37);
+            this.search_btn.TabIndex = 48;
+            this.search_btn.Text = "Search";
+            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
+            // 
             // UC_P_UpdateMedicine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.search_btn);
             this.Controls.Add(this.reset_btn);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.addQ_txtBox);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.ppU_txtBox);
             this.Controls.Add(this.avlQ_txtBox);
             this.Controls.Add(this.chemName_txtBox);
@@ -425,6 +426,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UC_P_UpdateMedicine";
             this.Size = new System.Drawing.Size(960, 761);
+            this.Load += new System.EventHandler(this.UC_P_UpdateMedicine_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,11 +450,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2TextBox addQ_txtBox;
         private System.Windows.Forms.Label label9;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Button reset_btn;
+        private Guna.UI2.WinForms.Guna2Button search_btn;
     }
 }
