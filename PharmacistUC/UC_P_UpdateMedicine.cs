@@ -138,8 +138,5 @@ namespace PharmacyManagementSystem.PharmacistUC {
         {
 
         }
-
-        private void UC_P_UpdateMedicine_Load(object sender, EventArgs e) {
-        }
     }
 }
