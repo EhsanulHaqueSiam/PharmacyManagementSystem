@@ -10,7 +10,6 @@ public sealed class ConfigLoader {
 
     private readonly string _configFilePath;
     private readonly XDocument _config;
-
     private ConfigLoader() {
         const string configFileName = "config.xml";
 
@@ -23,21 +22,29 @@ public sealed class ConfigLoader {
 
         Console.WriteLine("Config file path: " + _configFilePath);
 
-        
         if (!File.Exists(_configFilePath)) {
+            Console.WriteLine($"Configuration file not found at: {_configFilePath}");
             throw new FileNotFoundException($"Configuration file not found at: {_configFilePath}");
         }
 
-        _config = LoadConfig();
+        try {
+            _config = LoadConfig();
+        } catch (FileNotFoundException ex) {
+            Console.WriteLine($"Config file not found: {_configFilePath}");
+            throw new ConfigurationException("Configuration file could not be loaded.", ex);
+        } catch (Exception ex) {
+            Console.WriteLine($"Error loading configuration: {ex.Message}");
+            throw new ConfigurationException("An error occurred while loading the configuration.", ex);
+        }
 
         if (_config == null) {
             Console.WriteLine("Failed to load configuration.");
             throw new ConfigurationException("Configuration could not be loaded.");
-
         }
     }
 
-    private bool IsInDesignMode() {
+
+    public bool IsInDesignMode() {
         return AppDomain.CurrentDomain.FriendlyName.Contains("DefaultDomain") ||
                System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime;
     }
@@ -56,18 +63,24 @@ public sealed class ConfigLoader {
 
 
     public string GetValue(string key) {
+        if (_config == null || _config.Root == null) {
+            throw new ConfigurationException("Configuration is not loaded or is missing a root element.");
+        }
+
         var keys = key.Split('/');
         XElement element = _config.Root;
 
         foreach (var k in keys) {
-            element = element.Element(k);
+            element = element?.Element(k);
             if (element == null) {
-                return null;
+                throw new ConfigurationException($"Key '{key}' not found in configuration.");
             }
         }
 
         return element.Value;
     }
+
+
 
     public TValue GetValue<TValue>(string key) {
         string value = GetValue(key);
@@ -100,7 +113,12 @@ public sealed class ConfigLoader {
     }
 
     // Existing methods for database configurations
-    public string GetSqlServerName() => GetValue("SqlServerName");
+    public string GetSqlServerName() {
+        var value = GetValue("SqlServerName");
+        Console.WriteLine("SQL Server Name: " + value);
+        return value;
+    }
+
     public string GetDatabaseName() => GetValue("DatabaseName");
     public string GetDatabaseFilePath() => GetValue("DatabaseFilePath");
     public string GetUserId() => GetValue("UserId");
@@ -112,6 +130,10 @@ public sealed class ConfigLoader {
         var databaseFilePath = GetDatabaseFilePath();
         var userId = GetUserId();
         var password = GetPassword();
+
+        if (string.IsNullOrEmpty(serverName)) {
+            throw new ConfigurationException("SQL Server name is not specified.");
+        }
 
         if (!string.IsNullOrEmpty(serverName)) {
             var builder = new SqlConnectionStringBuilder {
