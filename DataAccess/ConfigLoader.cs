@@ -10,6 +10,7 @@ public sealed class ConfigLoader {
 
     private readonly string _configFilePath;
     private readonly XDocument _config;
+
     private ConfigLoader() {
         const string configFileName = "config.xml";
 
@@ -22,24 +23,17 @@ public sealed class ConfigLoader {
 
         Console.WriteLine("Config file path: " + _configFilePath);
 
+
         if (!File.Exists(_configFilePath)) {
-            Console.WriteLine($"Configuration file not found at: {_configFilePath}");
             throw new FileNotFoundException($"Configuration file not found at: {_configFilePath}");
         }
 
-        try {
-            _config = LoadConfig();
-        } catch (FileNotFoundException ex) {
-            Console.WriteLine($"Config file not found: {_configFilePath}");
-            throw new ConfigurationException("Configuration file could not be loaded.", ex);
-        } catch (Exception ex) {
-            Console.WriteLine($"Error loading configuration: {ex.Message}");
-            throw new ConfigurationException("An error occurred while loading the configuration.", ex);
-        }
+        _config = LoadConfig();
 
         if (_config == null) {
             Console.WriteLine("Failed to load configuration.");
             throw new ConfigurationException("Configuration could not be loaded.");
+
         }
     }
 
@@ -60,18 +54,15 @@ public sealed class ConfigLoader {
         }
     }
 
-    public string GetValue(string key) {
-        if (_config == null || _config.Root == null) {
-            throw new ConfigurationException("Configuration is not loaded or is missing a root element.");
-        }
 
+    public string GetValue(string key) {
         var keys = key.Split('/');
         XElement element = _config.Root;
 
         foreach (var k in keys) {
-            element = element?.Element(k);
+            element = element.Element(k);
             if (element == null) {
-                throw new ConfigurationException($"Key '{key}' not found in configuration.");
+                return null;
             }
         }
 
@@ -91,22 +82,38 @@ public sealed class ConfigLoader {
         }
     }
 
-    // SMTP Configuration
-    public string GetSmtpEmail() => GetValue("SMTP/Email");
-    public string GetSmtpPassword() => GetValue("SMTP/AppPassword");
-    public string GetSmtpServer() => GetValue("SMTP/SmtpServer");
-    public int GetSmtpPort() => GetValue<int>("SMTP/Port");
+    // New methods for SMTP Configuration
+    public string GetSmtpEmail() {
+        return GetValue("SMTP/Email");
+    }
 
-    // SQL Server and LocalDB Configuration
+    public string GetSmtpPassword() {
+        return GetValue("SMTP/AppPassword");
+    }
+
+    public string GetSmtpServer() {
+        return GetValue("SMTP/SmtpServer");
+    }
+
+    public int GetSmtpPort() {
+        return GetValue<int>("SMTP/Port");
+    }
+
+    // Existing methods for database configurations
+    public string GetSqlServerName() => GetValue("SqlServerName");
+    public string GetDatabaseName() => GetValue("DatabaseName");
+    public string GetDatabaseFilePath() => GetValue("DatabaseFilePath");
+    public string GetUserId() => GetValue("UserId");
+    public string GetPassword() => GetValue("Password");
+
     public string GetConnectionString() {
-        var serverName = GetValue("SqlServerName");
-        var databaseName = GetValue("DatabaseName");
-        var databaseFilePath = GetValue("DatabaseFilePath");
-        var userId = GetValue("UserId");
-        var password = GetValue("Password");
+        var serverName = GetSqlServerName();
+        var databaseName = GetDatabaseName();
+        var databaseFilePath = GetDatabaseFilePath();
+        var userId = GetUserId();
+        var password = GetPassword();
 
         if (!string.IsNullOrEmpty(serverName)) {
-            // SQL Server connection
             var builder = new SqlConnectionStringBuilder {
                 DataSource = serverName,
                 InitialCatalog = databaseName,
@@ -117,6 +124,7 @@ public sealed class ConfigLoader {
                 if (string.IsNullOrEmpty(userId)) {
                     throw new ConfigurationException("User ID is not specified in the configuration.");
                 }
+
                 if (string.IsNullOrEmpty(password)) {
                     throw new ConfigurationException("Password is not specified in the configuration.");
                 }
@@ -127,7 +135,6 @@ public sealed class ConfigLoader {
 
             return builder.ConnectionString;
         } else if (!string.IsNullOrEmpty(databaseFilePath)) {
-            // LocalDB connection
             var builder = new SqlConnectionStringBuilder {
                 DataSource = @"(LocalDB)\MSSQLLocalDB",
                 AttachDBFilename = databaseFilePath,
