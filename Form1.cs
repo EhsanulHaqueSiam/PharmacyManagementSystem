@@ -145,5 +145,9 @@ namespace PharmacyManagementSystem
             s1.Show();
             this.Hide();
         }
+
+        private void medicinePicture_panel_Paint(object sender, PaintEventArgs e) {
+
+        }
     }
 }
