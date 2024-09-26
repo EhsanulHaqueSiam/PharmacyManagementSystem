@@ -16,5 +16,9 @@ namespace PharmacyManagementSystem.PharmacistUC
         {
             InitializeComponent();
         }
+
+        private void UC_P_MedicineValidityCheck_Load(object sender, EventArgs e) {
+
+        }
     }
 }

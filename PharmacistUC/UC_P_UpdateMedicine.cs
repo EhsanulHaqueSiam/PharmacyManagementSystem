@@ -1,19 +1,29 @@
 ﻿using PharmacyManagementSystem.Controllers;
-using PharmacyManagementSystem.DataAccess;
 using PharmacyManagementSystem.DataAccess.DAO;
+using PharmacyManagementSystem.DataAccess;
 using PharmacyManagementSystem.Model;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PharmacyManagementSystem.PharmacistUC {
-    public partial class UC_P_UpdateMedicine : UserControl {
-        private readonly IMedicineDao _medicineDao;
-        private readonly MedicineController _medicineController;
-
-        public UC_P_UpdateMedicine() {
+namespace PharmacyManagementSystem.PharmacistUC
+{
+    public partial class UC_P_UpdateMedicine : UserControl
+    {
+        public UC_P_UpdateMedicine()
+        {
             InitializeComponent();
-            _medicineDao = new MedicineDaoImpl();
-            _medicineController = new MedicineController(_medicineDao);
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void clearAll() {
@@ -24,83 +34,58 @@ namespace PharmacyManagementSystem.PharmacistUC {
             expireDate_txt.ResetText();
             manufactDate_txtbox.ResetText();
             medName_txtBox.ResetText();
-            ppU_txtBox.ResetText();
+            if (ppU_txtBox.Text != "0")
+            {
+                ppU_txtBox.ResetText();
+            }
+            else {
+                ppU_txtBox.ResetText();
+            }
+            
         }
 
-        private void reset_btn_Click(object sender, EventArgs e) {
+        private void reset_btn_Click(object sender, EventArgs e)
+        {
             clearAll();
         }
 
-        private void update_btn_Click(object sender, EventArgs e) {
-            try {
-                // Validate inputs
-                if (string.IsNullOrEmpty(medId_txtBox.Text) || !int.TryParse(medId_txtBox.Text, out int id)) {
-                    MessageBox.Show("Please enter a valid Medicine ID.");
-                    return;
-                }
+        private void update_btn_Click(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(medId_txtBox.Text);
 
-                if (string.IsNullOrEmpty(chemName_txtBox.Text) || string.IsNullOrEmpty(medName_txtBox.Text)) {
-                    MessageBox.Show("Please provide valid chemical and medicine names.");
-                    return;
-                }
+            IMedicineDao medicineDao = new MedicineDaoImpl();
+            MedicineController medicineController = new MedicineController(medicineDao);
 
-                if (string.IsNullOrEmpty(expireDate_txt.Text) || !DateTime.TryParse(expireDate_txt.Text, out DateTime expiryDate)) {
-                    MessageBox.Show("Please enter a valid expiry date.");
-                    return;
-                }
+            Medicine med = medicineController.GetMedicineById(id);
+            med.M_ID = id;
+            med.M_ChemicalName = chemName_txtBox.Text;
+            med.M_Name = medName_txtBox.Text;
+            med.Expiry_Date = DateTime.Parse(expireDate_txt.Text);
+            med.M_Date = DateTime.Parse(manufactDate_txtbox.Text);
+            med.M_PricePerUnit = Decimal.Parse(ppU_txtBox.Text);
+            if (ppU_txtBox.Text != "0")
+            {
+                med.M_Quantity += Int32.Parse(addQ_txtBox.Text);
+            }
+            else
+            {
+                ppU_txtBox.ResetText();
+            }
 
-                if (string.IsNullOrEmpty(manufactDate_txtbox.Text) || !DateTime.TryParse(manufactDate_txtbox.Text, out DateTime manufactureDate)) {
-                    MessageBox.Show("Please enter a valid manufacturing date.");
-                    return;
-                }
+            bool confirmMed = medicineController.UpdateMedicine(med);
 
-                if (string.IsNullOrEmpty(ppU_txtBox.Text) || !decimal.TryParse(ppU_txtBox.Text, out decimal pricePerUnit)) {
-                    MessageBox.Show("Please enter a valid price per unit.");
-                    return;
-                }
-
-                if (string.IsNullOrEmpty(addQ_txtBox.Text) || !int.TryParse(addQ_txtBox.Text, out int addedQuantity)) {
-                    MessageBox.Show("Please enter a valid quantity to add.");
-                    return;
-                }
-
-                // Get the medicine by ID
-                Medicine medicine = _medicineController.GetMedicineById(id);
-                if (medicine == null) {
-                    MessageBox.Show("Medicine not found.");
-                    return;
-                }
-
-                // Update medicine details
-                medicine.M_ID = id;
-                medicine.M_ChemicalName = chemName_txtBox.Text;
-                medicine.M_Name = medName_txtBox.Text;
-                medicine.Expiry_Date = expiryDate;
-                medicine.M_Date = manufactureDate;
-                medicine.M_PricePerUnit = pricePerUnit;
-
-                // Update quantity if provided
-                if (addedQuantity > 0) {
-                    medicine.M_Quantity += addedQuantity;
-                }
-
-                // Update the medicine in the database
-                bool updateSuccess = _medicineController.UpdateMedicine(medicine);
-
-                if (updateSuccess) {
-                    MessageBox.Show("Medicine updated successfully.");
-                    clearAll();
-                } else {
-                    MessageBox.Show("Failed to update the medicine.");
-                }
-            } catch (FormatException ex) {
-                MessageBox.Show($"Input format error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } catch (Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (confirmMed)
+            {
+                MessageBox.Show("Succesfull");
+            }
+            else
+            {
+                MessageBox.Show("Faild");
             }
         }
 
         private void UC_P_UpdateMedicine_Load(object sender, EventArgs e) {
+
         }
     }
 }

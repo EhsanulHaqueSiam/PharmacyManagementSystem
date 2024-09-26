@@ -43,7 +43,6 @@ public sealed class ConfigLoader {
         }
     }
 
-
     public bool IsInDesignMode() {
         return AppDomain.CurrentDomain.FriendlyName.Contains("DefaultDomain") ||
                System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime;
@@ -60,7 +59,6 @@ public sealed class ConfigLoader {
             throw new ConfigurationException($"Error loading configuration from {_configFilePath}", ex);
         }
     }
-
 
     public string GetValue(string key) {
         if (_config == null || _config.Root == null) {
@@ -80,8 +78,6 @@ public sealed class ConfigLoader {
         return element.Value;
     }
 
-
-
     public TValue GetValue<TValue>(string key) {
         string value = GetValue(key);
         if (value == null) {
@@ -95,47 +91,22 @@ public sealed class ConfigLoader {
         }
     }
 
-    // New methods for SMTP Configuration
-    public string GetSmtpEmail() {
-        return GetValue("SMTP/Email");
-    }
+    // SMTP Configuration
+    public string GetSmtpEmail() => GetValue("SMTP/Email");
+    public string GetSmtpPassword() => GetValue("SMTP/AppPassword");
+    public string GetSmtpServer() => GetValue("SMTP/SmtpServer");
+    public int GetSmtpPort() => GetValue<int>("SMTP/Port");
 
-    public string GetSmtpPassword() {
-        return GetValue("SMTP/AppPassword");
-    }
-
-    public string GetSmtpServer() {
-        return GetValue("SMTP/SmtpServer");
-    }
-
-    public int GetSmtpPort() {
-        return GetValue<int>("SMTP/Port");
-    }
-
-    // Existing methods for database configurations
-    public string GetSqlServerName() {
-        var value = GetValue("SqlServerName");
-        Console.WriteLine("SQL Server Name: " + value);
-        return value;
-    }
-
-    public string GetDatabaseName() => GetValue("DatabaseName");
-    public string GetDatabaseFilePath() => GetValue("DatabaseFilePath");
-    public string GetUserId() => GetValue("UserId");
-    public string GetPassword() => GetValue("Password");
-
+    // SQL Server and LocalDB Configuration
     public string GetConnectionString() {
-        var serverName = GetSqlServerName();
-        var databaseName = GetDatabaseName();
-        var databaseFilePath = GetDatabaseFilePath();
-        var userId = GetUserId();
-        var password = GetPassword();
-
-        if (string.IsNullOrEmpty(serverName)) {
-            throw new ConfigurationException("SQL Server name is not specified.");
-        }
+        var serverName = GetValue("SqlServerName");
+        var databaseName = GetValue("DatabaseName");
+        var databaseFilePath = GetValue("DatabaseFilePath");
+        var userId = GetValue("UserId");
+        var password = GetValue("Password");
 
         if (!string.IsNullOrEmpty(serverName)) {
+            // SQL Server connection
             var builder = new SqlConnectionStringBuilder {
                 DataSource = serverName,
                 InitialCatalog = databaseName,
@@ -146,7 +117,6 @@ public sealed class ConfigLoader {
                 if (string.IsNullOrEmpty(userId)) {
                     throw new ConfigurationException("User ID is not specified in the configuration.");
                 }
-
                 if (string.IsNullOrEmpty(password)) {
                     throw new ConfigurationException("Password is not specified in the configuration.");
                 }
@@ -157,6 +127,7 @@ public sealed class ConfigLoader {
 
             return builder.ConnectionString;
         } else if (!string.IsNullOrEmpty(databaseFilePath)) {
+            // LocalDB connection
             var builder = new SqlConnectionStringBuilder {
                 DataSource = @"(LocalDB)\MSSQLLocalDB",
                 AttachDBFilename = databaseFilePath,
