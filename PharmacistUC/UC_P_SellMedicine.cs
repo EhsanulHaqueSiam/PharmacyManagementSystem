@@ -13,9 +13,9 @@ namespace PharmacyManagementSystem.PharmacistUC {
 
     public partial class UC_P_SellMedicine : UserControl {
 
-        protected int valueAmount;
-        protected int valueId;
-        protected int noOfUnit;
+        double valueAmount;
+        int valueId;
+        int noOfUnit;
         protected int n, totalAmount = 0;
         protected Int64 quantity, newQuantity;
 
@@ -107,9 +107,13 @@ namespace PharmacyManagementSystem.PharmacistUC {
 
                     selectedMedicine.M_Quantity += noOfUnit;
                     medicineController.UpdateMedicine(selectedMedicine);
+                    Tk_txt.Text = "Tk " + (double.Parse(Tk_txt.Text.Replace("Tk ", "")) - valueAmount).ToString();
+
 
                 }
-            }else { 
+            }
+            else {
+                MessageBox.Show("Row not selected!");
             }
         }
 
@@ -200,13 +204,22 @@ namespace PharmacyManagementSystem.PharmacistUC {
         {
             try
             {
-                valueAmount = int.Parse(grid_txt.Rows[e.RowIndex].Cells[5].Value.ToString());
+
+                valueAmount = double.Parse(grid_txt.Rows[e.RowIndex].Cells[5].Value.ToString());
                 valueId = int.Parse(grid_txt.Rows[e.RowIndex].Cells[0].Value.ToString());
                 noOfUnit = int.Parse(grid_txt.Rows[e.RowIndex].Cells[4].Value.ToString());
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show("An unexpected error occurred: " + ex.Message);
             }
+        }
+
+
+        private void grid_txt_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void Cleartxt() {
