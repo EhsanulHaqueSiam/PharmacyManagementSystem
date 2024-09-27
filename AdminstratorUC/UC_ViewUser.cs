@@ -239,6 +239,9 @@ namespace PharmacyManagementSystem.AdminstratorUC
 
         }
 
+        private void srch_box_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

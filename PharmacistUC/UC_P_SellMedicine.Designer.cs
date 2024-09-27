@@ -55,15 +55,14 @@
             this.search_txt = new Guna.UI2.WinForms.Guna2TextBox();
             this.list_txt = new System.Windows.Forms.ListBox();
             this.grid_txt = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Tk_txt = new System.Windows.Forms.Label();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.update_button = new Guna.UI2.WinForms.Guna2Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tk_txt = new System.Windows.Forms.Label();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_txt)).BeginInit();
             this.SuspendLayout();
@@ -138,6 +137,7 @@
             this.nou_txt.SelectedText = "";
             this.nou_txt.Size = new System.Drawing.Size(254, 29);
             this.nou_txt.TabIndex = 46;
+            this.nou_txt.TextChanged += new System.EventHandler(this.nou_txt_TextChanged);
             // 
             // ppu_txt
             // 
@@ -223,6 +223,7 @@
             this.purchase_btn.Size = new System.Drawing.Size(217, 45);
             this.purchase_btn.TabIndex = 41;
             this.purchase_btn.Text = "Purchase & Print";
+            this.purchase_btn.Click += new System.EventHandler(this.purchase_btn_Click);
             // 
             // addToCart_btn
             // 
@@ -376,6 +377,7 @@
             this.rmv_btn.Size = new System.Drawing.Size(152, 45);
             this.rmv_btn.TabIndex = 49;
             this.rmv_btn.Text = "Remove";
+            this.rmv_btn.Click += new System.EventHandler(this.rmv_btn_Click);
             // 
             // search_txt
             // 
@@ -400,6 +402,7 @@
             this.search_txt.SelectedText = "";
             this.search_txt.Size = new System.Drawing.Size(254, 29);
             this.search_txt.TabIndex = 50;
+            this.search_txt.TextChanged += new System.EventHandler(this.search_txt_TextChanged);
             // 
             // list_txt
             // 
@@ -472,45 +475,8 @@
             this.grid_txt.ThemeStyle.RowsStyle.Height = 24;
             this.grid_txt.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.grid_txt.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // Tk_txt
-            // 
-            this.Tk_txt.AutoSize = true;
-            this.Tk_txt.BackColor = System.Drawing.Color.Firebrick;
-            this.Tk_txt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Tk_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tk_txt.Location = new System.Drawing.Point(530, 694);
-            this.Tk_txt.Name = "Tk_txt";
-            this.Tk_txt.Size = new System.Drawing.Size(119, 40);
-            this.Tk_txt.TabIndex = 53;
-            this.Tk_txt.Text = "Tk 100";
-            // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.TargetControl = this;
-            // 
-            // update_button
-            // 
-            this.update_button.BorderRadius = 20;
-            this.update_button.BorderThickness = 1;
-            this.update_button.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.update_button.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.update_button.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.update_button.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.update_button.FillColor = System.Drawing.Color.DarkSlateBlue;
-            this.update_button.Font = new System.Drawing.Font("Gill Sans MT", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.update_button.ForeColor = System.Drawing.Color.White;
-            this.update_button.HoverState.FillColor = System.Drawing.Color.Indigo;
-            this.update_button.HoverState.Font = new System.Drawing.Font("Gill Sans MT", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.update_button.Image = ((System.Drawing.Image)(resources.GetObject("update_button.Image")));
-            this.update_button.ImageSize = new System.Drawing.Size(30, 30);
-            this.update_button.Location = new System.Drawing.Point(569, 307);
-            this.update_button.Name = "update_button";
-            this.update_button.PressedColor = System.Drawing.Color.MidnightBlue;
-            this.update_button.Size = new System.Drawing.Size(168, 49);
-            this.update_button.TabIndex = 54;
-            this.update_button.Text = "update Price";
-            this.update_button.Click += new System.EventHandler(this.update_button_Click);
+            this.grid_txt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_txt_CellClick);
+            this.grid_txt.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_txt_CellContentClick);
             // 
             // Column1
             // 
@@ -549,11 +515,26 @@
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
+            // Tk_txt
+            // 
+            this.Tk_txt.AutoSize = true;
+            this.Tk_txt.BackColor = System.Drawing.Color.Firebrick;
+            this.Tk_txt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Tk_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tk_txt.Location = new System.Drawing.Point(530, 694);
+            this.Tk_txt.Name = "Tk_txt";
+            this.Tk_txt.Size = new System.Drawing.Size(119, 40);
+            this.Tk_txt.TabIndex = 53;
+            this.Tk_txt.Text = "Tk 100";
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.TargetControl = this;
+            // 
             // UC_P_SellMedicine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.update_button);
             this.Controls.Add(this.Tk_txt);
             this.Controls.Add(this.grid_txt);
             this.Controls.Add(this.list_txt);
@@ -613,7 +594,6 @@
         private Guna.UI2.WinForms.Guna2DataGridView grid_txt;
         private System.Windows.Forms.Label Tk_txt;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2Button update_button;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

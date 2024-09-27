@@ -48,11 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-
     <ManifestCertificateThumbprint>39DBDC2C763D7BF8B6679EFBA3C17C90C68BBAFE</ManifestCertificateThumbprint>
-
     <ManifestCertificateThumbprint>9BBDE32B03BD57E83A23E3DD1DBF9DF40D859555</ManifestCertificateThumbprint>
-
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>PharmacyManagementSystem_TemporaryKey.pfx</ManifestKeyFile>
@@ -199,6 +196,7 @@
     <Compile Include="DataAccess\DAO\TransactionDaoImpl.cs" />
     <Compile Include="DataAccess\DatabaseManager.cs" />
     <Compile Include="DataAccess\ConfigLoader.cs" />
+    <Compile Include="DGVPrinter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -337,10 +335,8 @@
     <EmbeddedResource Include="SignInGui.resx">
       <DependentUpon>SignInGui.cs</DependentUpon>
     </EmbeddedResource>
-
     <None Include="packages.config" />
     <None Include="PharmacyManagementSystem_TemporaryKey.pfx" />
-
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
