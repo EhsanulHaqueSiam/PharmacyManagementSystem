@@ -51,9 +51,9 @@ namespace PharmacyManagementSystem.AdminstratorUC
                 };
 
 
-                bool confirmMed = adminController.InsertAdmin(ad);
+                bool confirmation = adminController.InsertAdmin(ad);
 
-                if (confirmMed)
+                if (confirmation)
                 {
                     MessageBox.Show("Succesfull");
                 }
@@ -80,9 +80,9 @@ namespace PharmacyManagementSystem.AdminstratorUC
                 };
 
 
-                bool confirmMed = pharmacistController.InsertPharmacist(ph);
+                bool confirmation = pharmacistController.InsertPharmacist(ph);
 
-                if (confirmMed)
+                if (confirmation)
                 {
                     MessageBox.Show("Succesfull");
                 }
@@ -111,9 +111,9 @@ namespace PharmacyManagementSystem.AdminstratorUC
                 };
 
 
-                bool confirmMed = customerController.InsertCustomer(cust);
+                bool confirmation = customerController.InsertCustomer(cust);
 
-                if (true)
+                if (confirmation)
                 {
                     MessageBox.Show("Succesfull");
                 }

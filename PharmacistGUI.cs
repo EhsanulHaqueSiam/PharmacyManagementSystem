@@ -23,6 +23,7 @@ namespace PharmacyManagementSystem
             fm.Show();
             this.Hide();
         }
+
         private void Pharmacist_Load(object sender, EventArgs e)
         {
             uC_P_Dashboard1.Visible = false;
@@ -33,6 +34,7 @@ namespace PharmacyManagementSystem
             uC_P_SellMedicine1.Visible = false;
             pDashboard_btn.PerformClick();
         }
+        
 
         private void pDashboard_btn_Click(object sender, EventArgs e)
         {

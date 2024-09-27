@@ -1,13 +1,21 @@
-﻿using PharmacyManagementSystem.Controllers;
+﻿using DGVPrinterHelper;
+using Guna.UI2.WinForms;
+using PharmacyManagementSystem.Controllers;
 using PharmacyManagementSystem.DataAccess;
 using PharmacyManagementSystem.DataAccess.DAO;
 using PharmacyManagementSystem.Model;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace PharmacyManagementSystem.PharmacistUC {
+
     public partial class UC_P_SellMedicine : UserControl {
+
+        protected int valueAmount;
+        protected int valueId;
+        protected int noOfUnit;
         protected int n, totalAmount = 0;
         protected Int64 quantity, newQuantity;
 
@@ -16,6 +24,7 @@ namespace PharmacyManagementSystem.PharmacistUC {
         }
 
         private void UC_P_SellMedicine_Load(object sender, EventArgs e) {
+            grid_txt.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             LoadMedicineNames();
         }
 
@@ -78,6 +87,37 @@ namespace PharmacyManagementSystem.PharmacistUC {
             }
         }
 
+
+
+        private void rmv_btn_Click(object sender, EventArgs e)
+        {
+            if (valueId != null)
+            {
+                try
+                {
+                    grid_txt.Rows.RemoveAt(this.grid_txt.SelectedRows[0].Index);
+                }
+                catch (Exception)
+                {
+                }
+                finally {
+                    IMedicineDao medicineDao = new MedicineDaoImpl();
+                    MedicineController medicineController = new MedicineController(medicineDao);
+                    Medicine selectedMedicine = medicineController.GetMedicineById(valueId);
+
+                    selectedMedicine.M_Quantity += noOfUnit;
+                    medicineController.UpdateMedicine(selectedMedicine);
+
+                }
+            }else { 
+            }
+        }
+
+        private void grid_txt_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
         // Handle adding medicine to the cart
         private void addToCart_btn_Click(object sender, EventArgs e) {
             try {
@@ -123,11 +163,64 @@ namespace PharmacyManagementSystem.PharmacistUC {
             } catch (Exception ex) {
                 MessageBox.Show($"Error adding to cart: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            Cleartxt();
+        }
+
+        private void purchase_btn_Click(object sender, EventArgs e)
+        {
+            DGVPrinter print = new DGVPrinter();
+            print.Title = "Medicine Bill";
+            print.SubTitle = String.Format("Date: {0:yyyy-MM-dd} Time: {1:hh\\:mm\\:ss}", DateTime.Now, DateTime.Now.TimeOfDay + "\nTotal Payable Amount : " + Tk_txt.Text);
+            print.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            print.PageNumbers = true;
+            print.PageNumberInHeader = false;
+            print.PorportionalColumns = true;
+            print.HeaderCellAlignment = StringAlignment.Near;
+            print.Footer = "Software created by Siam and Aonyendo";
+            print.FooterSpacing = 15;
+            print.PrintDataGridView(grid_txt);
+
+            totalAmount = 0;
+            Tk_txt.Text = "Tk 0";
+            grid_txt.Rows.Clear();
+        }
+
+        private void nou_txt_TextChanged(object sender, EventArgs e)
+        {
+            CalculateTotalPrice();
+        }
+
+        private void search_txt_TextChanged(object sender, EventArgs e)
+        {
+            list_txt.Items.Clear();
+        }
+
+        private void grid_txt_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                valueAmount = int.Parse(grid_txt.Rows[e.RowIndex].Cells[5].Value.ToString());
+                valueId = int.Parse(grid_txt.Rows[e.RowIndex].Cells[0].Value.ToString());
+                noOfUnit = int.Parse(grid_txt.Rows[e.RowIndex].Cells[4].Value.ToString());
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void Cleartxt() {
+            mname_txt.ResetText();
+            exp_txt.ResetText();
+            mId_txt.ResetText();
+            nou_txt.ResetText();
+            ppu_txt.ResetText();
+            tp_txt.ResetText();
         }
 
         // Recalculate the total price on quantity change
         private void update_button_Click(object sender, EventArgs e) {
-            CalculateTotalPrice();
+            CalculateTotalPrice();  
         }
     }
 }

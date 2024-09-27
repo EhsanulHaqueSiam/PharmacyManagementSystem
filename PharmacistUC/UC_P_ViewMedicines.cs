@@ -34,6 +34,7 @@ namespace PharmacyManagementSystem.PharmacistUC
             viewMedicine_gunaGrid.AutoGenerateColumns = true;
             viewMedicine_gunaGrid.DataSource = allMedicines.ToList();
             */
+            guna2Button2.PerformClick();
 
         }
 
@@ -50,6 +51,7 @@ namespace PharmacyManagementSystem.PharmacistUC
             IEnumerable<Medicine> medname = medicineController.GetMedicineByName(medSearch_txtBox.Text);
             viewMedicine_gunaGrid.AutoGenerateColumns = true;
             viewMedicine_gunaGrid.DataSource = medname.ToList();
+            viewMedicine_gunaGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
         }
 
@@ -84,6 +86,11 @@ namespace PharmacyManagementSystem.PharmacistUC
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewMedicine_gunaGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
