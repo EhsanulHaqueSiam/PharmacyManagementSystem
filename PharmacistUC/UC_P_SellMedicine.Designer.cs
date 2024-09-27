@@ -477,6 +477,7 @@
             this.grid_txt.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.grid_txt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_txt_CellClick);
             this.grid_txt.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_txt_CellContentClick);
+            this.grid_txt.Click += new System.EventHandler(this.grid_txt_Click);
             // 
             // Column1
             // 
