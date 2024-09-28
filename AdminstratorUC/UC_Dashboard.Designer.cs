@@ -50,7 +50,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
@@ -285,21 +284,6 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Customer";
             // 
-            // exitBtn
-            // 
-            this.exitBtn.BackColor = System.Drawing.Color.Transparent;
-            this.exitBtn.BorderRadius = 1;
-            this.exitBtn.FillColor = System.Drawing.Color.PaleTurquoise;
-            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.exitBtn.ForeColor = System.Drawing.Color.White;
-            this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
-            this.exitBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.exitBtn.Location = new System.Drawing.Point(916, 1);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(41, 39);
-            this.exitBtn.TabIndex = 5;
-            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -332,7 +316,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel3);
@@ -376,7 +359,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label admin_lbl;
         private System.Windows.Forms.Label label9;
-        private Guna.UI2.WinForms.Guna2Button exitBtn;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

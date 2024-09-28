@@ -73,9 +73,9 @@
             this.label1.Font = new System.Drawing.Font("Cooper Black", 19.8F);
             this.label1.Location = new System.Drawing.Point(17, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 38);
+            this.label1.Size = new System.Drawing.Size(271, 38);
             this.label1.TabIndex = 24;
-            this.label1.Text = "Sell Medicine";
+            this.label1.Text = "Trade Medicine";
             // 
             // guna2Button2
             // 
@@ -87,7 +87,7 @@
             this.guna2Button2.HoverState.FillColor = System.Drawing.Color.White;
             this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
             this.guna2Button2.ImageSize = new System.Drawing.Size(35, 35);
-            this.guna2Button2.Location = new System.Drawing.Point(266, 19);
+            this.guna2Button2.Location = new System.Drawing.Point(305, 19);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.PressedColor = System.Drawing.Color.White;
             this.guna2Button2.Size = new System.Drawing.Size(34, 35);
@@ -97,7 +97,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(249, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(288, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(66, 66);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

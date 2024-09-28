@@ -83,21 +83,16 @@ namespace PharmacyManagementSystem.ForgetPassUC
         private void otpBack_btn_Click(object sender, EventArgs e)
         {
             // Access the parent form
-            SignInGui parentForm = this.FindForm() as SignInGui;
+            ForgetPass parentForm = this.FindForm() as ForgetPass;
+
             if (parentForm != null)
             {
-                // Hide or remove the current OTP control (UC_F_Otp)
-                parentForm.Controls.Remove(this);
-
-                // Assuming UC_ForgetInfo is already on the form, make it visible again
-                UC_ForgetInfo forgetInfoControl = new UC_ForgetInfo();
-                forgetInfoControl.Dock = DockStyle.Fill;
-                parentForm.Controls.Add(forgetInfoControl);
-                forgetInfoControl.BringToFront(); // Bring it to the front
+                // Call the method to switch user controls
+                parentForm.SwitchToInfoOtpInfoToForget();
             }
             else
             {
-                MessageBox.Show("Parent form not found.");
+                MessageBox.Show("Parent form not found");
             }
         }
     }

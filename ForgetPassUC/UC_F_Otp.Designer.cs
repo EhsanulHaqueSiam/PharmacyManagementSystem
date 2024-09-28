@@ -69,6 +69,10 @@
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.TargetControl = this;
+            // 
             // otpBack_btn
             // 
             this.otpBack_btn.BorderRadius = 20;

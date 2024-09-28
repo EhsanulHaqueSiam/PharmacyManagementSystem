@@ -33,7 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.viewMedicine_gunaGrid = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -45,21 +44,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewMedicine_gunaGrid)).BeginInit();
             this.SuspendLayout();
-            // 
-            // exitBtn
-            // 
-            this.exitBtn.BackColor = System.Drawing.Color.Transparent;
-            this.exitBtn.BorderRadius = 1;
-            this.exitBtn.FillColor = System.Drawing.Color.PaleTurquoise;
-            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.exitBtn.ForeColor = System.Drawing.Color.White;
-            this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
-            this.exitBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.exitBtn.Location = new System.Drawing.Point(916, 3);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(41, 39);
-            this.exitBtn.TabIndex = 28;
-            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
             // guna2Button2
             // 
@@ -220,7 +204,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.viewMedicine_gunaGrid);
             this.Controls.Add(this.guna2Button1);
-            this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.medSearch_txtBox);
@@ -237,8 +220,6 @@
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2Button exitBtn;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Guna.UI2.WinForms.Guna2DataGridView viewMedicine_gunaGrid;

@@ -42,11 +42,15 @@
             this.mail_txt = new Guna.UI2.WinForms.Guna2TextBox();
             this.pass_txt = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.userName_lbl = new System.Windows.Forms.Label();
             this.dob_txt = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.reset_btn = new Guna.UI2.WinForms.Guna2Button();
             this.update_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.id_txt = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.role_txtBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.srch_btn = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -218,21 +222,6 @@
             // 
             this.guna2Elipse1.TargetControl = this;
             // 
-            // exitBtn
-            // 
-            this.exitBtn.BackColor = System.Drawing.Color.Transparent;
-            this.exitBtn.BorderRadius = 1;
-            this.exitBtn.FillColor = System.Drawing.Color.PaleTurquoise;
-            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.exitBtn.ForeColor = System.Drawing.Color.White;
-            this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
-            this.exitBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.exitBtn.Location = new System.Drawing.Point(916, 3);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(41, 39);
-            this.exitBtn.TabIndex = 20;
-            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
-            // 
             // userName_lbl
             // 
             this.userName_lbl.Font = new System.Drawing.Font("Cooper Black", 19.8F);
@@ -274,7 +263,7 @@
             this.reset_btn.Name = "reset_btn";
             this.reset_btn.Size = new System.Drawing.Size(180, 45);
             this.reset_btn.TabIndex = 23;
-            this.reset_btn.Text = "Reset";
+            this.reset_btn.Text = "Current User";
             this.reset_btn.Click += new System.EventHandler(this.reset_btn_Click);
             // 
             // update_btn
@@ -296,16 +285,101 @@
             this.update_btn.Text = "Update";
             this.update_btn.Click += new System.EventHandler(this.update_btn_Click);
             // 
+            // id_txt
+            // 
+            this.id_txt.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.id_txt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.id_txt.DefaultText = "";
+            this.id_txt.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.id_txt.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.id_txt.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.id_txt.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.id_txt.FillColor = System.Drawing.Color.LightSlateGray;
+            this.id_txt.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.id_txt.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.id_txt.ForeColor = System.Drawing.Color.White;
+            this.id_txt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.id_txt.Location = new System.Drawing.Point(555, 32);
+            this.id_txt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.id_txt.Name = "id_txt";
+            this.id_txt.PasswordChar = '\0';
+            this.id_txt.PlaceholderText = "";
+            this.id_txt.SelectedText = "";
+            this.id_txt.Size = new System.Drawing.Size(387, 42);
+            this.id_txt.TabIndex = 26;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Forte", 10.2F);
+            this.label2.Location = new System.Drawing.Point(536, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 19);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "id";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Forte", 10.2F);
+            this.label8.Location = new System.Drawing.Point(225, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 19);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "User Role";
+            // 
+            // role_txtBox
+            // 
+            this.role_txtBox.BackColor = System.Drawing.Color.Transparent;
+            this.role_txtBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.role_txtBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.role_txtBox.FillColor = System.Drawing.Color.LightSlateGray;
+            this.role_txtBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.role_txtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.role_txtBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.role_txtBox.ForeColor = System.Drawing.Color.White;
+            this.role_txtBox.ItemHeight = 30;
+            this.role_txtBox.Items.AddRange(new object[] {
+            "Admin",
+            "Pharmacist",
+            "Customer"});
+            this.role_txtBox.Location = new System.Drawing.Point(229, 30);
+            this.role_txtBox.Name = "role_txtBox";
+            this.role_txtBox.Size = new System.Drawing.Size(290, 36);
+            this.role_txtBox.TabIndex = 28;
+            // 
+            // srch_btn
+            // 
+            this.srch_btn.BorderRadius = 20;
+            this.srch_btn.BorderThickness = 2;
+            this.srch_btn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.srch_btn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.srch_btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.srch_btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.srch_btn.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.srch_btn.ForeColor = System.Drawing.Color.White;
+            this.srch_btn.ImageSize = new System.Drawing.Size(40, 40);
+            this.srch_btn.Location = new System.Drawing.Point(829, 79);
+            this.srch_btn.Name = "srch_btn";
+            this.srch_btn.Size = new System.Drawing.Size(113, 33);
+            this.srch_btn.TabIndex = 29;
+            this.srch_btn.Text = "Search";
+            this.srch_btn.Click += new System.EventHandler(this.srch_btn_Click);
+            // 
             // UC_Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.srch_btn);
+            this.Controls.Add(this.role_txtBox);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.id_txt);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.update_btn);
             this.Controls.Add(this.reset_btn);
             this.Controls.Add(this.dob_txt);
             this.Controls.Add(this.userName_lbl);
-            this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.pass_txt);
             this.Controls.Add(this.mail_txt);
             this.Controls.Add(this.mbl_txt);
@@ -341,10 +415,14 @@
         private Guna.UI2.WinForms.Guna2TextBox mail_txt;
         private Guna.UI2.WinForms.Guna2TextBox pass_txt;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2Button exitBtn;
         private System.Windows.Forms.Label userName_lbl;
         private Guna.UI2.WinForms.Guna2DateTimePicker dob_txt;
         private Guna.UI2.WinForms.Guna2Button reset_btn;
         private Guna.UI2.WinForms.Guna2Button update_btn;
+        private Guna.UI2.WinForms.Guna2ComboBox role_txtBox;
+        private System.Windows.Forms.Label label8;
+        private Guna.UI2.WinForms.Guna2TextBox id_txt;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2Button srch_btn;
     }
 }

@@ -50,7 +50,6 @@
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.reset_btn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.addUser_btn = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
@@ -321,21 +320,6 @@
             // 
             this.guna2Elipse1.TargetControl = this;
             // 
-            // exitBtn
-            // 
-            this.exitBtn.BackColor = System.Drawing.Color.Transparent;
-            this.exitBtn.BorderRadius = 1;
-            this.exitBtn.FillColor = System.Drawing.Color.PaleTurquoise;
-            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.exitBtn.ForeColor = System.Drawing.Color.White;
-            this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
-            this.exitBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.exitBtn.Location = new System.Drawing.Point(916, 1);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(41, 39);
-            this.exitBtn.TabIndex = 19;
-            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
-            // 
             // addUser_btn
             // 
             this.addUser_btn.BorderRadius = 19;
@@ -364,7 +348,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.addUser_btn);
-            this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.reset_btn);
             this.Controls.Add(this.dob_Datebox);
             this.Controls.Add(this.panel1);
@@ -411,7 +394,6 @@
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
         private Guna.UI2.WinForms.Guna2Button reset_btn;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2Button exitBtn;
         private Guna.UI2.WinForms.Guna2Button addUser_btn;
     }
 }

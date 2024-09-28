@@ -144,5 +144,6 @@ namespace PharmacyManagementSystem.OTP {
             Logger.Log("OTP validation failed.");
             return false; // OTP does not match
         }
+        
     }
 }

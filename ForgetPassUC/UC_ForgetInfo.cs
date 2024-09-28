@@ -13,7 +13,7 @@ namespace PharmacyManagementSystem.ForgetPassUC
 {
     public partial class UC_ForgetInfo : UserControl
     {
-        public static string email;
+        public static string email = "";
         public static string password;
         public UC_ForgetInfo()
         {
@@ -54,10 +54,16 @@ namespace PharmacyManagementSystem.ForgetPassUC
                 IEnumerable<Customer> custs = customerController.SearchCustomersByPartialPhone(phnNum_txt.Text);
 
                 Customer customer = custs.FirstOrDefault();
-                email = customer.C_Mail;
-                Console.WriteLine("Email: " + customer.C_Mail);
-                // Generate OTP
+                email = customer.C_Mail?.Trim(); // Trim any potential whitespaces
+                Console.WriteLine("Email: '" + email + "'");
 
+                if (!IsValidEmail(email))
+                {
+                    MessageBox.Show("Invalid email address.");
+                    return;
+                }
+
+                // Generate OTP
                 UC_C_Info.tempOtp = OTPService.GenerateOTP();
                 Console.WriteLine(UC_C_Info.tempOtp);
 
@@ -71,16 +77,37 @@ namespace PharmacyManagementSystem.ForgetPassUC
                 {
                     Console.WriteLine($"Failed to send OTP: {ex.Message}");
                 }
-                SwitchToOtp();
 
+                // Access the parent form
+                ForgetPass parentForm = this.FindForm() as ForgetPass;
+
+                if (parentForm != null)
+                {
+                    // Call the method to switch user controls
+                    parentForm.SwitchToInfoForgetInfoToOtp();
+                }
+                else
+                {
+                    MessageBox.Show("Parent form not found");
+                }
             }
             else
             {
                 MessageBox.Show("Number Not Found please check Number or sign in");
             }
+        }
 
-
-
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
