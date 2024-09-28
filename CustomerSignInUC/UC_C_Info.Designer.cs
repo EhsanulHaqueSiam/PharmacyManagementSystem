@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_C_Info));
-            this.dob_Datebox = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.name_Textfield = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dob_txt = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.name_txt = new Guna.UI2.WinForms.Guna2TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CInfoBack_btn = new Guna.UI2.WinForms.Guna2Button();
@@ -48,42 +48,42 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dob_Datebox
+            // dob_txt
             // 
-            this.dob_Datebox.Checked = true;
-            this.dob_Datebox.FillColor = System.Drawing.Color.LightSteelBlue;
-            this.dob_Datebox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dob_Datebox.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dob_Datebox.Location = new System.Drawing.Point(17, 374);
-            this.dob_Datebox.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dob_Datebox.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dob_Datebox.Name = "dob_Datebox";
-            this.dob_Datebox.Size = new System.Drawing.Size(325, 36);
-            this.dob_Datebox.TabIndex = 24;
-            this.dob_Datebox.Value = new System.DateTime(2024, 9, 21, 23, 30, 56, 66);
+            this.dob_txt.Checked = true;
+            this.dob_txt.FillColor = System.Drawing.Color.LightSteelBlue;
+            this.dob_txt.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dob_txt.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dob_txt.Location = new System.Drawing.Point(17, 374);
+            this.dob_txt.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dob_txt.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dob_txt.Name = "dob_txt";
+            this.dob_txt.Size = new System.Drawing.Size(325, 36);
+            this.dob_txt.TabIndex = 24;
+            this.dob_txt.Value = new System.DateTime(2024, 9, 21, 23, 30, 56, 66);
             // 
-            // name_Textfield
+            // name_txt
             // 
-            this.name_Textfield.BackColor = System.Drawing.Color.Silver;
-            this.name_Textfield.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.name_Textfield.DefaultText = "";
-            this.name_Textfield.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.name_Textfield.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.name_Textfield.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.name_Textfield.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.name_Textfield.FillColor = System.Drawing.Color.Silver;
-            this.name_Textfield.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.name_Textfield.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.name_Textfield.ForeColor = System.Drawing.Color.Black;
-            this.name_Textfield.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.name_Textfield.Location = new System.Drawing.Point(17, 36);
-            this.name_Textfield.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.name_Textfield.Name = "name_Textfield";
-            this.name_Textfield.PasswordChar = '\0';
-            this.name_Textfield.PlaceholderText = "";
-            this.name_Textfield.SelectedText = "";
-            this.name_Textfield.Size = new System.Drawing.Size(325, 36);
-            this.name_Textfield.TabIndex = 22;
+            this.name_txt.BackColor = System.Drawing.Color.Silver;
+            this.name_txt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.name_txt.DefaultText = "";
+            this.name_txt.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.name_txt.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.name_txt.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.name_txt.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.name_txt.FillColor = System.Drawing.Color.Silver;
+            this.name_txt.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.name_txt.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.name_txt.ForeColor = System.Drawing.Color.Black;
+            this.name_txt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.name_txt.Location = new System.Drawing.Point(17, 36);
+            this.name_txt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.name_txt.Name = "name_txt";
+            this.name_txt.PasswordChar = '\0';
+            this.name_txt.PlaceholderText = "";
+            this.name_txt.SelectedText = "";
+            this.name_txt.Size = new System.Drawing.Size(325, 36);
+            this.name_txt.TabIndex = 22;
             // 
             // label4
             // 
@@ -290,8 +290,8 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.dob_Datebox);
-            this.Controls.Add(this.name_Textfield);
+            this.Controls.Add(this.dob_txt);
+            this.Controls.Add(this.name_txt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Name = "UC_C_Info";
@@ -305,8 +305,8 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2DateTimePicker dob_Datebox;
-        private Guna.UI2.WinForms.Guna2TextBox name_Textfield;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dob_txt;
+        private Guna.UI2.WinForms.Guna2TextBox name_txt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2Button CInfoBack_btn;

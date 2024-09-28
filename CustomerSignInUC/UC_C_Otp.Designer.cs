@@ -121,6 +121,7 @@
             this.resendCode_btn.Size = new System.Drawing.Size(229, 39);
             this.resendCode_btn.TabIndex = 8;
             this.resendCode_btn.Text = "Resend Code";
+            this.resendCode_btn.Click += new System.EventHandler(this.resendCode_btn_Click);
             // 
             // otpBack_btn
             // 
