@@ -48,6 +48,7 @@ namespace PharmacyManagementSystem.ForgetPassUC
             CustomerController customerController = new CustomerController(customerDao);
 
             int temp = UC_C_PhnNum.numberExist(phnNum_txt.Text);
+            
 
             if (temp == 1 || temp == 2)
             {
@@ -63,19 +64,25 @@ namespace PharmacyManagementSystem.ForgetPassUC
                     return;
                 }
 
-                // Generate OTP
-                UC_C_Info.tempOtp = OTPService.GenerateOTP();
-                Console.WriteLine(UC_C_Info.tempOtp);
+                password = newPass_txt.Text;
 
-                // Send OTP email
+                // Get the instance of OTPService
+                OTPService otpService = OTPService.Instance;
+                // Generate an OTP
+                string otp = otpService.GenerateOTP();
+                Console.WriteLine($"Generated OTP: {otp}");
+                // Assume you have the user's email address
+                string userEmail = email;
+                // Send the OTP via email
                 try
                 {
-                    OTPService.SendOTPEmail(email, UC_C_Info.tempOtp);
-                    Console.WriteLine("OTP sent successfully to your email.");
+                    otpService.SendOTPEmail(userEmail, otp);
+                    Console.WriteLine("OTP email sent successfully.");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Failed to send OTP: {ex.Message}");
+                    Console.WriteLine($"Failed to send OTP email: {ex.Message}");
+                    return; // Exit if sending failed
                 }
 
                 // Access the parent form

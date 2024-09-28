@@ -17,6 +17,8 @@ namespace PharmacyManagementSystem.ForgetPassUC
 {
     public partial class UC_F_Otp : UserControl
     {
+        // Get the instance of OTPService
+        OTPService otpService = OTPService.Instance;
         public UC_F_Otp()
         {
             InitializeComponent();
@@ -25,8 +27,18 @@ namespace PharmacyManagementSystem.ForgetPassUC
         private void otpConfirm_btn_Click(object sender, EventArgs e)
         {
             string enteredOtp = otp_txt.Text;
-            // Validate the OTP
-            bool isValid = OTPService.ValidateOTP(enteredOtp);
+                // Validate the OTP
+            bool isValid = otpService.ValidateOTP(enteredOtp);
+            if (isValid)
+            {
+                Console.WriteLine("OTP validation successful.");
+            }
+            else
+            {
+                Console.WriteLine("OTP validation failed. Please try again.");
+            }
+            // Dispose of the OTP service
+            otpService.Dispose();
 
             if (isValid)
             {
@@ -39,7 +51,11 @@ namespace PharmacyManagementSystem.ForgetPassUC
                 Customer cust = customerController.GetCustomerByEmail(UC_ForgetInfo.email);
 
                 cust.C_Pass = UC_ForgetInfo.password;
-
+                if (string.IsNullOrEmpty(cust.C_Pass))
+                {
+                    MessageBox.Show("Password cannot be empty." + cust.C_Pass);
+                    return;
+                }
 
 
                 bool confirmation = customerController.UpdateCustomer(cust);
@@ -55,7 +71,7 @@ namespace PharmacyManagementSystem.ForgetPassUC
                 }
 
                 // Access the parent form
-                SignInGui parentForm = this.FindForm() as SignInGui;
+                ForgetPass parentForm = this.FindForm() as ForgetPass;
                 if (parentForm != null)
                 {
                     // Remove or hide the current user control
