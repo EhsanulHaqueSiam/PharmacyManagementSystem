@@ -62,6 +62,8 @@
             this.Tk_txt = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.label2 = new System.Windows.Forms.Label();
+            this.custNo_txt = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_txt)).BeginInit();
             this.SuspendLayout();
@@ -506,10 +508,46 @@
             this.label2.TabIndex = 30;
             this.label2.Text = "Medicine list";
             // 
+            // custNo_txt
+            // 
+            this.custNo_txt.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.custNo_txt.BorderColor = System.Drawing.Color.Black;
+            this.custNo_txt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.custNo_txt.DefaultText = "";
+            this.custNo_txt.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.custNo_txt.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.custNo_txt.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.custNo_txt.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.custNo_txt.FillColor = System.Drawing.Color.LightSlateGray;
+            this.custNo_txt.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.custNo_txt.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custNo_txt.ForeColor = System.Drawing.Color.White;
+            this.custNo_txt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.custNo_txt.Location = new System.Drawing.Point(392, 327);
+            this.custNo_txt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.custNo_txt.Name = "custNo_txt";
+            this.custNo_txt.PasswordChar = '\0';
+            this.custNo_txt.PlaceholderText = "";
+            this.custNo_txt.SelectedText = "";
+            this.custNo_txt.Size = new System.Drawing.Size(254, 29);
+            this.custNo_txt.TabIndex = 55;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(365, 302);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(150, 18);
+            this.label5.TabIndex = 54;
+            this.label5.Text = "Customer Number";
+            // 
             // UC_P_SellMedicine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.custNo_txt);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.Tk_txt);
             this.Controls.Add(this.grid_txt);
             this.Controls.Add(this.list_txt);
@@ -573,5 +611,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2TextBox custNo_txt;
+        private System.Windows.Forms.Label label5;
     }
 }
