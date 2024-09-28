@@ -7,17 +7,33 @@ using System.Security.Cryptography;
 using System.Text;
 
 namespace PharmacyManagementSystem.OTP {
-    public class OTPService {
+    public sealed class OTPService : IDisposable {
+        private static readonly Lazy<OTPService> _instance = new Lazy<OTPService>(() => new OTPService());
+
         private static string smtpEmail;
         private static string smtpPassword;
         private static string smtpServer;
         private static int smtpPort;
-        private static int otpValidityInMinutes = 10; // OTP expires in 10 minutes
+        private static int otpValidityInMinutes = 10;
         private static string generatedOtp;
         private static DateTime otpGeneratedTime;
 
+        private bool _disposed = false;
+
+        // Private constructor to prevent instantiation
+        private OTPService() {
+            LoadConfiguration();
+        }
+
+        // Public property to get the single instance
+        public static OTPService Instance {
+            get {
+                return _instance.Value;
+            }
+        }
+
         // Load configuration settings using ConfigLoader
-        public static void LoadConfiguration() {
+        private void LoadConfiguration() {
             try {
                 smtpEmail = ConfigLoader.Instance.GetSmtpEmail();
                 smtpPassword = ConfigLoader.Instance.GetSmtpPassword();
@@ -31,7 +47,7 @@ namespace PharmacyManagementSystem.OTP {
         }
 
         // Generate a 6-digit OTP and timestamp it
-        public static string GenerateOTP() {
+        public string GenerateOTP() {
             Random random = new Random();
             generatedOtp = random.Next(100000, 999999).ToString();
             otpGeneratedTime = DateTime.Now;
@@ -40,7 +56,7 @@ namespace PharmacyManagementSystem.OTP {
         }
 
         // Hash the OTP for secure storage/validation
-        public static string HashOTP(string otp) {
+        public string HashOTP(string otp) {
             using (SHA256 sha256 = SHA256.Create()) {
                 byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(otp));
                 StringBuilder builder = new StringBuilder();
@@ -52,7 +68,7 @@ namespace PharmacyManagementSystem.OTP {
         }
 
         // Convert an image file to Base64 string, supporting JPEG and PNG
-        private static string ConvertImageToBase64(string imagePath) {
+        private string ConvertImageToBase64(string imagePath) {
             try {
                 byte[] imageBytes = File.ReadAllBytes(imagePath);
                 string extension = Path.GetExtension(imagePath).ToLower();
@@ -60,16 +76,12 @@ namespace PharmacyManagementSystem.OTP {
 
                 // Determine MIME type based on file extension
                 string mimeType;
-                switch (extension) {
-                    case ".png":
-                        mimeType = "data:image/png;base64,";
-                        break;
-                    case ".jpg":
-                    case ".jpeg":
-                        mimeType = "data:image/jpeg;base64,";
-                        break;
-                    default:
-                        throw new ApplicationException("Unsupported image format");
+                if (extension == ".png") {
+                    mimeType = "data:image/png;base64,";
+                } else if (extension == ".jpg" || extension == ".jpeg") {
+                    mimeType = "data:image/jpeg;base64,";
+                } else {
+                    throw new ApplicationException("Unsupported image format");
                 }
 
                 return $"{mimeType}{base64String}";
@@ -79,32 +91,27 @@ namespace PharmacyManagementSystem.OTP {
             }
         }
 
-
         // Load HTML template, replace OTP and image placeholders
-        public static string LoadHtmlTemplate(string otp) {
+        public string LoadHtmlTemplate(string otp) {
             try {
-                // Get the base directory of the application and combine it with the relative path
                 string basePath = AppDomain.CurrentDomain.BaseDirectory;
                 string filePath = Path.Combine(basePath, "OTP", "otp_template.html");
 
                 string htmlTemplate = File.ReadAllText(filePath);
-                htmlTemplate = htmlTemplate.Replace("{{OTP}}", otp); // Replace the OTP placeholder
+                htmlTemplate = htmlTemplate.Replace("{{OTP}}", otp);
 
-                // Format current date and time
                 string currentDateTime = DateTime.Now.ToString("MMMM dd, yyyy - hh:mm tt");
-                htmlTemplate = htmlTemplate.Replace("{{DateTime}}", currentDateTime); // Replace DateTime placeholder
+                htmlTemplate = htmlTemplate.Replace("{{DateTime}}", currentDateTime);
 
                 return htmlTemplate;
-
             } catch (Exception ex) {
                 Logger.LogError(ex);
                 throw new ApplicationException("Error loading HTML template.");
             }
         }
 
-
         // Send email using Gmail SMTP with HTML content synchronously
-        public static void SendOTPEmail(string toEmail, string otp) {
+        public void SendOTPEmail(string toEmail, string otp) {
             var emailMessage = new MimeMessage();
             emailMessage.From.Add(new MailboxAddress("AIUB Pharmacy", smtpEmail));
             emailMessage.To.Add(new MailboxAddress("", toEmail));
@@ -130,7 +137,7 @@ namespace PharmacyManagementSystem.OTP {
         }
 
         // Validate OTP input and expiration
-        public static bool ValidateOTP(string inputOtp) {
+        public bool ValidateOTP(string inputOtp) {
             if ((DateTime.Now - otpGeneratedTime).TotalMinutes > otpValidityInMinutes) {
                 Logger.Log("OTP expired.");
                 return false; // OTP expired
@@ -143,6 +150,31 @@ namespace PharmacyManagementSystem.OTP {
 
             Logger.Log("OTP validation failed.");
             return false; // OTP does not match
+        }
+
+        // Dispose method for cleanup
+        public void Dispose() {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected dispose method
+        protected void Dispose(bool disposing) {
+            if (!_disposed) {
+                if (disposing) {
+                    // Cleanup resources
+                    smtpEmail = null;
+                    smtpPassword = null;
+                    smtpServer = null;
+                    generatedOtp = null;
+                }
+                _disposed = true;
+            }
+        }
+
+        // Finalizer in case dispose wasn't called
+        ~OTPService() {
+            Dispose(false);
         }
     }
 }
