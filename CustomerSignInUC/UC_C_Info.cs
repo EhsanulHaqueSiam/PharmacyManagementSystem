@@ -94,6 +94,24 @@ namespace PharmacyManagementSystem.CustomerSignInUC
             // Access the parent form
             SignInGui parentForm = this.FindForm() as SignInGui;
 
+            OTPService otpService = OTPService.Instance;
+            // Generate an OTP
+            string otp = otpService.GenerateOTP();
+            Console.WriteLine($"Generated OTP: {otp}");
+            // Assume you have the user's email address
+            string userEmail = mail_txt.Text;
+            // Send the OTP via email
+            try
+            {
+                otpService.SendOTPEmail(userEmail, otp);
+                Console.WriteLine("OTP email sent successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to send OTP email: {ex.Message}");
+                return; // Exit if sending failed
+            }
+            /*
             OTPService.LoadConfiguration();
 
             string recipientEmail = mail_txt.Text;
@@ -112,7 +130,7 @@ namespace PharmacyManagementSystem.CustomerSignInUC
             {
                 Console.WriteLine($"Failed to send OTP: {ex.Message}");
             }
-
+            */
 
             if (parentForm != null)
             {

@@ -13,7 +13,7 @@ namespace PharmacyManagementSystem.ForgetPassUC
 {
     public partial class UC_ForgetInfo : UserControl
     {
-        public static string email;
+        public static string email = "";
         public static string password;
         public UC_ForgetInfo()
         {
@@ -48,39 +48,73 @@ namespace PharmacyManagementSystem.ForgetPassUC
             CustomerController customerController = new CustomerController(customerDao);
 
             int temp = UC_C_PhnNum.numberExist(phnNum_txt.Text);
+            
 
             if (temp == 1 || temp == 2)
             {
                 IEnumerable<Customer> custs = customerController.SearchCustomersByPartialPhone(phnNum_txt.Text);
 
                 Customer customer = custs.FirstOrDefault();
-                email = customer.C_Mail;
-                Console.WriteLine("Email: " + customer.C_Mail);
-                // Generate OTP
+                email = customer.C_Mail?.Trim(); // Trim any potential whitespaces
+                Console.WriteLine("Email: '" + email + "'");
 
-                UC_C_Info.tempOtp = OTPService.GenerateOTP();
-                Console.WriteLine(UC_C_Info.tempOtp);
+                if (!IsValidEmail(email))
+                {
+                    MessageBox.Show("Invalid email address.");
+                    return;
+                }
 
-                // Send OTP email
+                password = newPass_txt.Text;
+
+                // Get the instance of OTPService
+                OTPService otpService = OTPService.Instance;
+                // Generate an OTP
+                string otp = otpService.GenerateOTP();
+                Console.WriteLine($"Generated OTP: {otp}");
+                // Assume you have the user's email address
+                string userEmail = email;
+                // Send the OTP via email
                 try
                 {
-                    OTPService.SendOTPEmail(email, UC_C_Info.tempOtp);
-                    Console.WriteLine("OTP sent successfully to your email.");
+                    otpService.SendOTPEmail(userEmail, otp);
+                    Console.WriteLine("OTP email sent successfully.");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Failed to send OTP: {ex.Message}");
+                    Console.WriteLine($"Failed to send OTP email: {ex.Message}");
+                    return; // Exit if sending failed
                 }
-                SwitchToOtp();
 
+                // Access the parent form
+                ForgetPass parentForm = this.FindForm() as ForgetPass;
+
+                if (parentForm != null)
+                {
+                    // Call the method to switch user controls
+                    parentForm.SwitchToInfoForgetInfoToOtp();
+                }
+                else
+                {
+                    MessageBox.Show("Parent form not found");
+                }
             }
             else
             {
                 MessageBox.Show("Number Not Found please check Number or sign in");
             }
+        }
 
-
-
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

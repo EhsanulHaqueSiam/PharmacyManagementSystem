@@ -31,7 +31,22 @@ namespace PharmacyManagementSystem.CustomerSignInUC
         {
             string enteredOtp = otp_txt.Text;
             // Validate the OTP
-            bool isValid = OTPService.ValidateOTP(enteredOtp);
+            //bool isValid = OTPService.ValidateOTP(enteredOtp);
+            // Validate the OTP
+            // Get the instance of OTPService
+            OTPService otpService = OTPService.Instance;
+            bool isValid = otpService.ValidateOTP(enteredOtp);
+
+            if (isValid)
+            {
+                Console.WriteLine("OTP validation successful.");
+            }
+            else
+            {
+                Console.WriteLine("OTP validation failed. Please try again.");
+            }
+            // Dispose of the OTP service
+            otpService.Dispose();
 
             if (isValid)
             {
@@ -99,14 +114,20 @@ namespace PharmacyManagementSystem.CustomerSignInUC
 
         private void resendCode_btn_Click(object sender, EventArgs e)
         {
+            // Get the instance of OTPService
+            OTPService otpService = OTPService.Instance;
+            // Assume you have the user's email address
+            string userEmail = SignInGui.cust.C_Mail;
+            // Send the OTP via email
             try
             {
-                OTPService.SendOTPEmail(SignInGui.cust.C_Mail, UC_C_Info.tempOtp);
-                Console.WriteLine("OTP sent successfully to your email.");
+                otpService.SendOTPEmail(userEmail, UC_C_Info.tempOtp);
+                Console.WriteLine("OTP email sent successfully.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to send OTP: {ex.Message}");
+                Console.WriteLine($"Failed to send OTP email: {ex.Message}");
+                return ; // Exit if sending failed
             }
         }
     }

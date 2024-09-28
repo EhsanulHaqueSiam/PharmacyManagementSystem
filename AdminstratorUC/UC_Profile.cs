@@ -3,6 +3,7 @@ using PharmacyManagementSystem.DataAccess;
 using PharmacyManagementSystem.DataAccess.DAO;
 using PharmacyManagementSystem.Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace PharmacyManagementSystem.AdminstratorUC
@@ -36,11 +37,11 @@ namespace PharmacyManagementSystem.AdminstratorUC
 
         private void UC_Profile_Load(object sender, EventArgs e)
         {
+            reset_btn.PerformClick();
         }
 
         private void UC_Profile_Enter(object sender, EventArgs e)
         {
-            reset_btn.PerformClick();
 
         }
 
@@ -52,43 +53,17 @@ namespace PharmacyManagementSystem.AdminstratorUC
         private void reset_btn_Click(object sender, EventArgs e)
         {
             userName_lbl.Text = Program.userName;
-
-            if (Program.adminLog)
-            {
                 IAdminDao adminDao = new AdminDaoImpl();
                 AdminController adminController = new AdminController(adminDao);
 
                 Admin ad = adminController.GetAdminByUsername(userName_lbl.Text);
+                role_txtBox.SelectedIndex = 0;
+                id_txt.Text = (ad.A_ID).ToString();
                 mail_txt.Text = ad.A_Mail;
                 mbl_txt.Text = ad.A_Number;
                 name_txtBox.Text = ad.A_Name;
                 pass_txt.Text = ad.A_Pass;
                 dob_txt.Text = ad.A_Dob.ToString();
-            }
-            else if (Program.pharmLog)
-            {
-                IPharmacistDao pharmacistDao = new PharmacistDaoImpl();
-                PharmacistController pharmacistController = new PharmacistController(pharmacistDao);
-
-                Pharmacist ph = pharmacistController.GetPharmacistByUsername(userName_lbl.Text);
-                mail_txt.Text = ph.P_Mail;
-                mbl_txt.Text = ph.P_Number;
-                name_txtBox.Text = ph.P_Name;
-                pass_txt.Text = ph.P_Pass;
-                dob_txt.Text = ph.P_Dob.ToString();
-            }
-            else if (Program.custLog)
-            {
-                ICustomerDao customerDao = new CustomerDaoImpl();
-                CustomerController customerController = new CustomerController(customerDao);
-
-                Customer cus = customerController.GetCustomerByUsername(userName_lbl.Text);
-                mail_txt.Text = cus.C_Mail;
-                mbl_txt.Text = cus.C_Number;
-                name_txtBox.Text = cus.C_Name;
-                pass_txt.Text = cus.C_Pass;
-                dob_txt.Text = cus.C_Dob.ToString();
-            }
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -98,14 +73,14 @@ namespace PharmacyManagementSystem.AdminstratorUC
 
         private void update_btn_Click(object sender, EventArgs e)
         {
-            userName_lbl.Text = Program.userName;
+            int id = int.Parse(id_txt.Text);
 
-            if (Program.adminLog)
+            if (role_txtBox.SelectedIndex == 0)
             {
                 IAdminDao adminDao = new AdminDaoImpl();
                 AdminController adminController = new AdminController(adminDao);
 
-                Admin ad = adminController.GetAdminByUsername(userName_lbl.Text);
+                Admin ad = adminController.GetAdminById(id);
 
                 Admin ad2 = new Admin
                 {
@@ -127,12 +102,12 @@ namespace PharmacyManagementSystem.AdminstratorUC
                 }
     
             }
-            else if (Program.pharmLog)
+            else if (role_txtBox.SelectedIndex == 1)
             {
                 IPharmacistDao pharmacistDao = new PharmacistDaoImpl();
                 PharmacistController pharmacistController = new PharmacistController(pharmacistDao);
 
-                Pharmacist ph = pharmacistController.GetPharmacistByUsername(userName_lbl.Text);
+                Pharmacist ph = pharmacistController.GetPharmacistById(id);
 
                 Pharmacist ph2 = new Pharmacist
                 {
@@ -155,12 +130,12 @@ namespace PharmacyManagementSystem.AdminstratorUC
                     MessageBox.Show("Failed");
                 }
             }
-            else if (Program.custLog)
+            else if (role_txtBox.SelectedIndex == 2)
             {
                 ICustomerDao customerDao = new CustomerDaoImpl();
                 CustomerController customerController = new CustomerController(customerDao);
 
-                Customer cus = customerController.GetCustomerByUsername(userName_lbl.Text);
+                Customer cus = customerController.GetCustomerById(id);
 
                 Customer cus2 = new Customer
                 {
@@ -184,6 +159,66 @@ namespace PharmacyManagementSystem.AdminstratorUC
             }
         }
 
+        private void srch_btn_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(id_txt.Text);
 
+            try
+            {
+                if (role_txtBox.SelectedIndex == 0)
+                {
+                    //For admins
+                    IAdminDao adminDao = new AdminDaoImpl();
+                    AdminController adminController = new AdminController(adminDao);
+
+                    Admin ad = adminController.GetAdminById(id);
+                    userName_lbl.Text = ad.A_UserName;
+                    mail_txt.Text = ad.A_Mail;
+                    mbl_txt.Text = ad.A_Number;
+                    name_txtBox.Text = ad.A_Name;
+                    pass_txt.Text = ad.A_Pass;
+                    dob_txt.Text = ad.A_Dob.ToString();
+                }
+                else if (role_txtBox.SelectedIndex == 1)
+                {
+                    //For pharmacists
+                    IPharmacistDao pharmacistDao = new PharmacistDaoImpl();
+                    PharmacistController pharmacistController = new PharmacistController(pharmacistDao);
+
+                    Pharmacist ph = pharmacistController.GetPharmacistById(id);
+                    userName_lbl.Text = ph.P_UserName;
+                    mail_txt.Text = ph.P_Mail;
+                    mbl_txt.Text = ph.P_Number;
+                    name_txtBox.Text = ph.P_Name;
+                    pass_txt.Text = ph.P_Pass;
+                    dob_txt.Text = ph.P_Dob.ToString();
+
+            }
+                else if (role_txtBox.SelectedIndex == 2)
+                {
+                    //For Customers
+                    ICustomerDao customerDao = new CustomerDaoImpl();
+                    CustomerController customerController = new CustomerController(customerDao);
+
+                    Customer cus = customerController.GetCustomerById(id);
+                    userName_lbl.Text = cus.C_UserName;
+                    mail_txt.Text = cus.C_Mail;
+                    mbl_txt.Text = cus.C_Number;
+                    name_txtBox.Text = cus.C_Name;
+                    pass_txt.Text = cus.C_Pass;
+                    dob_txt.Text = cus.C_Dob.ToString();
+            }
+                else
+                {
+                    MessageBox.Show("Please Selecte role");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please fill all information correctly");
+            }
+
+
+        }
     }
 }

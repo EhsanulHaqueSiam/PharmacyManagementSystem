@@ -47,7 +47,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.deleteCust_btn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.label3 = new System.Windows.Forms.Label();
             this.pharmacistsGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.Pharmacists = new System.Windows.Forms.Label();
@@ -213,20 +212,6 @@
             // guna2Elipse1
             // 
             this.guna2Elipse1.TargetControl = this;
-            // 
-            // exitBtn
-            // 
-            this.exitBtn.BackColor = System.Drawing.Color.Transparent;
-            this.exitBtn.BorderRadius = 1;
-            this.exitBtn.FillColor = System.Drawing.Color.PaleTurquoise;
-            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.exitBtn.ForeColor = System.Drawing.Color.White;
-            this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
-            this.exitBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.exitBtn.Location = new System.Drawing.Point(916, 3);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(41, 39);
-            this.exitBtn.TabIndex = 21;
             // 
             // label3
             // 
@@ -426,7 +411,6 @@
             this.Controls.Add(this.Pharmacists);
             this.Controls.Add(this.pharmacistsGrid);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.deleteCust_btn);
             this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.pictureBox2);
@@ -456,7 +440,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private Guna.UI2.WinForms.Guna2Button deleteCust_btn;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2Button exitBtn;
         private System.Windows.Forms.Label Pharmacists;
         private Guna.UI2.WinForms.Guna2DataGridView pharmacistsGrid;
         private System.Windows.Forms.Label label3;

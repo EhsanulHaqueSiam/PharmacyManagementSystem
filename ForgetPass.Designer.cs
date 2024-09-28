@@ -31,28 +31,23 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForgetPass));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.uC_ForgetInfo1 = new PharmacyManagementSystem.ForgetPassUC.UC_ForgetInfo();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.home_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.uC_ForgetInfo1 = new PharmacyManagementSystem.ForgetPassUC.UC_ForgetInfo();
+            this.uC_F_Otp1 = new PharmacyManagementSystem.ForgetPassUC.UC_F_Otp();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.uC_F_Otp1);
             this.panel1.Controls.Add(this.uC_ForgetInfo1);
             this.panel1.Location = new System.Drawing.Point(100, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(676, 586);
             this.panel1.TabIndex = 0;
-            // 
-            // uC_ForgetInfo1
-            // 
-            this.uC_ForgetInfo1.Location = new System.Drawing.Point(0, 0);
-            this.uC_ForgetInfo1.Name = "uC_ForgetInfo1";
-            this.uC_ForgetInfo1.Size = new System.Drawing.Size(676, 586);
-            this.uC_ForgetInfo1.TabIndex = 0;
-            this.uC_ForgetInfo1.Load += new System.EventHandler(this.uC_ForgetInfo1_Load);
             // 
             // guna2Elipse1
             // 
@@ -82,6 +77,25 @@
             this.home_btn.Text = "Home";
             this.home_btn.Click += new System.EventHandler(this.home_btn_Click);
             // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.TargetControl = this.panel1;
+            // 
+            // uC_ForgetInfo1
+            // 
+            this.uC_ForgetInfo1.Location = new System.Drawing.Point(0, 0);
+            this.uC_ForgetInfo1.Name = "uC_ForgetInfo1";
+            this.uC_ForgetInfo1.Size = new System.Drawing.Size(676, 586);
+            this.uC_ForgetInfo1.TabIndex = 0;
+            this.uC_ForgetInfo1.Load += new System.EventHandler(this.uC_ForgetInfo1_Load);
+            // 
+            // uC_F_Otp1
+            // 
+            this.uC_F_Otp1.Location = new System.Drawing.Point(0, 0);
+            this.uC_F_Otp1.Name = "uC_F_Otp1";
+            this.uC_F_Otp1.Size = new System.Drawing.Size(676, 586);
+            this.uC_F_Otp1.TabIndex = 1;
+            // 
             // ForgetPass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -107,5 +121,7 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private ForgetPassUC.UC_ForgetInfo uC_ForgetInfo1;
         private Guna.UI2.WinForms.Guna2Button home_btn;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
+        private ForgetPassUC.UC_F_Otp uC_F_Otp1;
     }
 }

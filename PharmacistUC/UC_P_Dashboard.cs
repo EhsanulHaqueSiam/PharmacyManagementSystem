@@ -35,9 +35,8 @@ namespace PharmacyManagementSystem.PharmacistUC
             IMedicineDao medicineDao = new MedicineDaoImpl();
             MedicineController medicineController = new MedicineController(medicineDao);
 
-            IEnumerable<Medicine> medname = medicineController.GetValidMedicines();
-
-            //this.chart1.Series["Valid Medicines"].Points.AddXY("Medicine Validity Chart", medname);
+            this.chart1.Series["Valid Medicines"].Points.AddXY("Medicine Validity Chart", medicineController.CountValidMedicine());
+            this.chart1.Series["Expired Medicines"].Points.AddXY("Medicine Validity Chart", medicineController.CountExpiredMedicine());
         }
     }
 }
