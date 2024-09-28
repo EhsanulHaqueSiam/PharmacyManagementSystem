@@ -65,15 +65,23 @@ namespace PharmacyManagementSystem.DataAccess.Constants {
     public static class MedicineQueries {
         public const string GET_MEDICINE_BY_ID = "SELECT * FROM Medicine WHERE M_ID = @Id AND IsDeleted = 0";
         public const string GET_MEDICINE_BY_NAME = "SELECT * FROM Medicine WHERE M_Name LIKE @Name AND IsDeleted = 0";
+        public const string GET_MEDICINE_BY_CHEMICAL_NAME = "SELECT * FROM Medicine WHERE M_ChemicalName LIKE @ChemicalName AND IsDeleted = 0";
+        public const string GET_ALL_MEDICINES = "SELECT * FROM Medicine WHERE IsDeleted = 0";
+        public const string GET_EXPIRED_MEDICINES = "SELECT * FROM Medicine WHERE Expiry_Date < GETDATE() AND IsDeleted = 0";
+        public const string GET_MEDICINES_BY_DATE_RANGE = "SELECT * FROM Medicine WHERE M_Date BETWEEN @startDate AND @endDate AND IsDeleted = 0";
+        public const string GET_MEDICINES_BY_PRICE_RANGE = "SELECT * FROM Medicine WHERE M_PricePerUnit BETWEEN @minPrice AND @maxPrice AND IsDeleted = 0";
+        public const string GET_LOW_STOCK_MEDICINES = "SELECT * FROM Medicine WHERE M_Quantity <= @threshold AND IsDeleted = 0";
+        public const string GET_MEDICINES_CLOSE_TO_EXPIRY = "SELECT * FROM Medicine WHERE Expiry_Date BETWEEN GETDATE() AND @expiryDate AND IsDeleted = 0";
+        public const string GET_RECENTLY_ADDED_MEDICINES = "SELECT * FROM Medicine WHERE M_Date BETWEEN @startDate AND @endDate AND IsDeleted = 0";
+        public const string GET_MOST_PURCHASED_MEDICINES = "SELECT M_ID, SUM(Quantity) AS TotalQuantity FROM CustomerMedicine GROUP BY M_ID ORDER BY TotalQuantity DESC";
+        public const string GET_MOST_EXPENSIVE_MEDICINES = "SELECT * FROM Medicine WHERE IsDeleted = 0 ORDER BY M_PricePerUnit DESC";
+        public const string GET_CHEAPEST_MEDICINES = "SELECT * FROM Medicine WHERE IsDeleted = 0 ORDER BY M_PricePerUnit ASC";
         public const string INSERT_MEDICINE = "INSERT INTO Medicine (M_Name, M_ChemicalName, M_Quantity, M_PricePerUnit, M_Date, Expiry_Date) VALUES (@Name, @ChemicalName, @Quantity, @PricePerUnit, @Date, @ExpiryDate)";
         public const string UPDATE_MEDICINE = "UPDATE Medicine SET M_Name = @Name, M_ChemicalName = @ChemicalName, M_Quantity = @Quantity, M_PricePerUnit = @PricePerUnit, M_Date = @Date, Expiry_Date = @ExpiryDate WHERE M_ID = @Id";
         public const string DELETE_MEDICINE = "DELETE FROM Medicine WHERE M_ID = @Id";
         public const string SOFT_DELETE_MEDICINE = "UPDATE Medicine SET IsDeleted = 1 WHERE M_ID = @Id";
-        public const string GET_ALL_MEDICINES = "SELECT * FROM Medicine WHERE IsDeleted = 0";
-        public const string GET_EXPIRED_MEDICINES = "SELECT * FROM Medicine WHERE Expiry_Date < GETDATE() AND IsDeleted = 0";
-        public const string GET_MEDICINES_BY_DATE_RANGE = "SELECT * FROM Medicine WHERE M_Date BETWEEN @startDate AND @endDate AND IsDeleted = 0";
-        public const string GET_MOST_PURCHASED_MEDICINES = "SELECT M_ID, SUM(Quantity) AS TotalQuantity FROM CustomerMedicine GROUP BY M_ID ORDER BY TotalQuantity DESC";
     }
+
 
     public static class CouponQueries {
         public const string GET_COUPON_BY_ID = "SELECT * FROM Coupon WHERE C_ID = @Id AND IsDeleted = 0";

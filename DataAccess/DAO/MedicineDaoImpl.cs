@@ -101,7 +101,7 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
-        public IEnumerable<Medicine> GetMedicinesByDateRange(string startDate, string endDate) {
+        public IEnumerable<Medicine> GetMedicinesByDateRange(DateTime startDate, DateTime endDate) {
             return SqlDatabaseManager.Instance.Execute(connection => {
                 var medicines = new List<Medicine>();
                 using (var cmd = new SqlCommand(MedicineQueries.GET_MEDICINES_BY_DATE_RANGE, connection)) {
@@ -117,6 +117,7 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
+
         public IEnumerable<Medicine> GetMostPurchasedMedicines() {
             return SqlDatabaseManager.Instance.Execute(connection => {
                 var medicines = new List<Medicine>();
@@ -129,6 +130,111 @@ namespace PharmacyManagementSystem.DataAccess {
                             if (medicine != null) {
                                 medicines.Add(medicine);
                             }
+                        }
+                    }
+                }
+                return medicines;
+            });
+        }
+
+        public IEnumerable<Medicine> GetMedicineByChemicalName(string chemicalName) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                var medicines = new List<Medicine>();
+                using (var cmd = new SqlCommand(MedicineQueries.GET_MEDICINE_BY_CHEMICAL_NAME, connection)) {
+                    cmd.Parameters.AddWithValue("@ChemicalName", "%" + chemicalName + "%");
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            medicines.Add(MapToMedicine(reader));
+                        }
+                    }
+                }
+                return medicines;
+            });
+        }
+
+        public IEnumerable<Medicine> GetMedicinesByPriceRange(decimal minPrice, decimal maxPrice) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                var medicines = new List<Medicine>();
+                using (var cmd = new SqlCommand(MedicineQueries.GET_MEDICINES_BY_PRICE_RANGE, connection)) {
+                    cmd.Parameters.AddWithValue("@minPrice", minPrice);
+                    cmd.Parameters.AddWithValue("@maxPrice", maxPrice);
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            medicines.Add(MapToMedicine(reader));
+                        }
+                    }
+                }
+                return medicines;
+            });
+        }
+
+        public IEnumerable<Medicine> GetLowStockMedicines(int threshold) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                var medicines = new List<Medicine>();
+                using (var cmd = new SqlCommand(MedicineQueries.GET_LOW_STOCK_MEDICINES, connection)) {
+                    cmd.Parameters.AddWithValue("@threshold", threshold);
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            medicines.Add(MapToMedicine(reader));
+                        }
+                    }
+                }
+                return medicines;
+            });
+        }
+
+        public IEnumerable<Medicine> GetMedicinesCloseToExpiry(DateTime expiryDate) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                var medicines = new List<Medicine>();
+                using (var cmd = new SqlCommand(MedicineQueries.GET_MEDICINES_CLOSE_TO_EXPIRY, connection)) {
+                    cmd.Parameters.AddWithValue("@expiryDate", expiryDate);
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            medicines.Add(MapToMedicine(reader));
+                        }
+                    }
+                }
+                return medicines;
+            });
+        }
+
+        public IEnumerable<Medicine> GetMostExpensiveMedicines() {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                var medicines = new List<Medicine>();
+                using (var cmd = new SqlCommand(MedicineQueries.GET_MOST_EXPENSIVE_MEDICINES, connection)) {
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            medicines.Add(MapToMedicine(reader));
+                        }
+                    }
+                }
+                return medicines;
+            });
+        }
+
+        public IEnumerable<Medicine> GetCheapestMedicines() {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                var medicines = new List<Medicine>();
+                using (var cmd = new SqlCommand(MedicineQueries.GET_CHEAPEST_MEDICINES, connection)) {
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            medicines.Add(MapToMedicine(reader));
+                        }
+                    }
+                }
+                return medicines;
+            });
+        }
+
+        public IEnumerable<Medicine> GetRecentlyAddedMedicines(DateTime startDate, DateTime endDate) {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                var medicines = new List<Medicine>();
+                using (var cmd = new SqlCommand(MedicineQueries.GET_RECENTLY_ADDED_MEDICINES, connection)) {
+                    cmd.Parameters.AddWithValue("@startDate", startDate);
+                    cmd.Parameters.AddWithValue("@endDate", endDate);
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            medicines.Add(MapToMedicine(reader));
                         }
                     }
                 }

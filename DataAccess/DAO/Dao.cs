@@ -1,4 +1,5 @@
 ﻿using PharmacyManagementSystem.Model;
+using System;
 using System.Collections.Generic;
 
 namespace PharmacyManagementSystem.DataAccess.DAO {
@@ -50,15 +51,23 @@ namespace PharmacyManagementSystem.DataAccess.DAO {
     public interface IMedicineDao {
         Medicine GetMedicineById(int id);
         IEnumerable<Medicine> GetMedicineByName(string name);
+        IEnumerable<Medicine> GetMedicineByChemicalName(string chemicalName);
+        IEnumerable<Medicine> GetAllMedicines();
+        IEnumerable<Medicine> GetExpiredMedicines();
+        IEnumerable<Medicine> GetMedicinesByDateRange(DateTime startDate, DateTime endDate);
+        IEnumerable<Medicine> GetMedicinesByPriceRange(decimal minPrice, decimal maxPrice);
+        IEnumerable<Medicine> GetLowStockMedicines(int threshold);
+        IEnumerable<Medicine> GetMedicinesCloseToExpiry(DateTime expiryDate);
+        IEnumerable<Medicine> GetMostPurchasedMedicines();
+        IEnumerable<Medicine> GetMostExpensiveMedicines();
+        IEnumerable<Medicine> GetCheapestMedicines();
+        IEnumerable<Medicine> GetRecentlyAddedMedicines(DateTime startDate, DateTime endDate);
         bool InsertMedicine(Medicine medicine);
         bool UpdateMedicine(Medicine medicine);
         bool DeleteMedicine(int id);
-        IEnumerable<Medicine> GetAllMedicines();
-        IEnumerable<Medicine> GetExpiredMedicines();
-        IEnumerable<Medicine> GetMedicinesByDateRange(string startDate, string endDate);
-        IEnumerable<Medicine> GetMostPurchasedMedicines();
         bool SoftDeleteMedicine(int id);
     }
+
 
     public interface ICouponDao {
         Coupon GetCouponById(int id);
