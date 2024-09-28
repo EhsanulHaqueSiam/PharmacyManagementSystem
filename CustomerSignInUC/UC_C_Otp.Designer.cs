@@ -30,38 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_C_Otp));
-            this.otp_txt = new Guna.UI2.WinForms.Guna2TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.otpConfirm_btn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.resendCode_btn = new Guna.UI2.WinForms.Guna2Button();
             this.otpBack_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.otp_txt = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // otp_txt
-            // 
-            this.otp_txt.BorderColor = System.Drawing.Color.Gray;
-            this.otp_txt.BorderRadius = 10;
-            this.otp_txt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.otp_txt.DefaultText = "Type Your OTP";
-            this.otp_txt.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.otp_txt.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.otp_txt.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.otp_txt.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.otp_txt.FillColor = System.Drawing.Color.LightGray;
-            this.otp_txt.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.otp_txt.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.otp_txt.ForeColor = System.Drawing.Color.Black;
-            this.otp_txt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.otp_txt.Location = new System.Drawing.Point(204, 425);
-            this.otp_txt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.otp_txt.Name = "otp_txt";
-            this.otp_txt.PasswordChar = '\0';
-            this.otp_txt.PlaceholderText = "";
-            this.otp_txt.SelectedText = "";
-            this.otp_txt.Size = new System.Drawing.Size(229, 48);
-            this.otp_txt.TabIndex = 0;
             // 
             // pictureBox1
             // 
@@ -143,6 +119,31 @@
             this.otpBack_btn.Text = "Back";
             this.otpBack_btn.Click += new System.EventHandler(this.otpBack_btn_Click);
             // 
+            // otp_txt
+            // 
+            this.otp_txt.BorderColor = System.Drawing.Color.Gray;
+            this.otp_txt.BorderRadius = 10;
+            this.otp_txt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.otp_txt.DefaultText = "";
+            this.otp_txt.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.otp_txt.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.otp_txt.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.otp_txt.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.otp_txt.FillColor = System.Drawing.Color.Gray;
+            this.otp_txt.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.otp_txt.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.otp_txt.ForeColor = System.Drawing.Color.Black;
+            this.otp_txt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.otp_txt.Location = new System.Drawing.Point(204, 425);
+            this.otp_txt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.otp_txt.Name = "otp_txt";
+            this.otp_txt.PasswordChar = '\0';
+            this.otp_txt.PlaceholderForeColor = System.Drawing.Color.White;
+            this.otp_txt.PlaceholderText = "Type Your OTP\r\n";
+            this.otp_txt.SelectedText = "";
+            this.otp_txt.Size = new System.Drawing.Size(229, 48);
+            this.otp_txt.TabIndex = 0;
+            // 
             // UC_C_Otp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -160,12 +161,11 @@
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2TextBox otp_txt;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Button otpConfirm_btn;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Button resendCode_btn;
         private Guna.UI2.WinForms.Guna2Button otpBack_btn;
+        private Guna.UI2.WinForms.Guna2TextBox otp_txt;
     }
 }

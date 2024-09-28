@@ -16,5 +16,23 @@ namespace PharmacyManagementSystem
         {
             InitializeComponent();
         }
+
+        private void ForgetPass_Load(object sender, EventArgs e)
+        {
+            uC_ForgetInfo1.Visible = true;
+            uC_ForgetInfo1.BringToFront();
+        }
+
+        private void home_btn_Click(object sender, EventArgs e)
+        {
+            Form1 fm = new Form1();
+            fm.Show();
+            this.Hide();
+        }
+
+        private void uC_ForgetInfo1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

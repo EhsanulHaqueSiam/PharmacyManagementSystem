@@ -190,7 +190,18 @@ namespace PharmacyManagementSystem
 
         private void forgetPass_btn_Click(object sender, EventArgs e)
         {
-
+            
+            try
+            {
+                var fr1 = new ForgetPass();
+                fr1.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                LogError("Error during forget password", ex);
+                MessageBox.Show("An error occurred while opening the forget password form.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void signUp_btn_Click(object sender, EventArgs e)

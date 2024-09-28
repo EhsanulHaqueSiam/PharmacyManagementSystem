@@ -133,7 +133,7 @@ namespace PharmacyManagementSystem.CustomerSignInUC
             return Regex.IsMatch(phoneNumber, pattern);
         }
 
-        private int numberExist(string phoneNumber) {
+        public static int numberExist(string phoneNumber) {
 
             ICustomerDao customerDao = new CustomerDaoImpl();
             CustomerController customerController = new CustomerController(customerDao);
