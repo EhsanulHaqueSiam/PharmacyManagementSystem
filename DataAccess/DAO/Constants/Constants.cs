@@ -68,6 +68,7 @@ namespace PharmacyManagementSystem.DataAccess.Constants {
         public const string GET_MEDICINE_BY_CHEMICAL_NAME = "SELECT * FROM Medicine WHERE M_ChemicalName LIKE @ChemicalName AND IsDeleted = 0";
         public const string GET_ALL_MEDICINES = "SELECT * FROM Medicine WHERE IsDeleted = 0";
         public const string GET_EXPIRED_MEDICINES = "SELECT * FROM Medicine WHERE Expiry_Date < GETDATE() AND IsDeleted = 0";
+        public const string GET_VALID_MEDICINES = "SELECT * FROM Medicine WHERE Expiry_Date > GETDATE() AND IsDeleted = 0";  // New Query
         public const string GET_MEDICINES_BY_DATE_RANGE = "SELECT * FROM Medicine WHERE M_Date BETWEEN @startDate AND @endDate AND IsDeleted = 0";
         public const string GET_MEDICINES_BY_PRICE_RANGE = "SELECT * FROM Medicine WHERE M_PricePerUnit BETWEEN @minPrice AND @maxPrice AND IsDeleted = 0";
         public const string GET_LOW_STOCK_MEDICINES = "SELECT * FROM Medicine WHERE M_Quantity <= @threshold AND IsDeleted = 0";
@@ -81,6 +82,7 @@ namespace PharmacyManagementSystem.DataAccess.Constants {
         public const string DELETE_MEDICINE = "DELETE FROM Medicine WHERE M_ID = @Id";
         public const string SOFT_DELETE_MEDICINE = "UPDATE Medicine SET IsDeleted = 1 WHERE M_ID = @Id";
     }
+
 
 
     public static class CouponQueries {

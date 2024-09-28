@@ -14,8 +14,8 @@ namespace PharmacyManagementSystem.DataAccess.DAO {
         bool DeleteAdmin(int adminId);
         IEnumerable<Admin> GetAllAdmins();
         bool SoftDeleteAdmin(int adminId);
-        int CountAdmins();  // New method to count Admins
-        bool ValidateAdminLogin(string usernameOrEmail, string password);  // Login validation method
+        int CountAdmins();  
+        bool ValidateAdminLogin(string usernameOrEmail, string password);  
     }
 
     public interface IPharmacistDao {
@@ -29,8 +29,8 @@ namespace PharmacyManagementSystem.DataAccess.DAO {
         bool DeletePharmacist(int id);
         IEnumerable<Pharmacist> GetAllPharmacists();
         bool SoftDeletePharmacist(int id);
-        int CountPharmacists();  // New method to count Pharmacists
-        bool ValidatePharmacistLogin(string usernameOrEmail, string password);  // Login validation method
+        int CountPharmacists(); 
+        bool ValidatePharmacistLogin(string usernameOrEmail, string password); 
     }
 
     public interface ICustomerDao {
@@ -44,8 +44,8 @@ namespace PharmacyManagementSystem.DataAccess.DAO {
         bool DeleteCustomer(int id);
         IEnumerable<Customer> GetAllCustomers();
         bool SoftDeleteCustomer(int id);
-        int CountCustomers();  // New method to count Customers
-        bool ValidateCustomerLogin(string usernameOrEmail, string password);  // Login validation method
+        int CountCustomers(); 
+        bool ValidateCustomerLogin(string usernameOrEmail, string password);  
     }
 
     public interface IMedicineDao {
@@ -54,8 +54,9 @@ namespace PharmacyManagementSystem.DataAccess.DAO {
         IEnumerable<Medicine> GetMedicineByChemicalName(string chemicalName);
         IEnumerable<Medicine> GetAllMedicines();
         IEnumerable<Medicine> GetExpiredMedicines();
+        IEnumerable<Medicine> GetValidMedicines();  
         IEnumerable<Medicine> GetMedicinesByDateRange(DateTime startDate, DateTime endDate);
-        IEnumerable<Medicine> GetMedicinesByPriceRange(decimal minPrice, decimal maxPrice);
+        IEnumerable<Medicine> GetMedicinesByPriceRange(decimal minPrice, decimal maxPrice); 
         IEnumerable<Medicine> GetLowStockMedicines(int threshold);
         IEnumerable<Medicine> GetMedicinesCloseToExpiry(DateTime expiryDate);
         IEnumerable<Medicine> GetMostPurchasedMedicines();
@@ -67,6 +68,7 @@ namespace PharmacyManagementSystem.DataAccess.DAO {
         bool DeleteMedicine(int id);
         bool SoftDeleteMedicine(int id);
     }
+
 
 
     public interface ICouponDao {

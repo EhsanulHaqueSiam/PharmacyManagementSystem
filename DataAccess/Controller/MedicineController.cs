@@ -31,6 +31,10 @@ namespace PharmacyManagementSystem.Controllers {
             return _medicineDao.GetExpiredMedicines();
         }
 
+        public IEnumerable<Medicine> GetValidMedicines() {
+            return _medicineDao.GetValidMedicines();
+        }
+
         public IEnumerable<Medicine> GetMedicinesByDateRange(DateTime startDate, DateTime endDate) {
             return _medicineDao.GetMedicinesByDateRange(startDate, endDate);
         }

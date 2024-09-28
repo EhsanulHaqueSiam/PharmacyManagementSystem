@@ -101,6 +101,20 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
+        public IEnumerable<Medicine> GetValidMedicines() {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                var medicines = new List<Medicine>();
+                using (var cmd = new SqlCommand(MedicineQueries.GET_VALID_MEDICINES, connection)) {
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            medicines.Add(MapToMedicine(reader));
+                        }
+                    }
+                }
+                return medicines;
+            });
+        }
+
         public IEnumerable<Medicine> GetMedicinesByDateRange(DateTime startDate, DateTime endDate) {
             return SqlDatabaseManager.Instance.Execute(connection => {
                 var medicines = new List<Medicine>();
@@ -241,6 +255,7 @@ namespace PharmacyManagementSystem.DataAccess {
                 return medicines;
             });
         }
+
 
         // Helper method to map SqlDataReader to Medicine model
         private Medicine MapToMedicine(SqlDataReader reader) {
