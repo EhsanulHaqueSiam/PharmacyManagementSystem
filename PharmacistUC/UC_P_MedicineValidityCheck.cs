@@ -23,46 +23,32 @@ namespace PharmacyManagementSystem.PharmacistUC
 
         private void UC_P_MedicineValidityCheck_Load(object sender, EventArgs e) {
             
-            valid_comboBox.SelectedIndex = 0;
+            valid_comboBox.SelectedIndex = 2;
         }
 
         private void valid_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (valid_comboBox.SelectedIndex == 0)
             {
-                // View all medicine
+                // View all valid medicine
                 IMedicineDao medicineDao = new MedicineDaoImpl();
                 MedicineController medicineController = new MedicineController(medicineDao);
 
-                // Get all medicines
-                IEnumerable<Medicine> allMedicines = medicineController.GetAllMedicines();
-
-                // Filter medicines based on Expiry_Date
-                DateTime currentDate = DateTime.Now;
-                IEnumerable<Medicine> validMedicines = allMedicines.Where(m => m.Expiry_Date > currentDate);
-
-                // Set up the DataGridView
+                IEnumerable<Medicine> medname = medicineController.GetValidMedicines();
                 valid_grid.AutoGenerateColumns = true;
-                valid_grid.DataSource = validMedicines.ToList();
+                valid_grid.DataSource = medname.ToList();
                 valid_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
             }
             else if (valid_comboBox.SelectedIndex == 1)
             {
-                // View all medicine
+                // View all expired medicine
                 IMedicineDao medicineDao = new MedicineDaoImpl();
                 MedicineController medicineController = new MedicineController(medicineDao);
 
-                // Get all medicines
-                IEnumerable<Medicine> allMedicines = medicineController.GetAllMedicines();
-
-                // Filter medicines based on Expiry_Date
-                DateTime currentDate = DateTime.Now;
-                IEnumerable<Medicine> validMedicines = allMedicines.Where(m => m.Expiry_Date > currentDate);
-
-                // Set up the DataGridView
+                IEnumerable<Medicine> medname = medicineController.GetExpiredMedicines();
                 valid_grid.AutoGenerateColumns = true;
-                valid_grid.DataSource = validMedicines.ToList();
+                valid_grid.DataSource = medname.ToList();
                 valid_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
             }

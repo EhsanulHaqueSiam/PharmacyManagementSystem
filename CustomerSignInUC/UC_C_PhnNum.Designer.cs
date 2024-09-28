@@ -73,7 +73,7 @@
             this.phnNumSearch_txtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.phnNumSearch_txtBox.Name = "phnNumSearch_txtBox";
             this.phnNumSearch_txtBox.PasswordChar = '\0';
-            this.phnNumSearch_txtBox.PlaceholderText = "+880";
+            this.phnNumSearch_txtBox.PlaceholderText = "01*********";
             this.phnNumSearch_txtBox.SelectedText = "";
             this.phnNumSearch_txtBox.Size = new System.Drawing.Size(270, 48);
             this.phnNumSearch_txtBox.TabIndex = 25;

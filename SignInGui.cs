@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MimeKit.Tnef;
+using PharmacyManagementSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,8 @@ namespace PharmacyManagementSystem
 {
     public partial class SignInGui : Form
     {
+        public static Customer cust;
+        public static String phoneNum;
         public SignInGui()
         {
             InitializeComponent();

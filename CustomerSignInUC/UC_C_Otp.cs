@@ -1,4 +1,8 @@
-﻿using PharmacyManagementSystem.OTP;
+﻿using PharmacyManagementSystem.Controllers;
+using PharmacyManagementSystem.DataAccess.DAO;
+using PharmacyManagementSystem.DataAccess;
+using PharmacyManagementSystem.Model;
+using PharmacyManagementSystem.OTP;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,15 +36,53 @@ namespace PharmacyManagementSystem.CustomerSignInUC
             if (isValid)
             {
                 Console.WriteLine("OTP validated successfully.");
+                MessageBox.Show("Congratulation OTP validated successfully Please Sign In");
+
+                ICustomerDao customerDao = new CustomerDaoImpl();
+                CustomerController customerController = new CustomerController(customerDao);
+
+
+                bool confirmation = customerController.InsertCustomer(SignInGui.cust);
+
+                SignInGui.cust = null;
+                if (confirmation)
+                {
+                    MessageBox.Show("Account Succesfully created");
+                }
+                else
+                {
+                    MessageBox.Show("Account faild to create");
+                }
+
+                // Access the parent form
+                SignInGui parentForm = this.FindForm() as SignInGui;
+                if (parentForm != null)
+                {
+                    // Remove or hide the current user control
+                    parentForm.Controls.Remove(this); // Removes this user control from the parent form
+
+                    // Call the method to switch user controls or open the next form
+                    Form1 newForm = new Form1();
+                    newForm.Show(); // Opens the new form
+
+                    // Optionally close or hide the parent form
+                    parentForm.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Parent form not found");
+                }
             }
             else
             {
                 Console.WriteLine("Invalid or expired OTP.");
+                MessageBox.Show("OTP Invalid try resent button after 10 minute or check email");
             }
         }
 
         private void otpBack_btn_Click(object sender, EventArgs e)
         {
+            
             // Access the parent form
             SignInGui parentForm = this.FindForm() as SignInGui;
 
@@ -52,6 +94,19 @@ namespace PharmacyManagementSystem.CustomerSignInUC
             else
             {
                 MessageBox.Show("Parent form not found");
+            }
+        }
+
+        private void resendCode_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OTPService.SendOTPEmail(SignInGui.cust.C_Mail, UC_C_Info.tempOtp);
+                Console.WriteLine("OTP sent successfully to your email.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to send OTP: {ex.Message}");
             }
         }
     }

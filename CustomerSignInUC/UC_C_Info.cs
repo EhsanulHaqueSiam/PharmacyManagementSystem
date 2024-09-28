@@ -1,4 +1,5 @@
-﻿using PharmacyManagementSystem.OTP;
+﻿using PharmacyManagementSystem.Model;
+using PharmacyManagementSystem.OTP;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace PharmacyManagementSystem.CustomerSignInUC
 {
     public partial class UC_C_Info : UserControl
     {
+        public static string tempOtp;
         public UC_C_Info()
         {
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace PharmacyManagementSystem.CustomerSignInUC
 
         private void CInfoBack_btn_Click(object sender, EventArgs e)
         {
+            SignInGui.cust = null;
             // Access the parent form
             SignInGui parentForm = this.FindForm() as SignInGui;
 
@@ -64,20 +67,45 @@ namespace PharmacyManagementSystem.CustomerSignInUC
 
         private void otp_btn_Click(object sender, EventArgs e)
         {
+            // Validate all text fields are not empty
+            if (string.IsNullOrWhiteSpace(name_txt.Text) ||
+                string.IsNullOrWhiteSpace(SignInGui.phoneNum) ||
+                string.IsNullOrWhiteSpace(dob_txt.Text) ||
+                string.IsNullOrWhiteSpace(mail_txt.Text) ||
+                string.IsNullOrWhiteSpace(userName_txt.Text) ||
+                string.IsNullOrWhiteSpace(pass_txt.Text))
+            {
+                MessageBox.Show("Please fill in all fields before proceeding.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Exit the method if any field is empty
+            }
+
+            SignInGui.cust = new Customer {
+                C_Name = name_txt.Text,
+                C_Number = SignInGui.phoneNum,
+                C_Dob = DateTime.Parse(dob_txt.Text),
+                C_Mail = mail_txt.Text,
+                C_UserName = userName_txt.Text,
+                C_Pass = pass_txt.Text
+            };
+
+            
+
+
             // Access the parent form
             SignInGui parentForm = this.FindForm() as SignInGui;
+
             OTPService.LoadConfiguration();
 
             string recipientEmail = mail_txt.Text;
 
             // Generate OTP
-            string otp = OTPService.GenerateOTP();
-            Console.WriteLine(otp);
+            tempOtp = OTPService.GenerateOTP();
+            Console.WriteLine(tempOtp);
 
             // Send OTP email
             try
             {
-                OTPService.SendOTPEmail(recipientEmail, otp);
+                OTPService.SendOTPEmail(recipientEmail, tempOtp);
                 Console.WriteLine("OTP sent successfully to your email.");
             }
             catch (Exception ex)
