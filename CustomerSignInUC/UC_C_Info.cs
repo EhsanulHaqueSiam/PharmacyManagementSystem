@@ -97,6 +97,7 @@ namespace PharmacyManagementSystem.CustomerSignInUC
             OTPService otpService = OTPService.Instance;
             // Generate an OTP
             string otp = otpService.GenerateOTP();
+            UC_C_Info.tempOtp = otp;
             Console.WriteLine($"Generated OTP: {otp}");
             // Assume you have the user's email address
             string userEmail = mail_txt.Text;
