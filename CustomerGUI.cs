@@ -26,6 +26,7 @@ namespace PharmacyManagementSystem
         {
             uC_C_Profile1.Visible = false;
             uC_C_BuyMedicine1.Visible = false;
+            uC_P_SellMedicine1.Visible=false;
             Cprofile_Button.PerformClick();
 
         }
@@ -43,10 +44,10 @@ namespace PharmacyManagementSystem
             f1.Show();
         }
 
-        private void viewUser_Button_Click(object sender, EventArgs e)
+        private void buyMed_btn_Click(object sender, EventArgs e)
         {
-            uC_C_BuyMedicine1.Visible = true;
-            uC_C_BuyMedicine1.BringToFront();
+            uC_P_SellMedicine1.Visible = true;
+            uC_P_SellMedicine1.BringToFront();
         }
     }
 }

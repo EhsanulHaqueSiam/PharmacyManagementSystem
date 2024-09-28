@@ -56,9 +56,9 @@ namespace PharmacyManagementSystem.DataAccess.Constants {
                                                      "FROM Transactions GROUP BY C_ID ORDER BY PurchaseCount DESC";
         public const string COUNT_CUSTOMERS = "SELECT COUNT(*) FROM Customer WHERE IsDeleted = 0";
         public const string VALIDATE_CUSTOMER_LOGIN = "SELECT C_ID FROM Customer " +
-                                              "WHERE (C_UserName COLLATE Latin1_General_BIN = @UserName OR C_Mail = @Email) " +
-                                              "AND C_Pass = @Password " +
-                                              "AND IsDeleted = 0";
+                                      "WHERE (C_UserName COLLATE Latin1_General_BIN = @usernameOrEmail OR C_Mail = @usernameOrEmail) " +
+                                      "AND C_Pass = @password " +
+                                      "AND IsDeleted = 0";
 
     }
 
