@@ -50,7 +50,7 @@ namespace PharmacyManagementSystem.Controllers {
             return _customerDao.GetAllCustomers();
         }
 
-        public int CountCustomers() {  // New method to count customers
+        public int CountCustomers() { 
             return _customerDao.CountCustomers();
         }
 

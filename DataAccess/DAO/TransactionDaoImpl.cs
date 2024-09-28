@@ -63,7 +63,7 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
-        public IEnumerable<Transactions> GetTransactionsByDateRange(string startDate, string endDate) {
+        public IEnumerable<Transactions> GetTransactionsByDateRange(DateTime startDate, DateTime endDate) {
             return SqlDatabaseManager.Instance.Execute(connection => {
                 var transactions = new List<Transactions>();
                 using (var cmd = new SqlCommand(TransactionQueries.GET_TRANSACTIONS_BY_DATE_RANGE, connection)) {

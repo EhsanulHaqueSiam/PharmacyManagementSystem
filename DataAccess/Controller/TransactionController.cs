@@ -2,6 +2,7 @@
 using PharmacyManagementSystem.DataAccess;
 using System.Collections.Generic;
 using PharmacyManagementSystem.DataAccess.DAO;
+using System;
 
 namespace PharmacyManagementSystem.Controllers {
     public class TransactionController {
@@ -31,7 +32,7 @@ namespace PharmacyManagementSystem.Controllers {
             return _transactionDao.GetAllTransactions();
         }
 
-        public IEnumerable<Transactions> GetTransactionsByDateRange(string startDate, string endDate) {
+        public IEnumerable<Transactions> GetTransactionsByDateRange(DateTime startDate, DateTime endDate) {
             return _transactionDao.GetTransactionsByDateRange(startDate, endDate);
         }
     }

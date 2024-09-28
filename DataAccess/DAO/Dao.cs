@@ -54,20 +54,26 @@ namespace PharmacyManagementSystem.DataAccess.DAO {
         IEnumerable<Medicine> GetMedicineByChemicalName(string chemicalName);
         IEnumerable<Medicine> GetAllMedicines();
         IEnumerable<Medicine> GetExpiredMedicines();
-        IEnumerable<Medicine> GetValidMedicines();  
+        IEnumerable<Medicine> GetValidMedicines();
         IEnumerable<Medicine> GetMedicinesByDateRange(DateTime startDate, DateTime endDate);
-        IEnumerable<Medicine> GetMedicinesByPriceRange(decimal minPrice, decimal maxPrice); 
+        IEnumerable<Medicine> GetMedicinesByPriceRange(decimal minPrice, decimal maxPrice);
         IEnumerable<Medicine> GetLowStockMedicines(int threshold);
         IEnumerable<Medicine> GetMedicinesCloseToExpiry(DateTime expiryDate);
         IEnumerable<Medicine> GetMostPurchasedMedicines();
         IEnumerable<Medicine> GetMostExpensiveMedicines();
         IEnumerable<Medicine> GetCheapestMedicines();
         IEnumerable<Medicine> GetRecentlyAddedMedicines(DateTime startDate, DateTime endDate);
+
+        int GetCountOfValidMedicines();
+        int GetCountOfExpiredMedicines();
+        int GetCountOfTotalMedicines();
+
         bool InsertMedicine(Medicine medicine);
         bool UpdateMedicine(Medicine medicine);
         bool DeleteMedicine(int id);
         bool SoftDeleteMedicine(int id);
     }
+
 
 
 
@@ -87,6 +93,6 @@ namespace PharmacyManagementSystem.DataAccess.DAO {
         bool UpdateTransaction(Transactions transaction);
         bool DeleteTransaction(int id);
         IEnumerable<Transactions> GetAllTransactions();
-        IEnumerable<Transactions> GetTransactionsByDateRange(string startDate, string endDate);
+        IEnumerable<Transactions> GetTransactionsByDateRange(DateTime startDate, DateTime endDate);
     }
 }
