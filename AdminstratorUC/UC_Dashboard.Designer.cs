@@ -120,6 +120,7 @@
             this.label8.Size = new System.Drawing.Size(284, 240);
             this.label8.TabIndex = 2;
             this.label8.Text = resources.GetString("label8.Text");
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label5
             // 
@@ -234,10 +235,10 @@
             this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.Location = new System.Drawing.Point(13, 199);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(252, 140);
+            this.label16.Size = new System.Drawing.Size(252, 100);
             this.label16.TabIndex = 5;
-            this.label16.Text = "Customer has the lowest role\r\n\r\nThey can add User\r\n\r\nThey can view User\r\n\r\nThey c" +
-    "an do profile management";
+            this.label16.Text = "Customer has the lowest role\r\n\r\nThey can Buy medicine\r\n\r\nThey can do profile mana" +
+    "gement";
             // 
             // cust_lbl
             // 
@@ -269,9 +270,9 @@
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(32, 68);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(188, 100);
+            this.label7.Size = new System.Drawing.Size(188, 80);
             this.label7.TabIndex = 3;
-            this.label7.Text = "Task Performed\r\n\r\n     •Add User\r\n     •View User\r\n     •Profile Management";
+            this.label7.Text = "Task Performed\r\n\r\n     •Buy Medicine\r\n     •Profile Management";
             // 
             // label4
             // 

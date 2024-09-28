@@ -107,6 +107,7 @@ namespace PharmacyManagementSystem
         {
             string username = userNameTxtField.Text;
             string password = passTextField.Text;
+            Program.userName = username;
 
             try
             {
@@ -158,15 +159,23 @@ namespace PharmacyManagementSystem
         private bool TryLoginAsCustomer(string username, string password)
         {
             var customerController = new CustomerController(_customerDao);
-            if (customerController.Login(username, password))
+            try
             {
-                Program.custLog = true;
-                var customerForm = new CustomerGUI();
-                customerForm.Show();
-                this.Hide();
-                return true;
+                if (customerController.Login(username, password))
+                {
+                    Program.custLog = true;
+                    var customerForm = new CustomerGUI();
+                    customerForm.Show();
+                    this.Hide();
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Customer login failed: {ex.Message}");
+                throw;  // Rethrow the exception for global error handling
+            }
         }
 
         private void passTextField_TextChanged(object sender, EventArgs e)

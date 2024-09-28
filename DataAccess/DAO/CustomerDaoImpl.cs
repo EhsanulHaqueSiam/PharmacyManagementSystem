@@ -25,7 +25,7 @@ namespace PharmacyManagementSystem.DataAccess {
         public Customer GetCustomerByUsername(string username) {
             return SqlDatabaseManager.Instance.Execute(connection => {
                 using (var cmd = new SqlCommand(CustomerQueries.GET_CUSTOMER_BY_USERNAME, connection)) {
-                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@UserName", username);
                     using (var reader = cmd.ExecuteReader()) {
                         if (reader.Read()) {
                             return MapToCustomer(reader);
