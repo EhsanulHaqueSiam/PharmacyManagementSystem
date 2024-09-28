@@ -256,6 +256,30 @@ namespace PharmacyManagementSystem.DataAccess {
             });
         }
 
+        public int GetCountOfValidMedicines() {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(MedicineQueries.COUNT_VALID_MEDICINES, connection)) {
+                    return (int)cmd.ExecuteScalar();
+                }
+            });
+        }
+
+        public int GetCountOfExpiredMedicines() {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(MedicineQueries.COUNT_EXPIRED_MEDICINES, connection)) {
+                    return (int)cmd.ExecuteScalar();
+                }
+            });
+        }
+
+        public int GetCountOfTotalMedicines() {
+            return SqlDatabaseManager.Instance.Execute(connection => {
+                using (var cmd = new SqlCommand(MedicineQueries.COUNT_TOTAL_MEDICINES, connection)) {
+                    return (int)cmd.ExecuteScalar();
+                }
+            });
+        }
+
 
         // Helper method to map SqlDataReader to Medicine model
         private Medicine MapToMedicine(SqlDataReader reader) {

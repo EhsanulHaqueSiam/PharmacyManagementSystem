@@ -67,6 +67,18 @@ namespace PharmacyManagementSystem.Controllers {
             return _medicineDao.GetRecentlyAddedMedicines(startDate, endDate);
         }
 
+        public int CountTotalMedicine() {
+            return _medicineDao.GetCountOfTotalMedicines();
+        }
+
+        public int CountValidMedicine() {
+            return _medicineDao.GetCountOfValidMedicines();
+        }
+
+        public int CountExpiredMedicine() {
+            return _medicineDao.GetCountOfExpiredMedicines();
+        }
+
         public bool InsertMedicine(Medicine medicine) {
             return _medicineDao.InsertMedicine(medicine);
         }
