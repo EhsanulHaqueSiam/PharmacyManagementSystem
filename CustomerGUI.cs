@@ -25,7 +25,6 @@ namespace PharmacyManagementSystem
         private void CustomerGUI_Load(object sender, EventArgs e)
         {
             uC_C_Profile1.Visible = false;
-            uC_C_BuyMedicine1.Visible = false;
             uC_P_SellMedicine1.Visible=false;
             Cprofile_Button.PerformClick();
 

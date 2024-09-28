@@ -91,7 +91,7 @@ namespace PharmacyManagementSystem.PharmacistUC {
 
         private void rmv_btn_Click(object sender, EventArgs e)
         {
-            if (valueId != null)
+            if (valueId != 0)
             {
                 try
                 {

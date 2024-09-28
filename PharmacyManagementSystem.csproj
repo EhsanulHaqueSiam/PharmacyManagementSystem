@@ -197,6 +197,24 @@
     <Compile Include="DataAccess\DatabaseManager.cs" />
     <Compile Include="DataAccess\ConfigLoader.cs" />
     <Compile Include="DGVPrinter.cs" />
+    <Compile Include="ForgetPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgetPass.Designer.cs">
+      <DependentUpon>ForgetPass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForgetPassUC\UC_ForgetInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ForgetPassUC\UC_ForgetInfo.Designer.cs">
+      <DependentUpon>UC_ForgetInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForgetPassUC\UC_F_Otp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ForgetPassUC\UC_F_Otp.Designer.cs">
+      <DependentUpon>UC_F_Otp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,6 +316,15 @@
     <EmbeddedResource Include="CustomerUC\UC_C_Profile.resx">
       <DependentUpon>UC_C_Profile.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ForgetPass.resx">
+      <DependentUpon>ForgetPass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgetPassUC\UC_ForgetInfo.resx">
+      <DependentUpon>UC_ForgetInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgetPassUC\UC_F_Otp.resx">
+      <DependentUpon>UC_F_Otp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -336,7 +363,6 @@
       <DependentUpon>SignInGui.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="PharmacyManagementSystem_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
